@@ -53,6 +53,109 @@
     <p class="pull">Build the four pieces separately, test each one by hand, and "agent" stops being an intimidating word — it's just Chapter 12's prompts on a timer.</p>
   </section>
 
+  <section class="prose">
+    <h2>A real example, broken into the four pieces</h2>
+    <p>Theory is easier to trust with a real one in front of you. Here's an actual agent prompt, in production, that generates full themed retrospectives on demand — the same idea as Chapter 12's "Theme It" prompt, but built as a standing agent instead of something you paste in fresh each time.</p>
+  </section>
+
+  <div class="grid wide">
+    <article class="recipe">
+      <h3>Trigger</h3>
+      <p class="purpose">A message from a facilitator naming a theme — "give me a Sailboat retro themed around the World Cup." Could be a Slack slash command, a chat message to a bot, or a form field on an internal tool. No schedule needed; this one's invoked on demand.</p>
+    </article>
+    <article class="recipe">
+      <h3>Context</h3>
+      <p class="purpose">Deliberately minimal: just the requested theme and, optionally, which format to theme (Sailboat, Starfish, whichever). No ticket data, no sprint history — this agent's whole job is creative generation, not reporting on what happened.</p>
+    </article>
+  </div>
+
+  <div class="promptcard">
+    <h3>The Prompt (Real, in Production)</h3>
+    <p class="purpose">Below is an actual agent system prompt, lightly reformatted for readability — the logic and rules are unchanged from what's actually running.</p>
+    <pre># Purpose
+Generate creative, themed sprint retrospectives with a consistent
+structure.
+
+# Core Behaviour
+Always generate the full retro first. The retro must always follow
+the same order. Never ask the user any clarifying questions about
+format.
+
+# Output Order (Strict)
+1) Theme-based Icebreaker
+2) Four themed retro categories, each with one short example
+   (doesn't always have to be four)
+3) Theme-based Battery Check-In (1-5 scale)
+4) Theme-based Energy Check-Out
+5) Theme-based facilitation script
+
+This order must never change unless the user explicitly instructs it.
+
+# Retro Content Rules
+- Categories must always be rewritten using the theme (creative but
+  clear).
+- Provide one short, themed example per category.
+- SMART actions must be rewritten using theme metaphors while keeping
+  the true S/M/A/R/T meaning.
+- Battery and Energy sections must always be present.
+- Facilitation script must always match the theme.
+
+# Behaviour Safeguards
+- Never ask the user which version they want.
+- Never treat alternate formats as separate workflows or modes.
+- Always produce the full retro first.
+
+# Additional Icebreaker Guidance
+- Add variety by mixing icebreaker formats (questions, polls, quick
+  challenges, or fun facts).
+- Occasionally include a short team quiz or mini game as the
+  icebreaker.
+- Ensure quiz questions relate to the retro theme when used.
+- Do not repeat icebreaker types in consecutive retrospectives.
+
+# Step-by-Step
+1. Select a creative theme based on user prompt or suggestion.
+2. Generate an icebreaker (mix format for variety, insert quizzes
+   periodically).
+3. Write themed retro categories with examples.
+4. Add themed Battery Check-In and Energy Check-Out prompts.
+5. Provide a facilitation script matching the theme.</pre>
+    <p class="tip"><b>What makes this a good agent prompt, not just a good prompt</b>Three things carry the weight: a <strong>strict, named output order</strong> so every run is structured the same way regardless of theme; explicit <strong>behaviour safeguards</strong> that forbid the model from stopping to ask clarifying questions (the single most common way an agent quietly turns back into a chatbot); and a rule that keeps the SMART-goal structure intact underneath the theme, so a fun costume never costs the retro its actual substance. That last rule is the agent-prompt version of Chapter 12's "keep the SAME underlying purpose of each part."</p>
+  </div>
+
+  <div class="grid wide">
+    <article class="recipe">
+      <h3>Output</h3>
+      <p class="purpose">The full five-part themed retro, posted wherever the facilitator asked for it — a doc, a chat reply, a whiteboard-ready template. Nothing here needs a privacy review beyond the normal rules, since no team feedback data is involved yet; the output becomes the empty template the team then fills in live.</p>
+    </article>
+  </div>
+
+  <section class="prose">
+    <h2>Prompting AI to write the prompt for you</h2>
+    <p>You don't need to be good at writing agent prompts like the one above — you can ask a capable model to draft one for you, the same way you'd ask a colleague who's done it before. Here's the meta-prompt:</p>
+  </section>
+
+  <div class="promptcard">
+    <h3>Draft an Agent Prompt For Me</h3>
+    <p class="purpose">Describe what you want the agent to do in plain language; get back a structured system prompt in the style above, ready to test.</p>
+    <pre>I want to build an AI agent that [describe the task in plain
+language — e.g. "generates a themed sprint retrospective when I give
+it a theme, always in the same 5-part structure"].
+
+Write me a system prompt for this agent, structured as:
+- Purpose (one line)
+- Core Behaviour (how it should act by default)
+- Output Order (the exact structure every response follows, if order
+  matters)
+- Content Rules (specific constraints on what it produces)
+- Behaviour Safeguards (things it should never do — e.g. never ask
+  clarifying questions, never skip a section, never break character)
+
+Make the safeguards specific to the failure modes most likely for
+this particular task, not generic ones.</pre>
+    <p class="tip"><b>Why it works</b>Asking explicitly for "Behaviour Safeguards... specific to the failure modes most likely for this particular task" is what separates a genuinely useful agent prompt from a vague one — it forces the model to think about how THIS agent, specifically, is most likely to go wrong, rather than pasting in generic boilerplate.</p>
+  </div>
+
   <section class="deck classic">
     <div class="tab"><h2>Other Useful Scrum Agents</h2><span class="tab-note">ideas beyond retro prep — build the ones that solve a real recurring pain, skip the rest</span></div>
     <div class="grid wide">
