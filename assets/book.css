@@ -221,6 +221,18 @@ p{margin:0 0 16px;}
 .flow-a{background:var(--card); border:1px solid var(--rule-soft); padding:14px 18px; font-size:.92rem; display:flex; align-items:center; gap:8px; border-radius:0 2px 2px 0;}
 .flow-a a{font-family:var(--display); font-weight:700; text-decoration:none; color:var(--accent);}
 
+/* ---------- Inline citations ---------- */
+.cite{
+  font-family:var(--mono); font-size:.75em; color:var(--ink-soft); text-decoration:none;
+  border-bottom:1px dotted var(--rule); white-space:nowrap;
+}
+.cite:hover{color:var(--ink); border-bottom-color:var(--ink);}
+.refs{list-style:none; margin:0; padding:0; display:grid; gap:18px;}
+.refs li{padding-left:0;}
+.refs .ref-claim{font-size:.88rem; color:var(--ink-soft); margin:0 0 4px;}
+.refs .ref-source{font-size:.96rem; margin:0;}
+.refs .ref-note{font-size:.86rem; color:var(--ink-soft); margin:6px 0 0; font-style:italic;}
+
 /* ---------- Footer ---------- */
 footer.colophon{
   margin-top:56px; padding-top:18px; border-top:1px solid var(--rule); font-family:var(--mono);
