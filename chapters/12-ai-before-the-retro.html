@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>AI Before the Retro — Ch. 12, The Retro Playbook</title>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body>
+<div class="page">
+<p><a class="back" href="../index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 12</span><span>Part IV — Your AI Co-Pilot</span></div>
+    <h1>AI Before the Retro (Prep in 5 Minutes)</h1>
+    <p class="dek">Four copy-paste prompts that do the reading-through-two-weeks-of-tickets part for you.</p>
+  </header>
+
+  <div class="intro prose">
+    <p><strong>Every prompt below runs before anyone joins the call.</strong> Per Chapter 11's rule, this is AI's home turf — the paperwork, not the talking. Paste your own details into the brackets; the model doesn't need your actual ticket system connected, just a copy-paste of what changed.</p>
+  </div>
+
+  <section class="deck remote">
+    <div class="tab"><h2>Four Prep Prompts</h2><span class="tab-note">tool-agnostic — works with any capable model</span></div>
+
+    <div class="promptcard">
+      <h3>1. The Neutral Sprint Brief</h3>
+      <p class="purpose">Turns a messy pile of tickets, PR titles, and incident notes into a one-page, blame-free summary the whole team can skim in ninety seconds before the retro starts.</p>
+      <pre>You're helping me prep for a team retrospective. Below is a raw dump
+of this sprint's ticket titles, PR titles, and any incident notes.
+
+[paste raw list here]
+
+Turn this into a neutral, one-page summary for the team to read before
+the retro. Include: what shipped, what was blocked or delayed, any
+incidents (facts only, no blame language), and anything that looks
+unusually high-effort relative to its ticket size. Keep it under 300
+words. No opinions on whether things went well or badly — just facts,
+so the team can form their own view live.</pre>
+      <p class="tip"><b>Why it works</b>Explicitly banning "opinions on whether things went well" stops the model from pre-deciding the retro's conclusions for the room — it hands over facts, not a verdict.</p>
+    </div>
+
+    <div class="promptcard">
+      <h3>2. Cluster the Async Survey</h3>
+      <p class="purpose">If you're running an async pre-fill (Chapter 9), you'll often end up with 20+ scattered written answers. This groups them into themes before the live call, so discussion starts at "patterns" instead of "let's read through all twenty of these together."</p>
+      <pre>Here are anonymous written answers from a pre-retro survey. Each line
+is one person's answer to "what went well / what didn't this sprint":
+
+[paste raw answers here, one per line]
+
+Group these into 3-5 themes based on what they're actually about, not
+just similar wording. For each theme: a short name, how many answers
+fall into it, and 1-2 verbatim quotes (unattributed) that represent it
+well. Flag anything that seems like an outlier worth discussing on its
+own rather than folding into a theme.</pre>
+      <p class="tip"><b>Why it works</b>Asking for verbatim quotes (unattributed) keeps real voices in the summary instead of the model paraphrasing everyone into blandness — see Chapter 14 for why attribution matters here.</p>
+    </div>
+
+    <div class="promptcard">
+      <h3>3. Pick a Format for This Sprint</h3>
+      <p class="purpose">Chapter 5 gave you a manual decision guide. This is the same logic, personalized to what actually happened this sprint, in case nothing on that page quite fits.</p>
+      <pre>I facilitate retrospectives for a [team size]-person [remote/in-person/
+hybrid] software team. Here's what happened this sprint:
+
+[2-4 sentences — e.g. "we shipped a major feature but had two
+production incidents; morale seems mixed, some pride and some
+exhaustion"]
+
+Recommend ONE retro format suited to this specific situation, from
+options like: a classic (Mad/Sad/Glad, Start/Stop/Continue, 4Ls,
+Sailboat, Starfish, Timeline, Lean Coffee), a situational format
+(post-incident timeline, post-release celebration, pre-mortem), or a
+high-energy format if the team needs a lift. Explain in 2 sentences
+why this format fits better than the obvious default.</pre>
+      <p class="tip"><b>Why it works</b>Naming the actual format families (rather than leaving it open-ended) keeps the suggestion grounded in techniques you can actually go run, instead of the model inventing something novel and untested.</p>
+    </div>
+
+    <div class="promptcard">
+      <h3>4. The Custom Icebreaker</h3>
+      <p class="purpose">Already in Chapter 4 — repeated here because it's also, fundamentally, a pre-retro prep task. Use it alongside prompt 3 if you're building the whole session from scratch.</p>
+      <pre>You're helping me open a team retrospective. Context: [team size]
+people, [remote/in-person/hybrid]. This sprint: [1-2 sentences].
+Energy wanted: [calm/lively/silly]. Time budget: [X] minutes.
+
+Suggest 3 icebreaker options. For each: name, exact facilitator
+script (the words I say), time needed, and one way it could go
+wrong. Nothing that forces personal disclosure. Nothing that
+needs prep.</pre>
+      <p class="tip"><b>Why it works</b>See Chapter 4's full explanation — the same prompt, same reasoning, just worth remembering it belongs in your pre-retro routine, not a separate step.</p>
+    </div>
+
+  </section>
+
+  <section class="prose">
+    <h2>The five-minute routine</h2>
+    <p>Put together, these four prompts turn "prep for tomorrow's retro" from a task you skip when busy into something that fits in the time it takes to make coffee: paste the sprint's raw activity into prompt 1, paste any survey answers into prompt 2, ask prompt 3 what format fits, ask prompt 4 for an icebreaker to match. Total human effort: copying and pasting. Total time saved: the twenty minutes you'd otherwise spend scrolling through a ticket board trying to remember what actually happened three weeks ago.</p>
+  </section>
+
+  <section class="cheat">
+    <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
+    <h2>Four prompts, one five-minute routine</h2>
+    <ul>
+      <li><b>Neutral Sprint Brief:</b> facts only, no verdict — the room forms its own opinion live.</li>
+      <li><b>Cluster the Survey:</b> unattributed verbatim quotes keep real voices, not paraphrased blandness.</li>
+      <li><b>Pick a Format:</b> name real format families so the suggestion is something you can actually run.</li>
+      <li><b>Custom Icebreaker:</b> same prompt as Chapter 4 — it's prep too, not a separate step.</li>
+      <li><b>All four run before the call.</b> Per Chapter 11's rule, this is exactly where AI belongs.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook — Chapter 12</span>
+    <span>Part IV — Your AI Co-Pilot</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="11-where-ai-helps-where-it-hurts.html">&larr; Ch. 11 — Where AI Helps, Where It Hurts</a>
+    <a class="next" href="13-ai-during-and-after.html">Ch. 13 — AI During and After &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>

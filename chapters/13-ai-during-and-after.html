@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>AI During and After — Ch. 13, The Retro Playbook</title>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body>
+<div class="page">
+<p><a class="back" href="../index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 13</span><span>Part IV — Your AI Co-Pilot</span></div>
+    <h1>AI During and After</h1>
+    <p class="dek">Used sparingly in the room. Genuinely powerful once the room has emptied.</p>
+  </header>
+
+  <div class="intro prose">
+    <p><strong>Two very different chapters in one.</strong> During the retro, AI's role shrinks to almost nothing — a quiet tool the facilitator glances at, never a participant. After the retro, it does its best work of the whole book: remembering things no human reliably does.</p>
+  </div>
+
+  <section class="prose">
+    <h2>During: used sparingly, and never visibly to the room as "deciding" anything</h2>
+    <p>Two uses earn their place live. Both are assistive, both stay entirely in the facilitator's hands, and both should be things the team already knows are happening — nothing silent, nothing surveillance-shaped (Chapter 14 goes deep on this).</p>
+  </section>
+
+  <div class="grid wide">
+    <article class="recipe">
+      <h3>Live Clustering</h3>
+      <p class="purpose">During Chapter 2's Generate Insights stage, feed the raw sticky-note text into a model and ask for a first-pass grouping — a starting point for the room to argue with, not a verdict.</p>
+      <div class="watch"><b>Ground rule</b>Announce it: "I'm going to run these through a quick clustering pass to save us time — shout if a grouping looks wrong." Then let the room override it freely.</div>
+    </article>
+    <article class="recipe">
+      <h3>Anonymized Sentiment Summary</h3>
+      <p class="purpose">For a large or async-heavy retro, a quick "here's the overall tone across the written input" can surface a quiet minority view the loudest voices in the room might otherwise drown out.</p>
+      <div class="watch"><b>Ground rule</b>Sentiment only, never attribution. "About a third of responses read as frustrated" is fine. "Priya's comment sounds frustrated" is not — see Chapter 14.</div>
+    </article>
+  </div>
+
+  <section class="prose">
+    <p class="pull">Notice what's missing from that list: nothing that talks to the room, nothing that decides what a cluster means, nothing that speaks before a human does. That line holds even when the tool is genuinely capable of more.</p>
+
+    <h2>After: where AI does its best work</h2>
+    <p>Once the room has emptied and the human part is done, the constraints loosen. This is pure paperwork, and paperwork is exactly what should be automated.</p>
+  </section>
+
+  <div class="promptcard">
+    <h3>Draft the Retro Summary</h3>
+    <p class="purpose">Turns your rough notes into something worth actually sending to the team and to anyone who couldn't attend.</p>
+    <pre>Here are my raw notes from today's retro: what was discussed, the
+clusters we identified, and the one action item we committed to.
+
+[paste raw notes]
+
+Write a short summary (under 200 words) for the team channel: what we
+talked about, in plain language, and the one action item with its
+owner and target date. Warm but not fluffy tone. Do not editorialize
+about whether the sprint went well or badly — just report what the
+team concluded.</pre>
+    <p class="tip"><b>Why it works</b>The 200-word cap forces a summary people will actually read, and "report what the team concluded" (not the model's own take) keeps it honest to what actually happened in the room.</p>
+  </div>
+
+  <div class="promptcard">
+    <h3>Nudge the Action-Item Owner</h3>
+    <p class="purpose">A friendly, low-pressure check-in message, timed for a few days before the next retro — solving exactly the "we didn't have time" and "honestly, I forgot" failure modes from Chapter 10.</p>
+    <pre>Write a short, friendly Slack message checking in on an action item
+from our last retro. Owner: [name]. Commitment: [what they agreed to
+do]. Target date: [date]. Tone: a nudge from a teammate, not a
+manager chasing a deliverable. Keep it under 3 sentences. If today
+is past the target date, acknowledge that gently rather than ignoring
+it.</pre>
+    <p class="tip"><b>Why it works</b>Explicitly steering away from "manager chasing a deliverable" tone matters — a cold automated nag undoes the goodwill the retro built. This should read like a teammate, not a bot with a deadline.</p>
+  </div>
+
+  <section class="prose">
+    <h2>The killer feature: retro memory</h2>
+    <p>This is the single biggest structural fix AI offers this whole book, and it goes straight at Chapter 1's Groundhog Day Retro. No human is realistically going to re-read eight retros' worth of notes before every new one. A model will, in seconds, if you keep feeding it the record.</p>
+  </section>
+
+  <div class="promptcard">
+    <h3>What This Team Keeps Raising</h3>
+    <p class="purpose">Run this quarterly, or whenever a topic feels naggingly familiar. Feed it every retro summary you've generated with the prompt above — the record only works if you've actually been keeping it.</p>
+    <pre>Here are summaries from our last 8 team retros, in order:
+
+[paste 8 summaries]
+
+What topics or issues have come up more than once? For each recurring
+one: how many times it's appeared, whether an action item was ever
+committed to it, and whether that action item was completed (based on
+what's in these notes). Be blunt if something has been raised
+repeatedly with no real follow-through — that's exactly the pattern
+I need to see.</pre>
+    <p class="tip"><b>Why it works</b>This turns a vague feeling — "didn't we already talk about this?" — into receipts: exact count, exact history, exact follow-through record. It's the single most persuasive tool in this book for finally fixing something that's been quietly broken for months.</p>
+  </div>
+
+  <section class="cheat">
+    <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
+    <h2>During vs. after, in one box</h2>
+    <ul>
+      <li><b>During:</b> live clustering and sentiment summary only — both announced to the room, both overridable, neither ever attributing a quote to a person.</li>
+      <li><b>After:</b> summaries and nudges — the paperwork nobody misses doing by hand.</li>
+      <li><b>Retro memory is the killer feature.</b> Feed it every summary; ask quarterly what keeps recurring with no follow-through.</li>
+      <li><b>The line never moves:</b> AI suggests and remembers. It never decides, and it never speaks for a person.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook — Chapter 13</span>
+    <span>Part IV — Your AI Co-Pilot</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="12-ai-before-the-retro.html">&larr; Ch. 12 — AI Before the Retro</a>
+    <a class="next" href="14-keep-the-trust.html">Ch. 14 — Keep the Trust &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>

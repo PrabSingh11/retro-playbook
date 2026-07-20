@@ -3,107 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
 <title>The Retro Playbook</title>
+<link rel="stylesheet" href="assets/book.css">
 <style>
-  :root{
-    --paper: #EDECE2;
-    --card: #F6F5EC;
-    --ink: #24352F;
-    --ink-soft: #5B665D;
-    --ink-faint: #8B9188;
-    --rule: #C9C4AC;
-    --rule-soft: #DAD6C3;
-    --check: #3F7684;   --check-tint: #DDE7E6;
-    --ember: #C15A34;   --ember-tint: #F0DFD2;
-    --moss: #52713F;    --moss-tint: #DEE5D3;
-    --plum: #64517E;    --plum-tint: #E2DBE9;
-    --gold: #A9781F;    --gold-tint: #EBE0C4;
-    --display: "Century Gothic", "Futura", "Avenir Next", "Segoe UI Semibold", "Trebuchet MS", sans-serif;
-    --body: Charter, Georgia, "Iowan Old Style", "Noto Serif", "Times New Roman", serif;
-    --mono: "IBM Plex Mono", "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
-  }
-  *{box-sizing:border-box;}
-  html{background:var(--paper);}
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:var(--body); font-size:17px; line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--ink);}
-  a:focus-visible{outline:2px solid var(--ink); outline-offset:3px;}
-  h1,h2,h3{font-family:var(--display); font-weight:700; text-wrap:balance; margin:0;}
-  .page{max-width:820px; margin:0 auto; padding:0 24px 96px;}
+  .lid{padding:64px 0 30px;}
+  .lid h1{font-size:clamp(2.4rem, 6vw, 3.6rem);}
+  .lid .dek{font-size:1.2rem; max-width:56ch;}
 
-  .lid{padding:64px 0 30px; display:flex; flex-direction:column; gap:14px;}
-  .lid .kicker{
-    font-family:var(--mono); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--ink-soft);
+  .part{margin:0 0 44px;}
+  .part-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:16px; padding-bottom:8px;
+    border-bottom:2px solid var(--ink);
   }
-  .lid h1{font-size:clamp(2.4rem, 6vw, 3.6rem); letter-spacing:-0.01em;}
-  .lid .dek{font-family:var(--body); font-style:italic; color:var(--ink-soft); font-size:1.2rem; max-width:56ch;}
+  .part-head h2{font-size:1.15rem; letter-spacing:-.005em;}
+  .part-head .part-note{font-family:var(--body); font-style:italic; color:var(--ink-soft); font-size:.92rem;}
 
-  .intro{
-    background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--ink);
-    border-radius:3px; padding:22px 26px; margin:8px 0 40px; font-size:.98rem;
-  }
-  .intro p{margin:0 0 10px;} .intro p:last-child{margin-bottom:0;}
-
-  .shelf{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px;}
+  .shelf{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
   .shelf li{
-    position:relative;
-    background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--accent, var(--check));
-    border-radius:2px; padding:20px 22px;
+    position:relative; background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--accent, var(--check));
+    border-radius:2px; padding:14px 18px;
   }
-  .shelf a{display:block; text-decoration:none;}
-  .shelf .chnum{font-family:var(--mono); font-size:11.5px; color:var(--accent, var(--check)); letter-spacing:.06em;}
-  .shelf h2{font-size:1.3rem; margin:4px 0 6px; color:var(--ink);}
-  .shelf p{margin:0; color:var(--ink-soft); font-size:.95rem;}
-  .shelf .status{
-    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em;
-    color:var(--ink-faint); position:absolute; top:18px; right:20px;
-  }
-  .shelf li.coming{opacity:.55;}
-  .shelf li.coming a{pointer-events:none; cursor:default;}
-  .shelf li:nth-child(1){--accent:var(--check);}
-  .shelf li:nth-child(2){--accent:var(--ember);}
-  .shelf li:nth-child(3){--accent:var(--moss);}
-  .shelf li:nth-child(4){--accent:var(--plum);}
+  .shelf a{display:flex; align-items:baseline; gap:14px; text-decoration:none; color:var(--ink);}
+  .shelf .chnum{font-family:var(--mono); font-size:11px; color:var(--accent, var(--check)); letter-spacing:.04em; flex-shrink:0; width:26px;}
+  .shelf h3{font-size:1.04rem; font-weight:700; flex:1;}
+  .shelf p{margin:4px 0 0 40px; color:var(--ink-soft); font-size:.9rem;}
 
-  footer.colophon{
-    margin-top:56px; padding-top:18px; border-top:1px solid var(--rule);
-    font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
-  }
+  .part.basics li{--accent:var(--check);}
+  .part.icebreakers li{--accent:var(--moss);}
+  .part.cookbook li{--accent:var(--ember);}
+  .part.ai li{--accent:var(--plum);}
+
+  footer.colophon{justify-content:center; text-align:center;}
 </style>
 </head>
 <body>
 <div class="page">
+
   <header class="lid">
-    <div class="kicker">Draft chapters</div>
+    <div class="kicker">A fun, practical field guide</div>
     <h1>The Retro Playbook</h1>
-    <p class="dek">A fun, practical field guide to running retrospectives — formats, icebreakers, facilitation craft, and an AI co-pilot for the busy version of you.</p>
+    <p class="dek">Formats, icebreakers, and facilitation craft for running retrospectives people actually enjoy — plus an AI co-pilot for the busy version of you.</p>
   </header>
 
   <div class="intro">
-    <p>Chapters land here as they're drafted. Pick one below to read.</p>
+    <p><strong>All 16 chapters are drafted.</strong> Start at Chapter 1, or jump straight to whatever you need this week — the icebreaker box, the format cookbook, or the AI prompt library.</p>
   </div>
 
-  <ul class="shelf">
-    <li>
-      <a href="chapters/04-the-icebreaker-box.html">
-        <span class="chnum">Chapter 04</span>
-        <h2>The Icebreaker Box</h2>
-        <p>26 icebreakers that don't make people cringe — sorted by what your team needs right now.</p>
-      </a>
-    </li>
-    <li class="coming">
-      <span class="status">Coming next</span>
-      <span class="chnum">Chapter 03</span>
-      <h2>Facilitation 101</h2>
-      <p>The stuff nobody tells you: handling the over-talker, sitting with silence, reading the room.</p>
-    </li>
-  </ul>
+  <section class="part basics">
+    <div class="part-head"><h2>Part I — Retro Basics (Without the Boring Bits)</h2><span class="part-note">gets you running a decent retro by chapter 3</span></div>
+    <ul class="shelf">
+      <li><a href="chapters/01-five-ways-retros-fail.html"><span class="chnum">01</span><h3>What a Retro Actually Is (and the 5 Ways They Go Wrong)</h3></a></li>
+      <li><a href="chapters/02-the-five-stage-recipe.html"><span class="chnum">02</span><h3>The Recipe: 5 Stages of Every Good Retro</h3></a></li>
+      <li><a href="chapters/03-facilitation-101.html"><span class="chnum">03</span><h3>Facilitation 101: The Stuff Nobody Tells You</h3></a></li>
+    </ul>
+  </section>
 
-  <footer class="colophon">The Retro Playbook — draft chapters, updated as they're written.</footer>
+  <section class="part icebreakers">
+    <div class="part-head"><h2>Part II — The Icebreaker Box</h2><span class="part-note">one page per icebreaker, flip and go</span></div>
+    <ul class="shelf">
+      <li><a href="chapters/04-the-icebreaker-box.html"><span class="chnum">04</span><h3>25+ Icebreakers That Don't Make People Cringe</h3></a></li>
+    </ul>
+  </section>
+
+  <section class="part cookbook">
+    <div class="part-head"><h2>Part III — The Retro Format Cookbook</h2><span class="part-note">30+ formats, recipe-card style</span></div>
+    <ul class="shelf">
+      <li><a href="chapters/05-pick-your-format.html"><span class="chnum">05</span><h3>Pick Your Format: A Decision Guide</h3></a></li>
+      <li><a href="chapters/06-the-classics-done-well.html"><span class="chnum">06</span><h3>The Classics, Done Well</h3></a></li>
+      <li><a href="chapters/07-formats-for-specific-moments.html"><span class="chnum">07</span><h3>Formats for Specific Moments</h3></a></li>
+      <li><a href="chapters/08-creative-high-energy-formats.html"><span class="chnum">08</span><h3>Creative &amp; High-Energy Formats</h3></a></li>
+      <li><a href="chapters/09-remote-and-async-formats.html"><span class="chnum">09</span><h3>Remote &amp; Async Formats</h3></a></li>
+      <li><a href="chapters/10-from-talk-to-change.html"><span class="chnum">10</span><h3>From Talk to Change: Action Items That Actually Happen</h3></a></li>
+    </ul>
+  </section>
+
+  <section class="part ai">
+    <div class="part-head"><h2>Part IV — Your AI Co-Pilot</h2><span class="part-note">AI handles the paperwork, humans handle the talking</span></div>
+    <ul class="shelf">
+      <li><a href="chapters/11-where-ai-helps-where-it-hurts.html"><span class="chnum">11</span><h3>Where AI Helps, Where It Hurts</h3></a></li>
+      <li><a href="chapters/12-ai-before-the-retro.html"><span class="chnum">12</span><h3>AI Before the Retro (Prep in 5 Minutes)</h3></a></li>
+      <li><a href="chapters/13-ai-during-and-after.html"><span class="chnum">13</span><h3>AI During and After</h3></a></li>
+      <li><a href="chapters/14-keep-the-trust.html"><span class="chnum">14</span><h3>Keep the Trust: Privacy Ground Rules</h3></a></li>
+      <li><a href="chapters/15-when-ai-is-on-the-team.html"><span class="chnum">15</span><h3>Retros When AI Is on the Team</h3></a></li>
+      <li><a href="chapters/16-the-reflective-habit.html"><span class="chnum">16</span><h3>Closing: The Reflective Habit</h3></a></li>
+    </ul>
+  </section>
+
+  <footer class="colophon">The Retro Playbook — draft, updated as chapters are revised.</footer>
 </div>
 </body>
 </html>

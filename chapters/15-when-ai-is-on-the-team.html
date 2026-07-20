@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>Retros When AI Is on the Team — Ch. 15, The Retro Playbook</title>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body>
+<div class="page">
+<p><a class="back" href="../index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 15</span><span>Part IV — Your AI Co-Pilot</span></div>
+    <h1>Retros When AI Is on the Team</h1>
+    <p class="dek">The forward-looking chapter: what changes when an agent wrote half the code this sprint.</p>
+  </header>
+
+  <div class="intro prose">
+    <p><strong>Every chapter so far assumed AI helps you run the retro.</strong> This one is different — it's about retro-ing sprints where AI was part of what got built. That's a new kind of teammate to account for, and the usual formats don't quite have a slot for it yet.</p>
+  </div>
+
+  <section class="prose">
+    <h2>A new column in Gather Data</h2>
+    <p>Any classic from Chapter 6 still works. But when a meaningful chunk of the sprint's output came from an AI agent — code, drafted specs, triaged tickets — add one more question to whatever format you're running:</p>
+  </section>
+
+  <div class="pull">Where did the human-AI handoff save us real time — and where did it quietly cost us more than it saved?</div>
+
+  <section class="prose">
+    <p>That question splits into three that are worth asking explicitly during Gather Data:</p>
+    <ul>
+      <li><strong>Where did we over-trust it?</strong> Shipped code that looked right, reviewed quickly because it looked confident, and turned out to have a real bug the reviewer would have caught if it had come from a junior engineer instead of a model.</li>
+      <li><strong>Where did it create rework?</strong> Output that needed more fixing than writing it from scratch would have — the "looks 90% done" trap, where the last 10% eats more time than the first 90% saved.</li>
+      <li><strong>Where did it genuinely help?</strong> Don't skip this one. A retro that only hunts for AI-caused problems will systematically undercount the wins, and the team's real working agreement (below) needs both sides of the ledger.</li>
+    </ul>
+  </section>
+
+  <section class="deck moment">
+    <div class="tab"><h2>Three New Failure Modes to Watch For</h2><span class="tab-note">patterns that don't show up until AI is doing real production work</span></div>
+    <div class="grid wide">
+
+      <article class="recipe">
+        <h3>Review Fatigue</h3>
+        <p class="purpose">AI-generated code arrives fast and confident-looking, in higher volume than human PRs used to. Reviewers start rubber-stamping because keeping genuine scrutiny at that pace is exhausting — and the bugs that get through are exactly the ones a tired reviewer misses.</p>
+        <div class="watch"><b>Ask in the retro</b>"Did review quality hold steady as PR volume went up, or did we start skimming?" If nobody can honestly say quality held, that's this sprint's action item.</div>
+      </article>
+
+      <article class="recipe">
+        <h3>Silent Deskilling</h3>
+        <p class="purpose">When AI handles the parts of the job that used to build intuition — debugging, reading unfamiliar code, working through an ambiguous spec — that muscle can quietly atrophy. Nobody notices until it's needed in a moment AI can't cover.</p>
+        <div class="watch"><b>Ask in the retro</b>"Is there a skill on this team we're relying on AI for that we'd be in trouble without, right now, today?" Uncomfortable question. Ask it anyway, occasionally.</div>
+      </article>
+
+      <article class="recipe">
+        <h3>Prompt Hoarding</h3>
+        <p class="purpose">The new version of the old knowledge silo. One person on the team has quietly built a folder of prompts and workflows that make them dramatically more effective with AI tools than everyone else — and, like any silo, it's not malicious, just never shared.</p>
+        <div class="watch"><b>Ask in the retro</b>"Has anyone found a prompt or workflow this sprint that the rest of us should be using?" Make sharing it as normal as sharing a useful library or script.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>The team's working agreement, kept alive</h2>
+    <p>Most teams that adopt AI tools write a working agreement once — what we delegate, what we always review, what "done" means for AI-touched work — and then never revisit it. That's a mistake for the same reason the classic retro formats in Chapter 6 go stale: the situation keeps changing and the agreement doesn't.</p>
+    <p>The fix is the lightest possible governance mechanism: treat the working agreement as retro material, not a policy doc. Once a quarter, or whenever this chapter's three failure modes start showing up, spend fifteen minutes on it directly.</p>
+  </section>
+
+  <div class="script">
+    <span class="who">The quarterly working-agreement check-in</span>
+    <p>"Our current agreement says we always review AI-generated code line by line before merging. Is that still true, or have we drifted? What's something AI is doing now that our agreement doesn't mention yet? Anything we said we'd never delegate that we now trust it with?"</p>
+  </div>
+
+  <section class="prose">
+    <p>Write the updated agreement down somewhere visible — the same visibility rule from Chapter 10 applies here. A working agreement nobody can find six weeks later isn't a working agreement, it's a memory of a good conversation.</p>
+  </section>
+
+  <section class="cheat">
+    <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
+    <h2>What changes when AI is on the team</h2>
+    <ul>
+      <li><b>Add one question to Gather Data:</b> where did the human-AI handoff save time, and where did it quietly cost more than it saved?</li>
+      <li><b>Don't skip the wins.</b> A retro that only hunts AI-caused problems undercounts the real value.</li>
+      <li><b>Watch for review fatigue, silent deskilling, and prompt hoarding</b> — none of these show up until AI is doing real production work.</li>
+      <li><b>The working agreement is retro material, not a policy doc.</b> Revisit it quarterly, keep it visible, let it evolve.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook — Chapter 15</span>
+    <span>Part IV — Your AI Co-Pilot</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="14-keep-the-trust.html">&larr; Ch. 14 — Keep the Trust</a>
+    <a class="next" href="16-the-reflective-habit.html">Ch. 16 — The Reflective Habit &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>
