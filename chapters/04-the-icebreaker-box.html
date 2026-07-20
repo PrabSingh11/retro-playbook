@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%A7%8A</text></svg>">
+<title>The Icebreaker Box — Ch. 4, The Retro Playbook</title>
+<style>
+  :root{
+    --paper: #EDECE2;
+    --paper-deep: #E1DFD0;
+    --card: #F6F5EC;
+    --ink: #24352F;
+    --ink-soft: #5B665D;
+    --ink-faint: #8B9188;
+    --rule: #C9C4AC;
+    --rule-soft: #DAD6C3;
+
+    --check: #3F7684;
+    --check-tint: #DDE7E6;
+    --ember: #C15A34;
+    --ember-tint: #F0DFD2;
+    --moss: #52713F;
+    --moss-tint: #DEE5D3;
+    --plum: #64517E;
+    --plum-tint: #E2DBE9;
+    --gold: #A9781F;
+    --gold-tint: #EBE0C4;
+
+    --accent: var(--check);
+    --accent-tint: var(--check-tint);
+
+    --display: "Century Gothic", "Futura", "Avenir Next", "Segoe UI Semibold", "Trebuchet MS", sans-serif;
+    --body: Charter, Georgia, "Iowan Old Style", "Noto Serif", "Times New Roman", serif;
+    --mono: "IBM Plex Mono", "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--paper);}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold-tint);}
+
+  a{color:var(--ink); text-decoration-color: var(--rule);}
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--ink); outline-offset:3px; border-radius:2px;
+  }
+
+  h1,h2,h3{font-family:var(--display); font-weight:700; text-wrap:balance; margin:0; color:var(--ink);}
+
+  .page{max-width:920px; margin:0 auto; padding:0 24px 96px;}
+
+  /* ---------- Lid / header ---------- */
+  .lid{
+    padding:56px 0 34px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .lid .kicker{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex; align-items:center; gap:10px;
+  }
+  .lid .kicker .chip{
+    border:1px solid var(--rule); border-radius:3px; padding:2px 7px;
+    background:var(--card);
+  }
+  .lid h1{font-size:clamp(2.2rem, 5vw, 3.15rem); letter-spacing:-0.01em;}
+  .lid .dek{
+    font-family:var(--body); font-style:italic; color:var(--ink-soft);
+    font-size:1.18rem; max-width:60ch;
+  }
+
+  /* ---------- Intro note ---------- */
+  .intro{
+    background:var(--card);
+    border:1px solid var(--rule-soft);
+    border-left:4px solid var(--ink);
+    border-radius:3px;
+    padding:22px 26px;
+    margin:8px 0 40px;
+    font-size:.98rem;
+    color:var(--ink);
+  }
+  .intro p{margin:0 0 10px;}
+  .intro p:last-child{margin-bottom:0;}
+  .intro strong{font-family:var(--display); font-weight:700;}
+
+  .legend{
+    display:flex; flex-wrap:wrap; gap:18px 26px;
+    margin:36px 0 44px;
+    padding:16px 0;
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    font-family:var(--mono); font-size:12px; color:var(--ink-soft);
+  }
+  .legend div{display:flex; align-items:center; gap:7px;}
+  .legend .pips{display:inline-flex; gap:2px;}
+  .pip{width:7px; height:7px; border-radius:1px; background:var(--rule); display:inline-block;}
+  .pip.on{background:var(--ink-soft);}
+
+  /* ---------- Section divider (tab) ---------- */
+  .deck{margin:0 0 58px;}
+  .tab{
+    display:flex; align-items:baseline; gap:16px;
+    background:var(--accent);
+    color:#F6F5EC;
+    border-radius:3px;
+    padding:13px 20px;
+    margin-bottom:22px;
+  }
+  .tab h2{color:#F6F5EC; font-size:1.28rem; letter-spacing:-.01em;}
+  .tab .tab-note{font-family:var(--body); font-style:italic; font-size:.92rem; opacity:.88;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
+    gap:18px;
+  }
+
+  /* ---------- Card ---------- */
+  .card{
+    position:relative;
+    background:
+      repeating-linear-gradient(var(--card) 0 27px, var(--rule-soft) 27px 28px) 0 46px/100% 28px,
+      var(--card);
+    border:1px solid var(--rule);
+    border-top:3px solid var(--accent);
+    border-radius:2px;
+    padding:18px 18px 16px;
+    display:flex; flex-direction:column; gap:10px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{transform:translateY(-2px); box-shadow:0 10px 20px -12px rgba(36,53,47,.35);}
+  .card::before{
+    content:"";
+    position:absolute; top:11px; left:12px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--paper);
+    box-shadow:inset 0 1px 2px rgba(36,53,47,.4), 0 1px 0 rgba(255,255,255,.5);
+  }
+  .card .num{
+    position:absolute; top:8px; right:12px;
+    font-family:var(--mono); font-size:11px; color:var(--accent); opacity:.75;
+  }
+  .card h3{
+    font-size:1.06rem; padding-left:16px; padding-right:26px; line-height:1.3;
+    letter-spacing:-.005em;
+  }
+  .stats{
+    display:flex; flex-wrap:wrap; gap:6px 10px;
+    font-family:var(--mono); font-size:11px; color:var(--ink-soft);
+    padding-left:16px;
+  }
+  .stats span{white-space:nowrap; display:inline-flex; align-items:center; gap:4px;}
+  .stats b{color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums;}
+  .energy{display:inline-flex; gap:2px; vertical-align:middle;}
+  .energy i{width:5px; height:11px; border-radius:1px; background:var(--rule); display:inline-block;}
+  .energy i.on{background:var(--accent);}
+  .remote-dot{width:6px; height:6px; border-radius:50%; background:var(--rule); display:inline-block;}
+  .remote-dot.on{background:var(--accent);}
+
+  .card p{margin:0; padding-left:16px; font-size:.95rem; color:var(--ink);}
+  .watch{
+    margin-top:auto;
+    padding:9px 12px 9px 16px;
+    background:var(--accent-tint);
+    border-radius:2px;
+    font-size:.86rem;
+    color:var(--ink);
+  }
+  .watch b{font-family:var(--display); font-weight:700; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); display:block; margin-bottom:2px;}
+
+  .deck.temp   {--accent:var(--check); --accent-tint:var(--check-tint);}
+  .deck.energy {--accent:var(--ember); --accent-tint:var(--ember-tint);}
+  .deck.trust  {--accent:var(--moss); --accent-tint:var(--moss-tint);}
+  .deck.remote {--accent:var(--plum); --accent-tint:var(--plum-tint);}
+  .deck.themed {--accent:var(--gold); --accent-tint:var(--gold-tint);}
+
+  /* ---------- Pinned asides ---------- */
+  .pinned{
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:22px 24px 20px;
+    margin:38px auto;
+    max-width:640px;
+    box-shadow:0 14px 26px -18px rgba(36,53,47,.5);
+  }
+  .pinned.home{transform:rotate(-0.6deg);}
+  .pinned.ai{transform:rotate(0.5deg);}
+  .pinned .tape{
+    position:absolute; top:-11px; left:50%; transform:translateX(-50%) rotate(-2deg);
+    width:92px; height:22px;
+    background:rgba(169,120,31,.35);
+    border:1px solid rgba(169,120,31,.25);
+  }
+  .pinned .eyebrow{
+    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--ink-soft); margin-bottom:8px; display:block;
+  }
+  .pinned h3{font-size:1.15rem; margin-bottom:10px;}
+  .pinned p{margin:0 0 10px; font-size:.96rem;}
+  .pinned p:last-child{margin-bottom:0;}
+  .pinned pre{
+    background:var(--paper-deep);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:14px 16px;
+    font-family:var(--mono);
+    font-size:12.5px;
+    line-height:1.6;
+    color:var(--ink);
+    overflow-x:auto;
+    white-space:pre-wrap;
+    margin:10px 0;
+  }
+
+  /* ---------- Cheat sheet ---------- */
+  .cheat{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:3px;
+    padding:30px 28px 26px;
+    margin:52px 0 20px;
+  }
+  .cheat .eyebrow{
+    font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em;
+    color:#B8C4BC; display:block; margin-bottom:6px;
+  }
+  .cheat h2{color:var(--paper); font-size:1.5rem; margin-bottom:16px;}
+  .cheat ul{margin:0; padding:0; list-style:none; display:grid; gap:10px;}
+  .cheat li{
+    padding-left:20px; position:relative; font-size:.97rem; color:#DEE4DF; line-height:1.5;
+  }
+  .cheat li::before{
+    content:"—"; position:absolute; left:0; color:#8FAFA0;
+  }
+  .cheat li b{color:var(--paper); font-family:var(--display); font-weight:700;}
+
+  footer.colophon{
+    margin-top:56px; padding-top:18px; border-top:1px solid var(--rule);
+    font-family:var(--mono); font-size:11.5px; color:var(--ink-faint);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card{transition:none;}
+  }
+  @media (max-width:520px){
+    .pinned.home, .pinned.ai{transform:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <p style="margin:24px 0 -12px;"><a href="../index.html" style="font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 04</span></div>
+    <h1>The Icebreaker Box</h1>
+    <p class="dek">26 icebreakers that don't make people cringe — sorted by what your team needs right now, not the alphabet.</p>
+  </header>
+
+  <div class="intro">
+    <p><strong>Why bother:</strong> a good icebreaker gets every voice in the room to make a sound in the first five minutes. Someone who speaks early speaks again; someone silent through minute ten stays silent through minute sixty. That's the whole job — it's the ignition, not the fluffy bit before the real meeting.</p>
+    <p><strong>How to use this chapter:</strong> don't read it start to finish. Flip to the section that matches your team's mood, pick one card, done. Rotate — even the best icebreaker dies after four consecutive uses.</p>
+  </div>
+
+  <div class="legend">
+    <div><span class="energy"><i class="on"></i><i></i><i></i></span> Energy — pips filled = livelier</div>
+    <div><span class="remote-dot on"></span> Remote-friendly &nbsp;/&nbsp; <span class="remote-dot on"></span><span class="remote-dot on"></span> built for remote</div>
+    <div>⏱ Time · 👥 Group size</div>
+  </div>
+
+  <!-- ============ SECTION 1 ============ -->
+  <section class="deck temp">
+    <div class="tab"><h2>Quick Temperature Checks</h2><span class="tab-note">under 2 minutes — for tight schedules or teams who find icebreakers cheesy</span></div>
+    <div class="grid">
+
+      <article class="card"><span class="num">01</span>
+        <h3>One-Word Check-In</h3>
+        <div class="stats"><span>⏱ <b>1–2 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Go around the room: "Describe this sprint in one word." No explanations, no follow-ups — unless someone's word begs for one ("<em>Interesting</em>, Dave? We'll come back to that").</p>
+        <div class="watch"><b>Watch out</b>Enforce ONE word. The moment someone gives a paragraph, everyone after them will too.</div>
+      </article>
+
+      <article class="card"><span class="num">02</span>
+        <h3>Weather Report</h3>
+        <div class="stats"><span>⏱ <b>1–2 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>"What's your internal weather right now?" Sunny, cloudy, foggy, thunderstorms. The metaphor gives cover to be honest — "a bit foggy" is easier to say than "I'm burnt out and confused."</p>
+        <div class="watch"><b>Watch out</b>If someone says "thunderstorm," don't interrogate them publicly. Note it, check in privately, or let the retro surface it naturally.</div>
+      </article>
+
+      <article class="card"><span class="num">03</span>
+        <h3>Emoji Check-In</h3>
+        <div class="stats"><span>⏱ <b>1 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>Everyone posts one emoji describing their sprint in chat, all at once (3, 2, 1, post). Then eyeball the spread: mostly 🔥😅💀? There's your retro agenda.</p>
+        <div class="watch"><b>Watch out</b>Simultaneous reveal matters. Posted one at a time, everyone anchors on the first emoji.</div>
+      </article>
+
+      <article class="card"><span class="num">04</span>
+        <h3>Fist to Five</h3>
+        <div class="stats"><span>⏱ <b>1 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>"How was the sprint, fist to five?" Everyone shows fingers simultaneously — fist is terrible, five is glorious. Instant histogram of the room. Ask one low scorer and one high scorer for a sentence each.</p>
+        <div class="watch"><b>Watch out</b>This is a conversation starter, not a metric. The moment someone puts the average in a spreadsheet, honesty dies.</div>
+      </article>
+
+      <article class="card"><span class="num">05</span>
+        <h3>Battery Check</h3>
+        <div class="stats"><span>⏱ <b>1–2 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>"What % is your battery at, and what would charge it?" The second half is the payload — "20%, and a weekend without pager duty" tells you more than any survey.</p>
+        <div class="watch"><b>Watch out</b>If the whole team is under 40%, stop. That IS the retro topic now.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 ============ -->
+  <section class="deck energy">
+    <div class="tab"><h2>Energy Lifters</h2><span class="tab-note">3–8 minutes — for the flat room, the sprint-from-hell aftermath, or 4pm on a Friday</span></div>
+    <div class="grid">
+
+      <article class="card"><span class="num">06</span>
+        <h3>My Sprint as a Movie Title</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>3–12</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Everyone invents a movie title for the sprint. "Gone in 60 Deployments." "The Fast and the Spurious." Laughter guaranteed, and the titles are secretly data — three disaster movies in a row is a signal.</p>
+        <div class="watch"><b>Watch out</b>Give people 60 seconds of silent thinking first. Put on the spot, half the room blanks.</div>
+      </article>
+
+      <article class="card"><span class="num">07</span>
+        <h3>Two Truths and a Lie: Work Edition</h3>
+        <div class="stats"><span>⏱ <b>5–8 min</b></span><span>👥 <b>3–8</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Each person states three things about their sprint; the team guesses the lie. Works because the truths are often more surprising than the lie.</p>
+        <div class="watch"><b>Watch out</b>Caps at ~8 people or it eats your retro. For bigger groups, ask for two volunteers.</div>
+      </article>
+
+      <article class="card"><span class="num">08</span>
+        <h3>Desert Island Tools</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>"You're stranded on a desert island and can keep only one tool from our stack. What survives, and what are you secretly glad drowned?" The second half is where the honesty lives.</p>
+        <div class="watch"><b>Watch out</b>Don't let it become a serious tooling debate. Park real grievances on the board for the gather-data stage.</div>
+      </article>
+
+      <article class="card"><span class="num">09</span>
+        <h3>GIF Battle</h3>
+        <div class="stats"><span>⏱ <b>3–4 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>"Post the GIF that best describes this sprint." Optional: vote for a winner, who gets nothing but glory. Fastest route from silence to laughter in a remote call.</p>
+        <div class="watch"><b>Watch out</b>Set a 2-minute timer or people will hunt for the perfect GIF for ten.</div>
+      </article>
+
+      <article class="card"><span class="num">10</span>
+        <h3>Superpower / Kryptonite</h3>
+        <div class="stats"><span>⏱ <b>4–6 min</b></span><span>👥 <b>3–10</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Everyone names the superpower they brought this sprint and the kryptonite that weakened them. Fun wrapper, real data — the kryptonites often become the retro's main course.</p>
+        <div class="watch"><b>Watch out</b>People underclaim their superpower. If someone says "nothing really," let a teammate answer for them.</div>
+      </article>
+
+      <article class="card"><span class="num">11</span>
+        <h3>Sprint Soundtrack</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>"If this sprint had a theme song, what would it be?" From "Eye of the Tiger" to the Benny Hill theme. Power move: build a team playlist over the quarter as an audio mood chart.</p>
+        <div class="watch"><b>Watch out</b>Nothing kills it faster than pausing to actually play each song. Titles only.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 ============ -->
+  <section class="deck trust">
+    <div class="tab"><h2>Trust Builders</h2><span class="tab-note">5–10 minutes — new teams, merged teams, or rooms being politely dishonest</span></div>
+    <div class="grid">
+
+      <article class="card"><span class="num">12</span>
+        <h3>Appreciation Shower</h3>
+        <div class="stats"><span>⏱ <b>5–8 min</b></span><span>👥 <b>3–10</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Each person appreciates one teammate for something specific from this sprint. Specific beats generic — "thanks for staying on the deploy call till midnight" lands; "thanks for being great" doesn't.</p>
+        <div class="watch"><b>Watch out</b>Make sure nobody's left out. Quietly track who's been appreciated; the facilitator fills any gap.</div>
+      </article>
+
+      <article class="card"><span class="num">13</span>
+        <h3>One Thing You Don't Know About Me</h3>
+        <div class="stats"><span>⏱ <b>5–10 min</b></span><span>👥 <b>3–8</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Everyone shares one non-work fact the team doesn't know. Teams that know each other as humans give each other benefit of the doubt when code review gets tense.</p>
+        <div class="watch"><b>Watch out</b>Always allow a pass. This must never feel like forced disclosure — that builds the opposite of trust.</div>
+      </article>
+
+      <article class="card"><span class="num">14</span>
+        <h3>Kudos Cards</h3>
+        <div class="stats"><span>⏱ <b>5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Everyone writes anonymous thank-you notes to teammates on stickies; facilitator reads them aloud. The anonymity lets people say warmer things than face to face.</p>
+        <div class="watch"><b>Watch out</b>Seed the deck. Write two or three yourself before the retro so nobody stares at an empty board.</div>
+      </article>
+
+      <article class="card"><span class="num">15</span>
+        <h3>The Failure Bow</h3>
+        <div class="stats"><span>⏱ <b>5–8 min</b></span><span>👥 <b>3–10</b></span><span class="energy"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="remote-dot on"></span></div>
+        <p>Borrowed from improv: each person shares one thing they messed up, then takes a theatrical bow while everyone applauds. Physically rehearses the idea that admitting mistakes is safe here.</p>
+        <div class="watch"><b>Watch out</b>The facilitator goes first with a real failure, not a humble-brag.</div>
+      </article>
+
+      <article class="card"><span class="num">16</span>
+        <h3>First Job Stories</h3>
+        <div class="stats"><span>⏱ <b>5–8 min</b></span><span>👥 <b>3–8</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>"What was your first ever job, and what did it teach you?" Instantly humanizing, zero risk, and the lessons often echo the team's current situation.</p>
+        <div class="watch"><b>Watch out</b>Nothing — nearly unbreakable. Just timebox it; the stories are good.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 ============ -->
+  <section class="deck remote">
+    <div class="tab"><h2>Remote-First Icebreakers</h2><span class="tab-note">designed for distributed teams, not adapted for them</span></div>
+    <div class="grid">
+
+      <article class="card"><span class="num">17</span>
+        <h3>Camera Scavenger Hunt</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>"You have 60 seconds: grab the nearest object that represents this sprint. Go." People return with stress balls, cold coffee, a tangled cable. Movement plus metaphor plus laughter.</p>
+        <div class="watch"><b>Watch out</b>Some people can't leave their desk. Offer "or find an image on your desktop" as the alternative.</div>
+      </article>
+
+      <article class="card"><span class="num">18</span>
+        <h3>Virtual Background Stories</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>3–10</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>Before the retro: "Set a virtual background that represents your sprint." A dumpster fire, self-explanatory. Each person explains theirs in one sentence.</p>
+        <div class="watch"><b>Watch out</b>Needs advance notice — put it in the calendar invite, or you'll get five default backgrounds and shrugs.</div>
+      </article>
+
+      <article class="card"><span class="num">19</span>
+        <h3>Chat-Storm</h3>
+        <div class="stats"><span>⏱ <b>2–3 min</b></span><span>👥 <b>any, 8+</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>Ask a question, everyone types an answer, nobody presses Enter until you count down — then the chat floods at once. Simultaneity beats anchoring.</p>
+        <div class="watch"><b>Watch out</b>Read some answers aloud, or people learn their input vanishes into the void.</div>
+      </article>
+
+      <article class="card"><span class="num">20</span>
+        <h3>Home Desk Show-and-Tell</h3>
+        <div class="stats"><span>⏱ <b>4–6 min</b></span><span>👥 <b>3–8</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>One or two people per retro (rotate!) give a 60-second tour of one thing on or near their desk. Slowly builds the "we've been to each other's houses" feeling remote teams lack.</p>
+        <div class="watch"><b>Watch out</b>Rotation, not volunteers — the same two extroverts will otherwise host every episode.</div>
+      </article>
+
+      <article class="card"><span class="num">21</span>
+        <h3>Async Mood Board</h3>
+        <div class="stats"><span>⏱ <b>0 live</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span><span class="remote-dot on"></span></div>
+        <p>The day before, drop a board with one prompt: "Add an image, meme, or sentence for this sprint." Open the retro by silently reviewing it together for two minutes.</p>
+        <div class="watch"><b>Watch out</b>If the board is empty an hour before the retro, nudge the team channel with your own entry first.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5 ============ -->
+  <section class="deck themed">
+    <div class="tab"><h2>Themed &amp; Seasonal</h2><span class="tab-note">for special occasions — used sparingly, these are the ones people remember</span></div>
+    <div class="grid">
+
+      <article class="card"><span class="num">22</span>
+        <h3>The Holiday Special</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Before a break: "What are you leaving behind this year, and what are you taking with you?" Half icebreaker, half closing ceremony.</p>
+        <div class="watch"><b>Watch out</b>Keep it light-touch — anchor on the break, not the holiday, since not everyone celebrates the same one.</div>
+      </article>
+
+      <article class="card"><span class="num">23</span>
+        <h3>Launch Day Toast</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="remote-dot on"></span></div>
+        <p>Just shipped something big? Everyone raises a drink and toasts one person, one moment, or one small miracle from the release. Celebration first, surgery second.</p>
+        <div class="watch"><b>Watch out</b>Alcohol optional and unremarked. Coffee toasts count.</div>
+      </article>
+
+      <article class="card"><span class="num">24</span>
+        <h3>Post-Crunch Decompression</h3>
+        <div class="stats"><span>⏱ <b>5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>After a brutal push: "What's the first non-work thing you did when it ended?" Normalizes recovery — and the person who answers "started on the next thing" needs a different conversation.</p>
+        <div class="watch"><b>Watch out</b>Don't let this excuse skipping a real retro about the crunch itself.</div>
+      </article>
+
+      <article class="card"><span class="num">25</span>
+        <h3>Sprint Horoscope</h3>
+        <div class="stats"><span>⏱ <b>3–5 min</b></span><span>👥 <b>3–10</b></span><span class="energy"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="remote-dot on"></span></div>
+        <p>Read the team a mystic "horoscope" for the sprint just gone: "Mercury was in retrograde, which explains staging. A tall dark stranger — the new API — brought chaos to your house of deployments…"</p>
+        <div class="watch"><b>Watch out</b>Needs 5 minutes of prep — see the AI Shortcut below, it's built for exactly this.</div>
+      </article>
+
+      <article class="card"><span class="num">26</span>
+        <h3>Time Capsule</h3>
+        <div class="stats"><span>⏱ <b>5 + 5 min</b></span><span>👥 <b>any</b></span><span class="energy"><i class="on"></i><i class="on"></i><i></i></span><span class="remote-dot on"></span></div>
+        <p>Quarterly: everyone writes one prediction and one hope, sealed away. Next quarter, open last quarter's capsule first. The gap between prediction and reality is the best retro material you'll ever get free.</p>
+        <div class="watch"><b>Watch out</b>Calendar the opening or it never happens. The magic is entirely in the reveal.</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ ASIDES ============ -->
+  <aside class="pinned home">
+    <div class="tape"></div>
+    <span class="eyebrow">🏠 Try This at Home</span>
+    <h3>Same technique, your actual life</h3>
+    <p>Half of these work at the dinner table, verbatim. "One word for your day." "What's your battery at?" "Your week as a movie title." Kids especially take to Weather Report — "I'm foggy today" is emotional vocabulary disguised as a game. The Time Capsule is quietly one of the best New Year's Eve traditions a family or friend group can adopt.</p>
+  </aside>
+
+  <aside class="pinned ai">
+    <div class="tape"></div>
+    <span class="eyebrow">🤖 AI Shortcut</span>
+    <h3>The custom icebreaker generator</h3>
+    <p>When the catalog feels stale, generate one matched to your actual week:</p>
+    <pre>You're helping me open a team retrospective. Context: [team size]
+people, [remote/in-person/hybrid]. This sprint: [1–2 sentences —
+e.g. "shipped the big release but had two production incidents;
+team is tired but proud"]. Energy wanted: [calm/lively/silly].
+Time budget: [X] minutes.
+
+Suggest 3 icebreaker options. For each: name, exact facilitator
+script (the words I say), time needed, and one way it could go
+wrong. Nothing that forces personal disclosure. Nothing that
+needs prep.</pre>
+    <p>Also great for writing the Sprint Horoscope (card 25) — paste in three real sprint events and ask for mystic style. Thirty seconds of prep instead of five minutes.</p>
+  </aside>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat">
+    <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
+    <h2>The whole chapter, in one box</h2>
+    <ul>
+      <li><b>The job:</b> every voice makes a sound in the first 5 minutes. Nothing more.</li>
+      <li><b>Match energy to need:</b> flat room → energy lifter; tight schedule → temperature check; polite-but-guarded room → trust builder.</li>
+      <li><b>Simultaneous beats sequential</b> — chat-storm, fist-to-five, emoji drop. No anchoring on the first answer.</li>
+      <li><b>Silence first:</b> 60 seconds of thinking time before anyone speaks doubles the quality of answers.</li>
+      <li><b>Always allow a pass.</b> An icebreaker someone survived is worse than one they skipped.</li>
+      <li><b>You go first</b> when the icebreaker involves any vulnerability — and make it real.</li>
+      <li><b>Rotate.</b> Any icebreaker four retros in a row becomes furniture.</li>
+      <li><b>The answers are data.</b> Three disaster-movie titles and a 20% battery? Your retro agenda just wrote itself.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook — Chapter 04</span>
+    <span>26 cards · 5 decks</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
