@@ -199,6 +199,19 @@ p{margin:0 0 16px;}
 .cheat li::before{content:"—"; position:absolute; left:0; color:#8FAFA0;}
 .cheat li b{color:var(--paper); font-family:var(--display); font-weight:700;}
 
+/* ---------- Format illustrations ---------- */
+.diagram{
+  background:var(--paper-deep); border:1px solid var(--rule); border-radius:2px;
+  padding:10px; margin:2px 0 4px;
+}
+.diagram svg{display:block; width:100%; height:auto;}
+.diagram .dg-label{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.03em; fill:var(--ink-soft);
+}
+.diagram .dg-label-strong{
+  font-family:var(--display); font-weight:700; font-size:11px; fill:var(--ink);
+}
+
 /* ---------- Prompt card (AI chapters) ---------- */
 .promptcard{
   position:relative; background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--accent);

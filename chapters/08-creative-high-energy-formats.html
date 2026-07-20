@@ -68,6 +68,40 @@
       <article class="recipe" id="weather-map"><span class="num">04</span>
         <h3>Weather Map</h3>
         <p class="purpose">The team draws a literal weather map of the sprint — storms over the rough patches, sunshine over the wins, fog over the unclear bits. Visual thinkers love this one.</p>
+        <div class="diagram">
+          <svg viewBox="0 0 400 150" role="img" aria-label="Weather map diagram: a sprint timeline with sun early, a storm midweek, fog later, and sun again by the end">
+            <rect x="0" y="0" width="400" height="150" fill="var(--card)"/>
+            <line x1="30" y1="95" x2="370" y2="95" stroke="var(--rule)" stroke-width="2"/>
+            <circle cx="60" cy="55" r="14" fill="var(--gold)"/>
+            <g stroke="var(--gold)" stroke-width="2">
+              <line x1="60" y1="30" x2="60" y2="22"/><line x1="60" y1="88" x2="60" y2="80"/>
+              <line x1="35" y1="55" x2="27" y2="55"/><line x1="93" y1="55" x2="85" y2="55"/>
+              <line x1="42" y1="37" x2="36" y2="31"/><line x1="78" y1="37" x2="84" y2="31"/>
+            </g>
+            <ellipse cx="150" cy="58" rx="20" ry="13" fill="var(--rule)"/>
+            <ellipse cx="164" cy="52" rx="14" ry="11" fill="var(--rule)"/>
+            <ellipse cx="215" cy="55" rx="24" ry="15" fill="var(--ink-soft)"/>
+            <ellipse cx="232" cy="48" rx="16" ry="12" fill="var(--ink-soft)"/>
+            <polygon points="215,68 224,68 216,86 226,86 210,108 214,90 205,90" fill="var(--ember)"/>
+            <g stroke="var(--ink-faint)" stroke-width="2" fill="none" opacity="0.8">
+              <path d="M270,50 q8,-6 16,0 t16,0"/>
+              <path d="M270,60 q8,-6 16,0 t16,0"/>
+              <path d="M270,70 q8,-6 16,0 t16,0"/>
+            </g>
+            <circle cx="345" cy="55" r="14" fill="var(--gold)"/>
+            <g stroke="var(--gold)" stroke-width="2">
+              <line x1="345" y1="30" x2="345" y2="22"/><line x1="345" y1="88" x2="345" y2="80"/>
+              <line x1="320" y1="55" x2="312" y2="55"/><line x1="378" y1="55" x2="370" y2="55"/>
+              <line x1="327" y1="37" x2="321" y2="31"/><line x1="363" y1="37" x2="369" y2="31"/>
+            </g>
+            <circle cx="60" cy="95" r="3" fill="var(--ink)"/><circle cx="157" cy="95" r="3" fill="var(--ink)"/>
+            <circle cx="222" cy="95" r="3" fill="var(--ink)"/><circle cx="286" cy="95" r="3" fill="var(--ink)"/><circle cx="345" cy="95" r="3" fill="var(--ink)"/>
+            <text x="46" y="118" class="dg-label">Mon</text><text x="143" y="118" class="dg-label">Tue</text>
+            <text x="208" y="118" class="dg-label">Wed</text><text x="272" y="118" class="dg-label">Thu</text>
+            <text x="333" y="118" class="dg-label">Fri</text>
+            <text x="150" y="138" class="dg-label-strong">SPRINT TIMELINE</text>
+          </svg>
+        </div>
         <div class="meta"><span>⏱ <b>35–45 min</b></span><span>👥 <b>any</b></span><span>🧰 <b>a blank map/board</b></span></div>
         <ol class="steps">
           <li>Draw or template a blank "map" of the sprint (a timeline works as the base).</li>
