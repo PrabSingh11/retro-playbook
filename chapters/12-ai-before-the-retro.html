@@ -14,7 +14,7 @@
   <header class="lid">
     <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 12</span><span>Part IV — Your AI Co-Pilot</span></div>
     <h1>AI Before the Retro (Prep in 5 Minutes)</h1>
-    <p class="dek">Five copy-paste prompts that do the reading-through-two-weeks-of-tickets part for you — and one that just makes it fun.</p>
+    <p class="dek">Six copy-paste prompts that do the reading-through-two-weeks-of-tickets part for you — and one that just makes it fun.</p>
   </header>
 
   <div class="intro prose">
@@ -22,7 +22,7 @@
   </div>
 
   <section class="deck remote">
-    <div class="tab"><h2>Five Prep Prompts</h2><span class="tab-note">tool-agnostic — works with any capable model</span></div>
+    <div class="tab"><h2>Six Prep Prompts</h2><span class="tab-note">tool-agnostic — works with any capable model</span></div>
 
     <div class="promptcard">
       <h3>1. The Neutral Sprint Brief</h3>
@@ -111,23 +111,40 @@ action item) exactly the same underneath the theme.</pre>
       <p class="tip"><b>Why it works</b>The instruction to keep "the SAME underlying purpose of each part" is what stops the theme from swallowing the retro — you get a Sailboat that's genuinely still gathering data and generating insights, just wearing a World Cup shirt. This is also exactly the kind of thing a purpose-built retro generator like <a href="https://retro-generator.com" target="_blank" rel="noopener">retro-generator.com</a> does in one click rather than a hand-written prompt — worth trying either way.</p>
     </div>
 
+    <div class="promptcard">
+      <h3>6. Generate Tailored Discussion Questions</h3>
+      <p class="purpose">Different from prompt 3 (which picks a whole format) — this generates the specific probing questions a facilitator asks during the Generate Insights stage (Chapter 2), tailored to what actually happened this sprint instead of the generic "why do you think that happened?"</p>
+      <pre>I'm facilitating the Generate Insights stage of a retro. Here's what
+the team wrote during Gather Data:
+
+[paste the raw stickies/notes]
+
+Write 4-5 open-ended discussion questions that would help the team
+find the ROOT CAUSE behind these items, not just restate them. Avoid
+yes/no questions. At least one question should connect two items that
+might be related but weren't written next to each other. Keep each
+question under 20 words — I'll be asking these out loud.</pre>
+      <p class="tip"><b>Why it works</b>Asking for a question that "connects two items that might be related" is what makes this more useful than a human skimming the board — the model can hold all the stickies in mind at once and spot a link a tired facilitator might miss.</p>
+    </div>
+
   </section>
 
   <section class="prose">
     <h2>The five-minute routine</h2>
-    <p>Put together, prompts 1–4 turn "prep for tomorrow's retro" from a task you skip when busy into something that fits in the time it takes to make coffee: paste the sprint's raw activity into prompt 1, paste any survey answers into prompt 2, ask prompt 3 what format fits, ask prompt 4 for an icebreaker to match. Total human effort: copying and pasting. Total time saved: the twenty minutes you'd otherwise spend scrolling through a ticket board trying to remember what actually happened three weeks ago. Prompt 5 isn't part of that efficiency routine — pull it out every few sprints, purely because a themed retro is more fun than a plain one.</p>
+    <p>Put together, prompts 1–4 turn "prep for tomorrow's retro" from a task you skip when busy into something that fits in the time it takes to make coffee: paste the sprint's raw activity into prompt 1, paste any survey answers into prompt 2, ask prompt 3 what format fits, ask prompt 4 for an icebreaker to match. Total human effort: copying and pasting. Total time saved: the twenty minutes you'd otherwise spend scrolling through a ticket board trying to remember what actually happened three weeks ago. Prompt 5 isn't part of that efficiency routine — pull it out every few sprints, purely because a themed retro is more fun than a plain one. Prompt 6 slots into the retro itself, right as you move into Generate Insights.</p>
   </section>
 
   <section class="cheat">
     <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
-    <h2>Five prompts, one five-minute routine (plus one for fun)</h2>
+    <h2>Six prompts, one five-minute routine (plus one for fun)</h2>
     <ul>
       <li><b>Neutral Sprint Brief:</b> facts only, no verdict — the room forms its own opinion live.</li>
       <li><b>Cluster the Survey:</b> unattributed verbatim quotes keep real voices, not paraphrased blandness.</li>
       <li><b>Pick a Format:</b> name real format families so the suggestion is something you can actually run.</li>
       <li><b>Custom Icebreaker:</b> same prompt as Chapter 4 — it's prep too, not a separate step.</li>
+      <li><b>Tailored Discussion Questions:</b> different from picking a format — these are the specific probing questions for Generate Insights, built from what the team actually wrote.</li>
       <li><b>Theme It:</b> re-skin any format around what the team loves — keep the mechanics, change the costume. Great for international teams finding common ground.</li>
-      <li><b>Prompts 1–4 run before every call. Prompt 5 runs whenever a retro needs to be more fun than efficient.</b> Per Chapter 11's rule, all of it is AI doing paperwork, not talking.</li>
+      <li><b>Prompts 1, 2, 3, 4, and 6 run before or during every call. Prompt 5 runs whenever a retro needs to be more fun than efficient.</b> Per Chapter 11's rule, all of it is AI doing paperwork, not talking.</li>
     </ul>
   </section>
 
