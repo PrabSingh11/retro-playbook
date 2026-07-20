@@ -53,6 +53,28 @@
     <p>None of these mean "don't use AI." They mean the line moved without anyone deciding to move it. The fix in every case is the same: put the conversation back in human hands, and let AI go back to handling the paperwork around it.</p>
   </section>
 
+  <section class="prose">
+    <h2>Two failure modes that have nothing to do with trust</h2>
+    <p>Chapter 14 covers privacy — who can see what. This is a different risk entirely: the AI can be confidently, fluently wrong, in ways that don't announce themselves. Two specific versions matter for a retro.</p>
+  </section>
+
+  <div class="grid wide">
+    <article class="recipe">
+      <h3>Hallucination: confident, invented patterns</h3>
+      <p class="purpose">Large language models sometimes generate text that sounds exactly as authoritative as text that's actually grounded in what you gave them — a well-documented failure mode usually called hallucination <a href="../references.html#ji-2023" class="cite">[Ji et al., 2023]</a>. Ask Chapter 13's retro-memory prompt "what's come up more than once?" and it's entirely possible for the model to report a pattern, a count, or even a quote that isn't actually in the eight summaries you fed it.</p>
+      <div class="watch"><b>What to do</b>Never read an AI-generated pattern claim straight into the room. Before you share "this has come up 4 times," open the source summaries and check. The retro-memory workflow in Chapter 13 is a hypothesis generator, not a verified record — treat its output the way you'd treat a junior analyst's first draft.</div>
+    </article>
+    <article class="recipe">
+      <h3>Bias: whose voice reads as "negative"</h3>
+      <p class="purpose">Sentiment and tone-detection tools don't read neutrally across every speaker. Research on NLP systems has repeatedly found they can systematically misjudge text written in a different dialect, register, or non-native phrasing as more negative, less clear, or less professional than intended <a href="../references.html#sap-2019" class="cite">[Sap et al., 2019]</a> — a real risk for exactly the international, multilingual teams Chapter 9 and the "have fun" theming idea below are written for.</p>
+      <div class="watch"><b>What to do</b>Never let an AI sentiment summary (Chapter 13's "anonymized sentiment summary") stand in as the final word on how someone feels, especially across a language or cultural line. If a summary reads one person's contribution as unusually negative, that's a prompt to ask them directly — not a conclusion.</div>
+    </article>
+  </div>
+
+  <section class="prose">
+    <p class="pull">Both failure modes share the same fix: AI output is a draft for a human to check, never a verdict a human accepts unread. That's not a special rule for bias and hallucination — it's the same "AI suggests, humans decide" line this whole chapter has been drawing, applied to two specific ways AI gets things wrong.</p>
+  </section>
+
   <section class="cheat">
     <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
     <h2>The rule, and how to catch when it slips</h2>
@@ -61,6 +83,7 @@
       <li><b>Before and after the retro:</b> AI's natural home — prep briefs, pattern memory, summaries, nudges.</li>
       <li><b>During the retro:</b> AI suggests, never decides. The Decide stage is 100% human, always.</li>
       <li><b>Watch for drift:</b> the summary replacing the conversation, insights going unquestioned, people self-censoring, facilitators under-prepping.</li>
+      <li><b>AI can be confidently wrong.</b> Check hallucinated patterns against the source before sharing them; check sentiment summaries against the actual person before trusting them, especially across a language or cultural line.</li>
       <li><b>Psychological safety is human-made.</b> It's the one thing in this book that software cannot manufacture on your behalf.</li>
     </ul>
   </section>

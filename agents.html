@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>Beyond the Retro: Scrum Agents — The Retro Playbook</title>
+<link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+<div class="page">
+<p><a class="back" href="index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Back Matter</span></div>
+    <h1>Beyond the Retro: Building Your Own Scrum Agents</h1>
+    <p class="dek">Chapter 12's prompts are one-off. An agent is the same idea, running on a schedule without you copy-pasting each time.</p>
+  </header>
+
+  <div class="intro prose">
+    <p><strong>What actually changes between a prompt and an agent</strong> isn't intelligence — it's plumbing. A prompt is something you paste in by hand when you remember to. An agent is the same prompt wired to a trigger (a schedule, a webhook, a Slack message) and a place to put its output, so it runs whether or not you remembered.</p>
+  </div>
+
+  <section class="prose">
+    <h2>The four pieces of any useful agent</h2>
+    <p>Every agent in this book so far — and every one you build yourself — is the same four pieces. If you've used Chapter 12's prompts by hand, you already have piece two; the rest is just automating the parts around it.</p>
+  </section>
+
+  <div class="grid wide">
+    <article class="recipe">
+      <h3>1. The Trigger</h3>
+      <p class="purpose">What starts the agent without you doing it manually. A cron schedule ("every Monday at 9am"), an event (a PR merges, a sprint closes in your ticket tool), or a message (someone posts in a Slack channel).</p>
+      <div class="watch"><b>Start simple</b>A daily or weekly schedule is the easiest trigger to build and the hardest to get wrong — start there before wiring up event-driven triggers.</div>
+    </article>
+    <article class="recipe">
+      <h3>2. The Context</h3>
+      <p class="purpose">What the agent reads before it acts — this is exactly Chapter 12's "paste raw data into the brackets" step, just automated: pulling ticket titles from an API instead of copy-pasting them by hand.</p>
+      <div class="watch"><b>Start simple</b>Even a scheduled script that just exports a CSV and pastes it into a prompt counts as an agent. You don't need a live API integration on day one.</div>
+    </article>
+    <article class="recipe">
+      <h3>3. The Prompt</h3>
+      <p class="purpose">The actual instruction — often word-for-word one of the prompts already in this book (Chapters 4, 12, and 13 are full of them). This is the part you've likely already written and tested by hand before you ever automate it.</p>
+      <div class="watch"><b>Start simple</b>Prove the prompt works manually, several times, before you automate it. An agent that automates a prompt you haven't validated just automates being wrong faster.</div>
+    </article>
+    <article class="recipe">
+      <h3>4. The Output</h3>
+      <p class="purpose">Where the result goes and who sees it — a Slack message, a doc, an email. Per Chapter 14's trust rules, this is also where privacy decisions live: an agent that posts a retro summary to a public channel is a very different tool from one that emails just the facilitator.</p>
+      <div class="watch"><b>Start simple</b>Route output somewhere a human reviews before it's fully public, at least at first — the same "AI drafts, humans decide" rule from Chapter 11 applies to agents too.</div>
+    </article>
+  </div>
+
+  <section class="prose">
+    <p class="pull">Build the four pieces separately, test each one by hand, and "agent" stops being an intimidating word — it's just Chapter 12's prompts on a timer.</p>
+  </section>
+
+  <section class="deck classic">
+    <div class="tab"><h2>Other Useful Scrum Agents</h2><span class="tab-note">ideas beyond retro prep — build the ones that solve a real recurring pain, skip the rest</span></div>
+    <div class="grid wide">
+
+      <article class="recipe">
+        <h3>User Story Coach</h3>
+        <p class="purpose">Reviews a draft user story against a simple checklist (clear user, clear value, testable acceptance criteria) and asks clarifying questions before it reaches planning — catching the vague stories that usually get caught mid-sprint instead.</p>
+        <div class="meta"><span>⚡ <b>Trigger:</b> new ticket created</span><span>📥 <b>Context:</b> the ticket text</span></div>
+      </article>
+
+      <article class="recipe">
+        <h3>Definition-of-Done Checker</h3>
+        <p class="purpose">Before a ticket moves to "done," checks it against the team's actual DoD (tests written, docs updated, feature-flagged if needed) and flags anything missing — a second pair of eyes for the checklist everyone means to follow and sometimes skips under deadline pressure.</p>
+        <div class="meta"><span>⚡ <b>Trigger:</b> ticket moved to review/done</span><span>📥 <b>Context:</b> ticket + linked PR</span></div>
+      </article>
+
+      <article class="recipe">
+        <h3>Estimation Calibrator</h3>
+        <p class="purpose">After a sprint closes, compares estimated points to actual time-to-complete across recent tickets and surfaces the pattern — "stories tagged 'integration' are consistently underestimated by ~40%" — the kind of signal that's obvious in hindsight but easy to miss ticket by ticket.</p>
+        <div class="meta"><span>⚡ <b>Trigger:</b> sprint close</span><span>📥 <b>Context:</b> closed tickets, estimates vs. actuals</span></div>
+      </article>
+
+      <article class="recipe">
+        <h3>Standup Summarizer</h3>
+        <p class="purpose">For async or text-based standups, turns a channel full of individual updates into a two-line team summary — what's on track, what's blocked, who needs help — so the people who read it don't have to scroll a thread.</p>
+        <div class="meta"><span>⚡ <b>Trigger:</b> daily, after standup window closes</span><span>📥 <b>Context:</b> the standup channel</span></div>
+      </article>
+
+      <article class="recipe">
+        <h3>Backlog Groomer</h3>
+        <p class="purpose">Scans the backlog for likely duplicates, stale tickets nobody's touched in months, and tickets missing basic fields — a first pass before a human grooming session, not a replacement for one.</p>
+        <div class="meta"><span>⚡ <b>Trigger:</b> weekly, before grooming</span><span>📥 <b>Context:</b> full backlog export</span></div>
+      </article>
+
+      <article class="recipe">
+        <h3>New-Joiner Buddy</h3>
+        <p class="purpose">For someone's first two weeks on the team, answers "where do I find X" questions against the team's actual docs and conventions — reduces the tax on whoever would otherwise field every onboarding question personally.</p>
+        <div class="meta"><span>⚡ <b>Trigger:</b> Slack message in an #onboarding channel</span><span>📥 <b>Context:</b> team docs/wiki</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>A note on this list</h2>
+    <p>These six are starting ideas, not a verified case study — build the one that maps to a pain your team actually has, and expect to tune the prompt several times before it earns a permanent trigger. The strongest agent you can build is usually the boring one that automates something you were already doing by hand every week, not the clever one that does something nobody asked for.</p>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook — Beyond the Retro</span>
+    <span>Back Matter</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="toolkit.html">&larr; Your Virtual Toolkit</a>
+    <a class="next" href="references.html">References &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>
