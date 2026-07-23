@@ -38,13 +38,13 @@
   <div class="flow">
     <div class="flow-row"><div class="flow-q">1. Set the Stage</div><div class="flow-a"><b>Light yes.</b> Generating a custom icebreaker matched to the week (Chapter 4's AI Shortcut) is fine — it's still the facilitator delivering it live.</div></div>
     <div class="flow-row"><div class="flow-q">2. Gather Data</div><div class="flow-a"><b>Yes, before — never during.</b> AI can mine tickets/PRs into a neutral prep brief beforehand (Chapter 12). It should never write down what a person is feeling on their behalf.</div></div>
-    <div class="flow-row"><div class="flow-q">3. Generate Insights</div><div class="flow-a"><b>Yes, as a suggestion.</b> AI can propose clusters or spot a pattern across past retros (Chapter 13). The room decides what it means — AI doesn't get a vote.</div></div>
+    <div class="flow-row"><div class="flow-q">3. Generate Insights</div><div class="flow-a"><b>Yes, as a suggestion.</b> AI can propose clusters or spot a pattern across past retros (Chapter 14). The room decides what it means — AI doesn't get a vote.</div></div>
     <div class="flow-row"><div class="flow-q">4. Decide</div><div class="flow-a"><b>No.</b> Never. Choosing what the team commits to is a human judgment call about priorities, capacity, and trust. No exceptions.</div></div>
-    <div class="flow-row"><div class="flow-q">5. Close</div><div class="flow-a"><b>Yes, after.</b> Drafting the written summary and nudging the action-item owner later in the week (Chapter 13) is exactly the paperwork AI should be doing.</div></div>
+    <div class="flow-row"><div class="flow-q">5. Close</div><div class="flow-a"><b>Yes, after.</b> Drafting the written summary and nudging the action-item owner later in the week (Chapter 14) is exactly the paperwork AI should be doing.</div></div>
   </div>
 
   <section class="prose">
-    <p>If you want one word to hold the rest of Part IV in your head, it spells itself: <strong>RETRO</strong>. <strong>R</strong>eview the sprint (Chapter 12's prep prompts) — <strong>E</strong>xplore patterns across past retros (Chapter 13's retro memory) — <strong>T</strong>rigger discussion with tailored questions (also Chapter 12) — <strong>R</strong>ecommend candidate actions for the team to react to, never decide (Chapter 13) — <strong>O</strong>bserve whether the outcomes actually happened (Chapter 10's follow-through system). Five letters, five places AI earns a seat — never a sixth for the one seat it doesn't get, which is the conversation itself.</p>
+    <p>If you want one word to hold the rest of Part IV in your head, it spells itself: <strong>RETRO</strong>. <strong>R</strong>eview the sprint (Chapter 12's prep prompts) — <strong>E</strong>xplore patterns across past retros (Chapter 14's retro memory) — <strong>T</strong>rigger discussion with tailored questions (also Chapter 12) — <strong>R</strong>ecommend candidate actions for the team to react to, never decide (Chapter 14) — <strong>O</strong>bserve whether the outcomes actually happened (Chapter 10's follow-through system). Five letters, five places AI earns a seat — never a sixth for the one seat it doesn't get, which is the conversation itself.</p>
   </section>
 
   <section class="prose">
@@ -53,7 +53,7 @@
     <ul>
       <li><strong>The AI summary becomes the retro.</strong> People start reading the auto-generated brief and treating it as "what happened," skipping the part where they actually talk to each other about it.</li>
       <li><strong>Insights get accepted instead of interrogated.</strong> "The AI clustered these as related" starts getting treated as fact instead of a starting point for the room to argue with.</li>
-      <li><strong>People self-censor because something's listening.</strong> The moment someone hesitates before saying something honest because a transcript exists, the safety Chapter 2's Prime Directive is supposed to build is gone. Chapter 14 is entirely about preventing this.</li>
+      <li><strong>People self-censor because something's listening.</strong> The moment someone hesitates before saying something honest because a transcript exists, the safety Chapter 2's Prime Directive is supposed to build is gone. Chapter 15 is entirely about preventing this.</li>
       <li><strong>The facilitator starts prepping less because "the AI has it covered."</strong> Reading the room (Chapter 3) still requires the facilitator to actually know what happened this sprint, not just skim a summary five minutes before the call.</li>
     </ul>
     <p>None of these mean "don't use AI." They mean the line moved without anyone deciding to move it. The fix in every case is the same: put the conversation back in human hands, and let AI go back to handling the paperwork around it.</p>
@@ -61,19 +61,19 @@
 
   <section class="prose">
     <h2>Two failure modes that have nothing to do with trust</h2>
-    <p>Chapter 14 covers privacy — who can see what. This is a different risk entirely: the AI can be confidently, fluently wrong, in ways that don't announce themselves. Two specific versions matter for a retro.</p>
+    <p>Chapter 15 covers privacy — who can see what. This is a different risk entirely: the AI can be confidently, fluently wrong, in ways that don't announce themselves. Two specific versions matter for a retro.</p>
   </section>
 
   <div class="grid wide">
     <article class="recipe">
       <h3>Hallucination: confident, invented patterns</h3>
-      <p class="purpose">Large language models sometimes generate text that sounds exactly as authoritative as text that's actually grounded in what you gave them — a well-documented failure mode usually called hallucination <a href="../references.html#ji-2023" class="cite">[Ji et al., 2023]</a>. Ask Chapter 13's retro-memory prompt "what's come up more than once?" and it's entirely possible for the model to report a pattern, a count, or even a quote that isn't actually in the eight summaries you fed it.</p>
-      <div class="watch"><b>What to do</b>Never read an AI-generated pattern claim straight into the room. Before you share "this has come up 4 times," open the source summaries and check. The retro-memory workflow in Chapter 13 is a hypothesis generator, not a verified record — treat its output the way you'd treat a junior analyst's first draft.</div>
+      <p class="purpose">Large language models sometimes generate text that sounds exactly as authoritative as text that's actually grounded in what you gave them — a well-documented failure mode usually called hallucination <a href="../references.html#ji-2023" class="cite">[Ji et al., 2023]</a>. Ask Chapter 14's retro-memory prompt "what's come up more than once?" and it's entirely possible for the model to report a pattern, a count, or even a quote that isn't actually in the eight summaries you fed it.</p>
+      <div class="watch"><b>What to do</b>Never read an AI-generated pattern claim straight into the room. Before you share "this has come up 4 times," open the source summaries and check. The retro-memory workflow in Chapter 14 is a hypothesis generator, not a verified record — treat its output the way you'd treat a junior analyst's first draft.</div>
     </article>
     <article class="recipe">
       <h3>Bias: whose voice reads as "negative"</h3>
       <p class="purpose">Sentiment and tone-detection tools don't read neutrally across every speaker. Research on NLP systems has repeatedly found they can systematically misjudge text written in a different dialect, register, or non-native phrasing as more negative, less clear, or less professional than intended <a href="../references.html#sap-2019" class="cite">[Sap et al., 2019]</a> — a real risk for exactly the international, multilingual teams Chapter 9 and the "have fun" theming idea below are written for.</p>
-      <div class="watch"><b>What to do</b>Never let an AI sentiment summary (Chapter 13's "anonymized sentiment summary") stand in as the final word on how someone feels, especially across a language or cultural line. If a summary reads one person's contribution as unusually negative, that's a prompt to ask them directly — not a conclusion.</div>
+      <div class="watch"><b>What to do</b>Never let an AI sentiment summary (Chapter 14's "anonymized sentiment summary") stand in as the final word on how someone feels, especially across a language or cultural line. If a summary reads one person's contribution as unusually negative, that's a prompt to ask them directly — not a conclusion.</div>
     </article>
   </div>
 
