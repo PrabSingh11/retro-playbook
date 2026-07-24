@@ -231,7 +231,7 @@ p{margin:0 0 16px;}
 .flow{display:flex; flex-direction:column; gap:2px; margin:24px 0 40px;}
 .flow-row{display:grid; grid-template-columns:1.3fr 2fr; gap:2px;}
 .flow-q{background:var(--ink); color:var(--paper); padding:14px 18px; font-family:var(--display); font-weight:700; font-size:.95rem; display:flex; align-items:center; border-radius:2px 0 0 2px;}
-.flow-a{background:var(--card); border:1px solid var(--rule-soft); padding:14px 18px; font-size:.92rem; display:flex; align-items:center; gap:8px; border-radius:0 2px 2px 0;}
+.flow-a{background:var(--card); border:1px solid var(--rule-soft); padding:14px 18px; font-size:.92rem; display:flow-root; border-radius:0 2px 2px 0;}
 .flow-a a{font-family:var(--display); font-weight:700; text-decoration:none; color:var(--accent);}
 
 /* ---------- Inline citations ---------- */
