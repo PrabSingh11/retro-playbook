@@ -66,10 +66,8 @@ d.text((cx, 640 * S), "PLAYBOOK", font=f_title, fill=INK, anchor="mm")
 d.line([cx - 90 * S, 760 * S, cx + 90 * S, 760 * S], fill=ACCENTS[0], width=5 * S)
 
 # --- subtitle ---
-sub = ("Formats, icebreakers, and facilitation craft for "
-       "running retrospectives people actually enjoy — plus an "
-       "AI co-pilot for the busy version of you.")
-y = 830 * S
+sub = "Using AI to Run Better Agile Retrospectives"
+y = 850 * S
 for ln in wrap(d, sub, f_sub, 980 * S):
     d.text((cx, y), ln, font=f_sub, fill=INKSOFT, anchor="ma")
     y += 62 * S
