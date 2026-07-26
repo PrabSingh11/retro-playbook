@@ -20,7 +20,7 @@ FONTS = "/usr/share/fonts/opentype/urw-base35/"
 def font(name, px): return ImageFont.truetype(FONTS + name, px * S)
 f_title = font("URWGothic-Demi.otf", 150)
 f_kick  = font("URWGothic-Book.otf", 33)
-f_sub   = font("NimbusRoman-Italic.otf", 40)
+f_sub   = font("NimbusRoman-Italic.otf", 62)
 f_auth  = font("URWGothic-Book.otf", 46)
 f_imp   = font("NimbusSans-Regular.otf", 26)
 
@@ -67,10 +67,10 @@ d.line([cx - 90 * S, 760 * S, cx + 90 * S, 760 * S], fill=ACCENTS[0], width=5 * 
 
 # --- subtitle ---
 sub = "Using AI to Run Better Agile Retrospectives"
-y = 850 * S
-for ln in wrap(d, sub, f_sub, 980 * S):
-    d.text((cx, y), ln, font=f_sub, fill=INKSOFT, anchor="ma")
-    y += 62 * S
+y = 838 * S
+for ln in wrap(d, sub, f_sub, 900 * S):     # wraps to two balanced lines at this size
+    d.text((cx, y), ln, font=f_sub, fill=INK, anchor="ma")
+    y += 88 * S
 
 # --- hero motif: five sticky notes (the five color-coded parts) ---
 def sticky(color, deg):
