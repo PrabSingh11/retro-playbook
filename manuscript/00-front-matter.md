@@ -27,12 +27,12 @@ This is a field guide, not a textbook. It's built to be flipped through five min
 If you have a retro on your calendar this week, here's the fastest way in:
 
 - **Never run one before?** Chapter 2 has a complete, minute-by-minute script. Steal it verbatim.
-- **Retro's gone stale?** Jump to the format cookbook (Part III) and the icebreaker box (Chapter 4), and pick something new for what your team actually needs this week — Chapter 5 helps you choose.
+- **Retro's gone stale?** Jump to the format cookbook (Part III) and the icebreaker box (Chapter 4), and pick something new for what your team actually needs this week – Chapter 5 helps you choose.
 - **Facilitating a tricky room?** Chapter 3 is the craft nobody teaches you: the over-talker, the silent one, the fight that breaks out, the pause you have to learn to sit in.
 - **Here for the AI angle?** Part IV is written to make sense cold. One rule holds the whole thing together: *AI handles the paperwork, humans handle the talking.*
 
-Every chapter ends with a one-page **Facilitator's Cheat Sheet** — the whole thing at a glance. Watch for recurring boxes along the way: 🗣️ **From the Facilitator's Chair** (what to actually say), 🏠 **Try This at Home** (the same technique, applied to your own week), and 🤖 **AI Shortcut** (a copy-paste prompt that does the prep for you).
+Every chapter ends with a one-page **Facilitator's Cheat Sheet** – the whole thing at a glance. Watch for recurring boxes along the way: 🗣️ **From the Facilitator's Chair** (what to actually say), 🏠 **Try This at Home** (the same technique, applied to your own week), and 🤖 **AI Shortcut** (a copy-paste prompt that does the prep for you).
 
-You don't need to be a naturally charismatic facilitator. You need a room designed so honesty is the easy option — and that's a craft, learnable one retro at a time.
+You don't need to be a naturally charismatic facilitator. You need a room designed so honesty is the easy option – and that's a craft, learnable one retro at a time.
 
 Go run one.
