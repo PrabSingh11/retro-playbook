@@ -1,0 +1,25 @@
+<svg aria-label="Sailboat diagram: wind pushing the boat, anchors dragging below, rocks ahead in the water, an island with a flag on the horizon" role="img" viewBox="0 0 400 160"><style>.dg-label{font-family:monospace;font-size:9.5px;fill:#555;}.dg-label-strong{font-family:sans-serif;font-weight:700;font-size:11px;fill:#222;}</style>
+<rect fill="#f4f4f2" height="160" width="400" x="0" y="0"></rect>
+<path d="M0,110 Q20,104 40,110 T80,110 T120,110 T160,110 T200,110 T240,110 T280,110 T320,110 T360,110 T400,110 V150 H0 Z" fill="#dddddd"></path>
+<path d="M0,110 Q20,104 40,110 T80,110 T120,110 T160,110 T200,110 T240,110 T280,110 T320,110 T360,110 T400,110" fill="none" opacity="0.6" stroke="#555555" stroke-width="1.5"></path>
+<line stroke="#222222" stroke-width="2.5" x1="125" x2="125" y1="34" y2="106"></line>
+<path d="M127,36 L127,80 L172,88 Z" fill="#555555" opacity="0.85"></path>
+<path d="M123,40 L123,80 L92,86 Z" fill="#555555" opacity="0.55"></path>
+<path d="M90,104 Q125,120 165,104 L158,116 Q125,128 97,116 Z" fill="#222222"></path>
+<line marker-end="url(#arrow)" stroke="#555555" stroke-width="1.5" x1="70" x2="98" y1="55" y2="60"></line>
+<line marker-end="url(#arrow)" stroke="#555555" stroke-width="1.5" x1="66" x2="96" y1="72" y2="72"></line>
+<defs><marker id="arrow" markerheight="8" markerwidth="8" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#555555"></path></marker></defs>
+<text class="dg-label-strong" x="40" y="48">WIND</text>
+<line stroke="#555555" stroke-dasharray="2,2" stroke-width="1.5" x1="122" x2="112" y1="118" y2="140"></line>
+<circle cx="110" cy="143" fill="none" r="4" stroke="#222222" stroke-width="1.5"></circle>
+<line stroke="#222222" stroke-width="1.5" x1="106" x2="114" y1="143" y2="143"></line>
+<text class="dg-label-strong" transform="translate(0,-2)" x="70" y="150">ANCHORS</text>
+<polygon fill="#bbbbbb" points="220,110 232,92 244,110" stroke="#555555" stroke-width="1"></polygon>
+<polygon fill="#bbbbbb" points="248,110 258,98 268,110" stroke="#555555" stroke-width="1"></polygon>
+<text class="dg-label-strong" x="215" y="86">ROCKS</text>
+<path d="M330,112 Q345,78 365,80 Q385,82 385,112 Z" fill="#dddddd" stroke="#555555" stroke-width="1"></path>
+<line stroke="#222222" stroke-width="1.5" x1="360" x2="360" y1="80" y2="60"></line>
+<path d="M360,60 L378,66 L360,72 Z" fill="#555555"></path>
+<text class="dg-label-strong" x="325" y="50">ISLAND</text>
+<text class="dg-label" x="322" y="62">(the goal)</text>
+</svg>

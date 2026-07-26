@@ -1,0 +1,73 @@
+/* The Retro Playbook — e-reader stylesheet (grayscale, reflowable) */
+body { font-family: Georgia, "Iowan Old Style", serif; line-height: 1.5; }
+h1, h2, h3, h4 { font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.2; font-weight: 700; }
+h1 { page-break-before: always; font-size: 1.6em; margin: 0 0 .2em; }
+h2 { font-size: 1.28em; margin: 1.3em 0 .4em; }
+h3 { font-size: 1.1em; margin: 1.1em 0 .3em; }
+p { margin: 0 0 .8em; }
+
+/* subtitle line under a chapter title */
+.dek { font-style: italic; font-size: 1.05em; margin: 0 0 1.2em; }
+
+/* strip any web chrome that slips through */
+.kicker, .back, .chapter-nav, .colophon, .part-note, nav { display: none; }
+
+/* generic boxed components -> simple gray cards */
+.intro, .card, .recipe, .promptcard, .pinned, .script, .flow-a, .diagram {
+  border: 1px solid #b0b0b0; background: #f4f4f2;
+  padding: .7em .9em; margin: 1em 0; border-radius: 3px;
+  page-break-inside: avoid;
+}
+.card { background: #f4f4f2; } /* override lined-paper gradient */
+
+/* closing cheat sheet — darker box */
+.cheat { border: 1px solid #444; background: #ececea; padding: .9em 1em; margin: 1.5em 0; border-radius: 3px; }
+.cheat .eyebrow, .pinned .eyebrow { display: block; font-size: .78em; letter-spacing: .05em; text-transform: uppercase; color: #444; margin-bottom: .3em; }
+.cheat h2 { margin-top: .1em; }
+
+/* labels that should sit on their own line */
+.facilitation b, .watch b, .recipe .watch b, .card .watch b, .remote-note b, .promptcard .tip b {
+  display: block; font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: .82em; text-transform: uppercase; letter-spacing: .04em; color: #333; margin-top: .2em;
+}
+.script .who { display: block; font-weight: 700; font-size: .82em; text-transform: uppercase; letter-spacing: .04em; color: #333; }
+.script p { font-style: italic; }
+.purpose { font-style: italic; }
+
+/* recipe/icebreaker meta + stat rows: space the inline items */
+.meta span, .stats span { display: inline-block; margin-right: 1.1em; font-size: .9em; }
+.meta, .stats { margin: .4em 0; }
+.num { float: right; color: #888; font-size: .82em; font-family: Arial, sans-serif; }
+
+/* energy pips / remote dots -> grayscale */
+.energy i { display: inline-block; width: 5px; height: 10px; background: #ccc; margin-right: 1px; }
+.energy i.on { background: #333; }
+.remote-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ccc; }
+.remote-dot.on { background: #333; }
+
+/* pull quote */
+.pull { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 1.15em;
+  border-top: 2px solid #333; border-bottom: 2px solid #333; padding: .5em 0; margin: 1.1em 0; }
+
+/* section tab (creative/format deck headers) */
+.tab { background: #333; color: #fff; padding: .35em .7em; border-radius: 3px; margin: 1.2em 0 .6em; }
+.tab h2 { color: #fff; margin: 0; }
+
+/* decision flow (ch5) */
+.flow-q { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; margin: .8em 0 .2em; }
+.flow-a { margin: 0 0 .6em; }
+
+/* lists inside cards */
+ol.steps, .steps { margin: .5em 0 .5em 1.3em; }
+
+/* diagrams / inline svg */
+img, svg { max-width: 100%; height: auto; }
+.diagram svg { width: 100%; }
+
+/* references */
+.refs .ref-claim { font-size: .9em; color: #555; margin: 0 0 .2em; }
+.refs .ref-source { margin: 0; }
+.refs .ref-note { font-size: .88em; color: #555; font-style: italic; margin: .2em 0 0; }
+
+/* footnote-ish citation links */
+.cite { font-size: .85em; color: #333; }
