@@ -55,7 +55,7 @@ m2 = m + 12 * S
 d.rectangle([m2, m2, W - m2, H - m2], outline=RULE, width=1 * S)
 
 # --- kicker ---
-tracked(d, cx, 250 * S, "A FUN, PRACTICAL FIELD GUIDE", f_kick, 8, INKSOFT)
+tracked(d, cx, 250 * S, "A PRACTICAL, NO-JARGON FIELD GUIDE", f_kick, 6, INKSOFT)
 d.line([cx - 150 * S, 210 * S, cx + 150 * S, 210 * S], fill=INK, width=2 * S)
 
 # --- title (two lines) ---
