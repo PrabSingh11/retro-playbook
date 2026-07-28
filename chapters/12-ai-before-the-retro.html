@@ -138,7 +138,7 @@ question under 20 words — I'll be asking these out loud.</pre>
 
     <div class="promptcard">
       <h3>7. Draft Stickies from Jira (or Any Tracker) Trends</h3>
-      <p class="purpose">Prompt 1 gives you a brief to <em>read</em>. This one goes a step further and gives you actual draft sticky notes to <em>put on the board</em> before the team arrives – built from patterns across the sprint's issues, blockers, and comment threads, sorted into your format's real categories. Export from Jira (or Linear, or GitHub Issues – anything with an API or a CSV export) works; you don't need a live integration, a copy-paste of the raw data is enough.</p>
+      <p class="purpose">Prompt 1 gives you a brief to <em>read</em>. This one goes a step further and gives you actual draft sticky notes to <em>put on the board</em> before the team arrives – built from patterns across the sprint's issues, blockers, and comment threads, sorted into your format's real categories. Export from Jira (or Linear, or GitHub Issues – anything with an API or a CSV export) works: a copy-paste of the raw data is enough to start, and the box below shows how to skip even that with a live API pull.</p>
       <pre>You're helping me pre-fill a retro board before the team arrives. Below
 is an export of this sprint's issues: titles, status changes with
 dates, comments, and anything tagged as blocked or reopened.
@@ -160,6 +160,13 @@ Label every sticky "DRAFT – confirm or bin" at the top. Do not invent
 a trend from a single data point. If you don't have enough evidence
 for a category, leave it empty rather than padding it out.</pre>
       <p class="tip"><b>Why it works</b>The "DRAFT – confirm or bin" label and the required ticket IDs are what keep this inside Chapter 11's line: it's a starting point the room interrogates, not a verdict it reads and nods along to. Put these stickies up <em>before</em> people add their own, never instead of – the board should still fill up with real, unprompted voices during Gather Data. And per that same chapter, treat any "this happened three times" claim as a hypothesis to spot-check against the source tickets before you say it out loud, not a fact.</p>
+      <div class="watch"><b>Power-up – skip the copy-paste</b>Both this prompt and Prompt 1 run on a raw export, so once you're doing it every sprint you can cut the human step out entirely: most trackers hand you the whole sprint over a REST API, and that JSON drops straight into the prompt with nothing to copy. For Jira it's a single search on the sprint's issues –
+<pre>curl -s -u you@team.com:$JIRA_TOKEN \
+  "https://your-domain.atlassian.net/rest/api/3/search?\
+jql=sprint=123 ORDER BY updated&\
+fields=summary,status,comment,labels,changelog" \
+  | your-ai-cli "run the Prompt 7 instructions on this export"</pre>
+– swap the sprint id for yours; Linear and GitHub Issues expose the same shape of data over their own APIs. The paste method still works with zero setup, so reach for the API version only once the manual export has started to feel like the chore it's meant to replace.</div>
     </div>
 
   </section>
