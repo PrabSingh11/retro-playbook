@@ -14,7 +14,7 @@
   <header class="lid">
     <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 12</span><span>Part IV – Your AI Co-Pilot</span></div>
     <h1>AI Before the Retro (Prep in 5 Minutes)</h1>
-    <p class="dek">Six copy-paste prompts that do the reading-through-two-weeks-of-tickets part for you – and one that just makes it fun.</p>
+    <p class="dek">Seven copy-paste prompts that do the reading-through-two-weeks-of-tickets part for you – and one that just makes it fun.</p>
   </header>
 
   <div class="intro prose">
@@ -23,7 +23,7 @@
   </div>
 
   <section class="deck remote">
-    <div class="tab"><h2>Six Prep Prompts</h2><span class="tab-note">tool-agnostic – works with any capable model</span></div>
+    <div class="tab"><h2>Seven Prep Prompts</h2><span class="tab-note">tool-agnostic – works with any capable model</span></div>
 
     <div class="promptcard">
       <h3>1. The Neutral Sprint Brief</h3>
@@ -136,24 +136,51 @@ question under 20 words — I'll be asking these out loud.</pre>
       <p class="tip"><b>Why it works</b>Asking for a question that "connects two items that might be related" is what makes this more useful than a human skimming the board – the model can hold all the stickies in mind at once and spot a link a tired facilitator might miss.</p>
     </div>
 
+    <div class="promptcard">
+      <h3>7. Draft Stickies from Jira (or Any Tracker) Trends</h3>
+      <p class="purpose">Prompt 1 gives you a brief to <em>read</em>. This one goes a step further and gives you actual draft sticky notes to <em>put on the board</em> before the team arrives – built from patterns across the sprint's issues, blockers, and comment threads, sorted into your format's real categories. Export from Jira (or Linear, or GitHub Issues – anything with an API or a CSV export) works; you don't need a live integration, a copy-paste of the raw data is enough.</p>
+      <pre>You're helping me pre-fill a retro board before the team arrives. Below
+is an export of this sprint's issues: titles, status changes with
+dates, comments, and anything tagged as blocked or reopened.
+
+[paste raw export here]
+
+I'm running a [format name, e.g. "Start/Stop/Continue"] retro, with
+categories: [list the format's real categories].
+
+Look for TRENDS, not one-off events: things that got blocked more than
+once, tickets that bounced between statuses, comment threads where the
+same friction shows up on multiple tickets, anything that took much
+longer than its estimate. For each trend you find, draft ONE sticky
+note: which category it belongs in, one sentence stating the pattern
+as an observation (not a conclusion), and which ticket IDs it's based
+on so the team can check the source.
+
+Label every sticky "DRAFT – confirm or bin" at the top. Do not invent
+a trend from a single data point. If you don't have enough evidence
+for a category, leave it empty rather than padding it out.</pre>
+      <p class="tip"><b>Why it works</b>The "DRAFT – confirm or bin" label and the required ticket IDs are what keep this inside Chapter 11's line: it's a starting point the room interrogates, not a verdict it reads and nods along to. Put these stickies up <em>before</em> people add their own, never instead of – the board should still fill up with real, unprompted voices during Gather Data. And per that same chapter, treat any "this happened three times" claim as a hypothesis to spot-check against the source tickets before you say it out loud, not a fact.</p>
+    </div>
+
   </section>
 
   <section class="prose">
     <h2>The five-minute routine</h2>
-    <p>Put together, prompts 1–4 turn "prep for tomorrow's retro" from a task you skip when busy into something that fits in the time it takes to make coffee: paste the sprint's raw activity into prompt 1, paste any survey answers into prompt 2, ask prompt 3 what format fits, ask prompt 4 for an icebreaker to match. Total human effort: copying and pasting. Total time saved: the twenty minutes you'd otherwise spend scrolling through a ticket board trying to remember what actually happened three weeks ago. Prompt 5 isn't part of that efficiency routine – pull it out every few sprints, purely because a themed retro is more fun than a plain one. Prompt 6 slots into the retro itself, right as you move into Generate Insights.</p>
+    <p>Put together, prompts 1–4 turn "prep for tomorrow's retro" from a task you skip when busy into something that fits in the time it takes to make coffee: paste the sprint's raw activity into prompt 1, paste any survey answers into prompt 2, ask prompt 3 what format fits, ask prompt 4 for an icebreaker to match. Total human effort: copying and pasting. Total time saved: the twenty minutes you'd otherwise spend scrolling through a ticket board trying to remember what actually happened three weeks ago. Prompt 5 isn't part of that efficiency routine – pull it out every few sprints, purely because a themed retro is more fun than a plain one. Prompt 6 slots into the retro itself, right as you move into Generate Insights. Prompt 7 is the deeper version of prompt 1 – same raw export, but instead of a brief to read, it hands you draft stickies to pin up, for teams with enough ticket history that a trend actually means something (a team of three on a two-week sprint usually doesn't have enough data for this one to be worth running).</p>
   </section>
 
   <section class="cheat">
     <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
-    <h2>Six prompts, one five-minute routine (plus one for fun)</h2>
+    <h2>Seven prompts, one five-minute routine (plus one for fun)</h2>
     <ul>
       <li><b>Neutral Sprint Brief:</b> facts only, no verdict – the room forms its own opinion live.</li>
       <li><b>Cluster the Survey:</b> unattributed verbatim quotes keep real voices, not paraphrased blandness.</li>
       <li><b>Pick a Format:</b> name real format families so the suggestion is something you can actually run.</li>
       <li><b>Custom Icebreaker:</b> same prompt as Chapter 4 – it's prep too, not a separate step.</li>
-      <li><b>Tailored Discussion Questions:</b> different from picking a format – these are the specific probing questions for Generate Insights, built from what the team actually wrote.</li>
       <li><b>Theme It:</b> re-skin any format around what the team loves – keep the mechanics, change the costume. Great for international teams finding common ground.</li>
-      <li><b>Prompts 1, 2, 3, 4, and 6 run before or during every call. Prompt 5 runs whenever a retro needs to be more fun than efficient.</b> Per Chapter 11's rule, all of it is AI doing paperwork, not talking.</li>
+      <li><b>Tailored Discussion Questions:</b> different from picking a format – these are the specific probing questions for Generate Insights, built from what the team actually wrote.</li>
+      <li><b>Draft Stickies from Tracker Trends:</b> the same raw export as prompt 1, turned into board-ready draft stickies, sorted into your format's categories, every one labeled "DRAFT – confirm or bin" and traceable back to real ticket IDs.</li>
+      <li><b>Prompts 1, 2, 3, 4, 6, and 7 run before or during every call. Prompt 5 runs whenever a retro needs to be more fun than efficient.</b> Per Chapter 11's rule, all of it is AI doing paperwork, not talking.</li>
     </ul>
   </section>
 
