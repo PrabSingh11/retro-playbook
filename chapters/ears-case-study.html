@@ -19,67 +19,30 @@
   .sig li{margin-bottom:6px;}
   @media (max-width:620px){ .signals{grid-template-columns:1fr;} }
 
-  /* Question cards */
-  .q{position:relative; background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--plum);
-     border-radius:2px; padding:20px 22px 18px; margin:0 0 18px;}
+  /* Question blocks */
+  .q{background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--plum);
+     border-radius:2px; padding:20px 22px 16px; margin:0 0 18px; page-break-inside:avoid; break-inside:avoid;}
   .q .qnum{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--plum);}
   .q .qtext{font-family:var(--display); font-weight:700; font-size:1.1rem; line-height:1.35; margin:6px 0 14px; text-wrap:balance;}
-  .opts{display:flex; flex-direction:column; gap:8px;}
-  .opt{display:flex; gap:12px; align-items:flex-start; border:1px solid var(--rule); background:var(--paper);
-       border-radius:2px; padding:11px 14px; cursor:pointer;}
-  .opt:hover{border-color:var(--plum);}
-  .opt input{position:absolute; opacity:0; width:0; height:0;}
-  .opt .key{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--ink-soft);
-            border:1px solid var(--rule); border-radius:3px; width:23px; height:23px; display:grid; place-items:center; flex:none;}
-  .opt .txt{font-size:.95rem; line-height:1.45;}
-  .opt.sel{border-color:var(--plum); background:var(--plum-tint);}
-  .opt.sel .key{background:var(--plum); color:#F6F5EC; border-color:var(--plum);}
-  .opt:focus-within{outline:2px solid var(--ink); outline-offset:2px;}
-
-  /* Score dock */
-  .scorebar{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin:26px 0 8px;
-            background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:14px 18px;}
-  .scorebar .track{flex:1; min-width:160px; height:8px; background:var(--paper-deep); border:1px solid var(--rule);
-                   border-radius:99px; overflow:hidden;}
-  .scorebar .fill{height:100%; width:0; background:var(--plum); transition:width .3s ease;}
-  .scorebar .lab{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); letter-spacing:.04em;}
-  .btn{font-family:var(--display); font-weight:700; font-size:.92rem; background:var(--plum); color:#F6F5EC;
-       border:none; border-radius:3px; padding:11px 18px; cursor:pointer;}
-  .btn:disabled{background:var(--rule); color:var(--ink-faint); cursor:not-allowed;}
-  .btn:not(:disabled):hover{filter:brightness(1.07);}
+  .opts{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .opts li{display:flex; gap:12px; align-items:flex-start;}
+  .opts .key{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--ink-soft);
+             border:1px solid var(--rule); border-radius:3px; width:23px; height:23px; display:grid; place-items:center; flex:none;}
+  .opts .txt{font-size:.95rem; line-height:1.45;}
 
   /* Answer key */
-  #key{margin-top:8px;}
-  .scorecard{background:var(--ink); color:var(--paper); border-radius:3px; padding:26px 26px 22px; margin:10px 0 26px; text-align:center;}
-  .scorecard .num{font-family:var(--display); font-weight:700; font-size:3rem; line-height:1; font-variant-numeric:tabular-nums;}
-  .scorecard .num small{font-size:1.3rem; color:#8FAFA0;}
-  .scorecard .tier{font-family:var(--display); font-weight:700; font-size:1.15rem; margin-top:8px;}
-  .scorecard .blurb{color:#DEE4DF; font-size:.95rem; margin-top:6px;}
-
-  .ans{border-bottom:1px solid var(--rule); padding:16px 0;}
+  #key{page-break-before:always; break-before:page; margin-top:52px;}
+  .scoring{background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--plum);
+           border-radius:3px; padding:16px 20px; margin:0 0 26px; font-size:.94rem;}
+  .scoring b{font-family:var(--display); font-weight:700;}
+  .ans{border-bottom:1px solid var(--rule); padding:16px 0; page-break-inside:avoid; break-inside:avoid;}
   .ans:last-child{border-bottom:none;}
   .ans .an-q{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
   .ans .an-best{font-family:var(--display); font-weight:700; font-size:1.02rem; margin:5px 0 4px;}
-  .ans .an-best .step{color:var(--plum);}
+  .ans .an-best .letter{color:var(--plum);}
   .ans .an-txt{font-size:.94rem; margin:0 0 8px;}
   .ans .an-why{font-size:.92rem; color:var(--ink-soft); line-height:1.55;}
   .ans .an-why b{color:var(--ink);}
-  .ans .yours{font-family:var(--mono); font-size:11px; letter-spacing:.03em; margin-top:8px;}
-  .ans .yours.right{color:var(--moss);}
-  .ans .yours.wrong{color:var(--ember);}
-
-  /* Paper: answer key starts on its own page and always prints */
-  @media screen{ #key[hidden]{display:none;} }
-  @media print{
-    .scorebar, .back, .chapter-nav{display:none !important;}
-    .opt{cursor:default;}
-    #key{display:block !important;}
-    #key-divider{page-break-before:always; break-before:page;}
-    .scorecard{background:#fff; color:#000; border:1.5pt solid #000;}
-    .scorecard .num small, .scorecard .blurb{color:#333;}
-    .q, .ans{page-break-inside:avoid; break-inside:avoid;}
-    .scorecard{display:none;} /* the interactive score has no meaning on paper */
-  }
 </style>
 </head>
 <body>
@@ -89,11 +52,11 @@
   <header class="lid">
     <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 13 · Case Study</span><span>Part IV - Your AI Co-Pilot</span></div>
     <h1>The Retro That Almost Wasn't</h1>
-    <p class="dek">You read how Mark stumbled into it. Now it's your Friday, your flat room, your deadline - run EARS on a live sprint and find the theme that saves the retro. Eight calls, then check your work.</p>
+    <p class="dek">You read how Mark stumbled into it. Now it's your Friday, your flat room, your deadline - run EARS on a live sprint and find the theme that saves the retro. Eight questions; the answer key is at the end of the chapter.</p>
   </header>
 
   <div class="intro">
-    <p><strong>How this works.</strong> Chapter 13 gave you EARS - <em>Events, Attention, Recognise, Suggest</em> - the listening habit for picking a retro theme that actually lands. This is the drill. Read the brief, make eight decisions, then hit <em>Show the answer key</em> to see how you did. No peeking: the key lives on its own page (and prints that way for the paperback).</p>
+    <p><strong>How this works.</strong> Chapter 13 gave you EARS - <em>Events, Attention, Recognise, Suggest</em> - the listening habit for picking a retro theme that actually lands. This is the drill. Read the brief, jot A, B, C or D for each of the eight questions, then turn to the answer key to see how you did and why. No cheating: keep a finger out of that last page until you've committed.</p>
   </div>
 
   <section class="prose">
@@ -107,7 +70,7 @@
       <div class="name">Events this sprint</div>
       <ul>
         <li>Shipped the new fraud-scoring model - on time, a real win</li>
-        <li>A midweek deploy took payments down for 40 minutes → rollback, two late nights</li>
+        <li>A midweek deploy took payments down for 40 minutes, then a rollback and two late nights</li>
         <li>Aisha, the new grad, merged her first production PR</li>
         <li>The Ledger team changed an API with no warning - second time this quarter, cost you 2 days</li>
         <li>The database migration that dragged for months finally landed</li>
@@ -136,25 +99,163 @@
   </div>
 
   <section class="prose">
-    <h2>Your eight calls</h2>
-    <p>Pick the option that best applies EARS to <em>this</em> team, this week - not the textbook-tidiest answer in the abstract.</p>
+    <h2>Your eight questions</h2>
+    <p>Pick the option that best applies EARS to <em>this</em> team, this week - not the textbook-tidiest answer in the abstract. Write your letters down as you go.</p>
   </section>
 
-  <div id="quiz"></div>
-
-  <div class="scorebar">
-    <div class="track"><div class="fill" id="fill"></div></div>
-    <span class="lab" id="plab">0 / 8 answered</span>
-    <button class="btn" id="scoreBtn" disabled>Show the answer key</button>
+  <div class="q">
+    <div class="qnum">Question 1 · EARS step E</div>
+    <div class="qtext">You're building the retro around the sprint's real story. Which set of events should anchor the themed sections?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">The fraud-model ship, the outage and rollback, the Ledger API surprise, and the finished migration - the beats everyone actually remembers.</span></li>
+      <li><span class="key">B</span><span class="txt">Every ticket closed this sprint, so nothing gets left out.</span></li>
+      <li><span class="key">C</span><span class="txt">Just the fraud-model ship - keep it upbeat and skip the messy stuff.</span></li>
+      <li><span class="key">D</span><span class="txt">Aisha's first PR and Tuesday's gif war - the fun human moments.</span></li>
+    </ul>
   </div>
 
-  <!-- ============ ANSWER KEY (separate page in print) ============ -->
-  <section id="key" hidden>
-    <div id="key-divider"></div>
-    <div class="scorecard" id="scorecard"></div>
-    <div class="prose"><h2>Answer key</h2>
-      <p>One point per best call. Every answer traces back to a letter of EARS - if a call went wrong, that's the step worth re-reading in Chapter 13.</p></div>
-    <div id="answers"></div>
+  <div class="q">
+    <div class="qnum">Question 2 · EARS step A</div>
+    <div class="qtext">It's the day before. How do you find the team's Attention - the thing worth theming around?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Send a survey asking what theme everyone would like.</span></li>
+      <li><span class="key">B</span><span class="txt">Notice what they already talk about off the clock - the football chatter that's filled the channel all fortnight.</span></li>
+      <li><span class="key">C</span><span class="txt">Pick a theme from your own favourite hobby, so at least you'll enjoy running it.</span></li>
+      <li><span class="key">D</span><span class="txt">Reuse last quarter's superhero theme - it went fine.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 3 · EARS step R</div>
+    <div class="qtext">The team is proud of the ship but frazzled by the outage and tender about Ledger. What energy should the theme carry?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Big and zany - a superhero party to lift everyone up.</span></li>
+      <li><span class="key">B</span><span class="txt">Sombre wellbeing-and-recovery framing to honour how hard it was.</span></li>
+      <li><span class="key">C</span><span class="txt">Warm but honest - celebrate the wins and give the rough stuff a real, non-trivialising place to land.</span></li>
+      <li><span class="key">D</span><span class="txt">Neutral Start / Stop / Continue - don't risk a theme when people are tired.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 4 · EARS step S</div>
+    <div class="qtext">Putting Events + Attention + Recognise together, which candidate theme is the best fit?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Superhero Academy - powers, villains, secret identities.</span></li>
+      <li><span class="key">B</span><span class="txt">World Cup - a hard-fought match: goals scored, own goals, VAR calls, injury time, next fixture.</span></li>
+      <li><span class="key">C</span><span class="txt">Mountain Rescue - base camp, avalanches, survival against the odds.</span></li>
+      <li><span class="key">D</span><span class="txt">Office Bake-Off - signature bakes, soggy bottoms, showstoppers.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 5 · EARS step S</div>
+    <div class="qtext">You hand it to your AI co-pilot. Which instruction gets the most usable session back?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">"Make me a fun football-themed retro."</span></li>
+      <li><span class="key">B</span><span class="txt">Feed it all three EARS inputs at once - the events, the football interest, and the proud-but-frazzled mood - and ask for themed section labels mapped to real retro parts, plus a check-in question.</span></li>
+      <li><span class="key">C</span><span class="txt">"Give me 20 retro themes and I'll pick one."</span></li>
+      <li><span class="key">D</span><span class="txt">Ask it to decide the team's action items too, to save time.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 6 · EARS step S</div>
+    <div class="qtext">Which football section mapping does the real retro's job best for this sprint?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Goals (what went well) · Own Goals (the outage we caused) · Fouls Against Us (Ledger's surprise API change) · Injury Time (the late nights) · Next Fixture (actions).</span></li>
+      <li><span class="key">B</span><span class="txt">Goals · Goals · Goals · Goals · Goals - keep it all positive.</span></li>
+      <li><span class="key">C</span><span class="txt">Offside · Corner · Throw-in · Half-time · Full-time - proper football words.</span></li>
+      <li><span class="key">D</span><span class="txt">Keep Went Well / Didn't Go Well / Actions and just add a few football emoji.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 7 · EARS step R</div>
+    <div class="qtext">Different fortnight, same football-obsessed team - but now they're burnt out after three incidents and a brutal on-call week. Same interest. What changes?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Nothing - they love football, so run the same high-stakes World Cup Final board.</span></li>
+      <li><span class="key">B</span><span class="txt">Keep football but shift the framing to the mood - pre-season, recovery, a rebuilding squad, rotating tired players out. Gentle, not a title decider.</span></li>
+      <li><span class="key">C</span><span class="txt">Drop the theme and just do sticky notes; they're too tired for anything fun.</span></li>
+      <li><span class="key">D</span><span class="txt">Pick an unrelated wellbeing theme so they forget about work for a bit.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 8 · The whole habit</div>
+    <div class="qtext">Last question - what's the single idea EARS is really built on?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">The best themes are invented at your desk the night before - the more elaborate, the better.</span></li>
+      <li><span class="key">B</span><span class="txt">A great retro theme isn't chosen, it's discovered - by listening to the team all sprint, then letting AI do the five minutes of creative work.</span></li>
+      <li><span class="key">C</span><span class="txt">The format is what makes or breaks a retro, so obsess over picking the perfect one.</span></li>
+      <li><span class="key">D</span><span class="txt">AI should run the retro so the facilitator doesn't have to.</span></li>
+    </ul>
+  </div>
+
+  <!-- ============ ANSWER KEY (its own page) ============ -->
+  <section id="key">
+    <div class="prose"><h2>Answer key</h2></div>
+    <div class="scoring">
+      Give yourself a point for each best answer. <b>8</b> - Manager of the Season, you read every signal.
+      <b>6-7</b> - a solid back four; a couple slipped past but the retro lands. <b>4-5</b> - mid-table; re-read
+      the Recognise cues before match day. <b>0-3</b> - pre-season; worth another lap through Chapter 13.
+      Each answer names the EARS letter it turns on, so a wrong one tells you exactly what to re-read.
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 1 · EARS step E</div>
+      <div class="an-best">Best answer: <span class="letter">A</span></div>
+      <div class="an-txt">The fraud-model ship, the outage and rollback, the Ledger API surprise, and the finished migration.</div>
+      <div class="an-why">E is about the <b>load-bearing beats</b> - releases, incidents, deadlines, real wins - because a theme built on the moments the team already remembers feels earned. An exhaustive ticket dump (B) drowns the story; a cherry-picked highlight reel (C) hides the very outage the team most needs to talk about; and the light moments alone (D) miss the spine of the sprint.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 2 · EARS step A</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Notice what they already talk about off the clock - the football chatter all fortnight.</div>
+      <div class="an-why">Attention is a <b>listening</b> step: the signal shows up in the two minutes before stand-up and the non-work chatter, where the team is already theming the sprint for you. A survey (A) turns a delightful surprise into homework and usually returns mush; your own hobby (C) or a recycled template (D) ignore the team entirely - the opposite of the point.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 3 · EARS step R</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">Warm but honest - celebrate the wins and give the rough stuff a real place to land.</div>
+      <div class="an-why">Recognise means <b>match the actual mood</b> - and this one is genuinely mixed: proud <i>and</i> frazzled. A high-energy party (A) reads as tone-deaf about the outage; an all-recovery framing (B) ignores that they're rightly proud; dropping the theme (D) throws away the engagement that gets a wary team talking. The theme has to hold both the win and the sore spots at once.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 4 · EARS step S</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">World Cup - goals, own goals, VAR calls, injury time, next fixture.</div>
+      <div class="an-why">The winning theme satisfies <b>all three signals at once</b>. Football is literally the team's current language (Attention), it flexes to the mood - an "own goal / injury time" framing lets them name the outage and the Ledger blindside without it feeling grim (Recognise) - and it maps straight onto the events. Superheroes (A) ignore the mood; Mountain Rescue (C) matches the frazzle but not their real interest or pride; Bake-Off (D) grabs a one-off distractor signal, not the dominant one.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 5 · EARS step S</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Feed all three EARS inputs at once and ask for section labels mapped to real retro parts.</div>
+      <div class="an-why">The EARS prompt works because it <b>forces the model to reconcile all three inputs</b> - that's what stops it defaulting to a generic "fun theme" (A) and makes the output fit <i>this</i> team. Twenty unmapped themes (C) just hand the work back to you; and letting it decide the actions (D) outsources the human judgement that is the whole point of the retro.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 6 · EARS step S</div>
+      <div class="an-best">Best answer: <span class="letter">A</span></div>
+      <div class="an-txt">Goals · Own Goals · Fouls Against Us · Injury Time · Next Fixture.</div>
+      <div class="an-why">A strong themed mapping <b>quietly does what a plain retro does</b>: celebrate wins (Goals), separate what we did to ourselves from what was done to us (Own Goals vs Fouls Against Us - which usefully splits the outage from the Ledger blindside), surface the human cost (Injury Time) and commit to change (Next Fixture). All-positive (B) buries the outage; decorative-but-meaningless labels (C) confuse more than they help; emoji on the old three columns (D) is a costume, not a theme.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 7 · EARS step R</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Keep football but shift the framing to the mood - pre-season, recovery, a rebuilding squad.</div>
+      <div class="an-why">This is the EARS trap that catches people out: <b>Recognise can override Attention on tone</b>. The interest still helps you speak their language, but a burnt-out team needs the gentle version of it (pre-season, recovery), not a high-pressure final (A). Abandoning the theme (C) throws away the one thing that gets a tired team engaged; a random wellbeing theme (D) wastes the interest that would have carried it.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 8 · The whole habit</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">A great retro theme isn't chosen, it's discovered - by listening, then letting AI do the five minutes of creative work.</div>
+      <div class="an-why">EARS is a <b>listening habit, not a template</b>. The theme is overheard, not invented (A); the format matters far less than whether it resonates with this team right now (C); and the human noticing is the entire point - AI is just the fast hands, never the facilitator (D).</div>
+    </div>
   </section>
 
   <section class="cheat">
@@ -180,192 +281,5 @@
   </nav>
 
 </div>
-
-<script>
-const QUESTIONS = [
-  {
-    step: "E",
-    q: "You're building the retro around the sprint's real story. Which set of events should anchor the themed sections?",
-    opts: [
-      "The fraud-model ship, the outage and rollback, the Ledger API surprise, and the finished migration - the beats everyone actually remembers.",
-      "Every ticket closed this sprint, so nothing gets left out.",
-      "Just the fraud-model ship - keep it upbeat and skip the messy stuff.",
-      "Aisha's first PR and Tuesday's gif war - the fun human moments."
-    ],
-    correct: 0,
-    why: "E is about the <b>load-bearing beats</b> - releases, incidents, deadlines, real wins - because a theme built on the moments the team already remembers feels earned. An exhaustive ticket dump (B) drowns the story; a cherry-picked highlight reel (C) hides the very outage the team most needs to talk about; and the light moments alone (D) miss the spine of the sprint."
-  },
-  {
-    step: "A",
-    q: "It's the day before. How do you find the team's Attention - the thing worth theming around?",
-    opts: [
-      "Send a survey asking what theme everyone would like.",
-      "Notice what they already talk about off the clock - the football chatter that's filled the channel all fortnight.",
-      "Pick a theme from your own favourite hobby, so at least you'll enjoy running it.",
-      "Reuse last quarter's superhero theme - it went fine."
-    ],
-    correct: 1,
-    why: "Attention is a <b>listening</b> step: the signal shows up in the two minutes before stand-up and the non-work chatter, where the team is already theming the sprint for you. A survey (A) turns a delightful surprise into homework and usually returns mush; your own hobby (C) or a recycled template (D) ignore the team entirely - the opposite of the point."
-  },
-  {
-    step: "R",
-    q: "The team is proud of the ship but frazzled by the outage and tender about Ledger. What energy should the theme carry?",
-    opts: [
-      "Big and zany - a superhero party to lift everyone up.",
-      "Sombre wellbeing-and-recovery framing to honour how hard it was.",
-      "Warm but honest - celebrate the wins and give the rough stuff a real, non-trivialising place to land.",
-      "Neutral Start / Stop / Continue - don't risk a theme when people are tired."
-    ],
-    correct: 2,
-    why: "Recognise means <b>match the actual mood</b> - and this one is genuinely mixed: proud <i>and</i> frazzled. A high-energy party (A) reads as tone-deaf about the outage; an all-recovery framing (B) ignores that they're rightly proud; dropping the theme (D) throws away the engagement that gets a wary team talking. The theme has to hold both the win and the sore spots at once."
-  },
-  {
-    step: "S",
-    q: "Putting Events + Attention + Recognise together, which candidate theme is the best fit?",
-    opts: [
-      "Superhero Academy - powers, villains, secret identities.",
-      "World Cup - a hard-fought match: goals scored, own goals, VAR calls, injury time, next fixture.",
-      "Mountain Rescue - base camp, avalanches, survival against the odds.",
-      "Office Bake-Off - signature bakes, soggy bottoms, showstoppers."
-    ],
-    correct: 1,
-    why: "The winning theme satisfies <b>all three signals at once</b>. Football is literally the team's current language (Attention), it flexes to the mood - an \"own goal / injury time\" framing lets them name the outage and the Ledger blindside without it feeling grim (Recognise) - and it maps straight onto the events. Superheroes (A) ignore the mood; Mountain Rescue (C) matches the frazzle but not their real interest or pride; Bake-Off (D) grabs a one-off distractor signal, not the dominant one."
-  },
-  {
-    step: "S",
-    q: "You hand it to your AI co-pilot. Which instruction gets the most usable session back?",
-    opts: [
-      "“Make me a fun football-themed retro.”",
-      "Feed it all three EARS inputs at once - the events, the football interest, and the proud-but-frazzled mood - and ask for themed section labels mapped to real retro parts, plus a check-in question.",
-      "“Give me 20 retro themes and I'll pick one.”",
-      "Ask it to decide the team's action items too, to save time."
-    ],
-    correct: 1,
-    why: "The EARS prompt works because it <b>forces the model to reconcile all three inputs</b> - that's what stops it defaulting to a generic \"fun theme\" (A) and makes the output fit <i>this</i> team. Twenty unmapped themes (C) just hand the work back to you; and letting it decide the actions (D) outsources the human judgement that is the whole point of the retro."
-  },
-  {
-    step: "S",
-    q: "Which football section mapping does the real retro's job best for this sprint?",
-    opts: [
-      "Goals (what went well) · Own Goals (the outage we caused) · Fouls Against Us (Ledger's surprise API change) · Injury Time (the late nights) · Next Fixture (actions).",
-      "Goals · Goals · Goals · Goals · Goals - keep it all positive.",
-      "Offside · Corner · Throw-in · Half-time · Full-time - proper football words.",
-      "Keep Went Well / Didn't Go Well / Actions and just add a few football emoji."
-    ],
-    correct: 0,
-    why: "A strong themed mapping <b>quietly does what a plain retro does</b>: celebrate wins (Goals), separate what we did to ourselves from what was done to us (Own Goals vs Fouls Against Us - which usefully splits the outage from the Ledger blindside), surface the human cost (Injury Time) and commit to change (Next Fixture). All-positive (B) buries the outage; decorative-but-meaningless labels (C) confuse more than they help; emoji on the old three columns (D) is a costume, not a theme."
-  },
-  {
-    step: "R",
-    q: "Different fortnight, same football-obsessed team - but now they're burnt out after three incidents and a brutal on-call week. Same interest. What changes?",
-    opts: [
-      "Nothing - they love football, so run the same high-stakes World Cup Final board.",
-      "Keep football but shift the framing to the mood - pre-season, recovery, a rebuilding squad, rotating tired players out. Gentle, not a title decider.",
-      "Drop the theme and just do sticky notes; they're too tired for anything fun.",
-      "Pick an unrelated wellbeing theme so they forget about work for a bit."
-    ],
-    correct: 1,
-    why: "This is the EARS trap that catches people out: <b>Recognise can override Attention on tone</b>. The interest still helps you speak their language, but a burnt-out team needs the gentle version of it (pre-season, recovery), not a high-pressure final (A). Abandoning the theme (C) throws away the one thing that gets a tired team engaged; a random wellbeing theme (D) wastes the interest that would have carried it."
-  },
-  {
-    step: "E→S",
-    q: "Last question - what's the single idea EARS is really built on?",
-    opts: [
-      "The best themes are invented at your desk the night before - the more elaborate, the better.",
-      "A great retro theme isn't chosen, it's discovered - by listening to the team all sprint, then letting AI do the five minutes of creative work.",
-      "The format is what makes or breaks a retro, so obsess over picking the perfect one.",
-      "AI should run the retro so the facilitator doesn't have to."
-    ],
-    correct: 1,
-    why: "EARS is a <b>listening habit, not a template</b>. The theme is overheard, not invented (A); the format matters far less than whether it resonates with this team right now (C); and the human noticing is the entire point - AI is just the fast hands, never the facilitator (D)."
-  }
-];
-
-const letters = ['A','B','C','D'];
-const answers = new Array(QUESTIONS.length).fill(null);
-const quizEl = document.getElementById('quiz');
-
-QUESTIONS.forEach((item, qi) => {
-  const card = document.createElement('div');
-  card.className = 'q';
-  const opts = item.opts.map((t, oi) => `
-    <label class="opt" data-q="${qi}">
-      <input type="radio" name="q${qi}" value="${oi}">
-      <span class="key">${letters[oi]}</span>
-      <span class="txt">${t}</span>
-    </label>`).join('');
-  card.innerHTML = `
-    <div class="qnum">Question ${qi+1} of 8 · EARS step ${item.step}</div>
-    <div class="qtext">${item.q}</div>
-    <div class="opts">${opts}</div>`;
-  quizEl.appendChild(card);
-});
-
-const fill = document.getElementById('fill');
-const plab = document.getElementById('plab');
-const scoreBtn = document.getElementById('scoreBtn');
-
-quizEl.addEventListener('change', (e) => {
-  if (e.target.name && e.target.name.startsWith('q')) {
-    const qi = +e.target.name.slice(1);
-    answers[qi] = +e.target.value;
-    document.querySelectorAll(`.opt[data-q="${qi}"]`).forEach(l => l.classList.remove('sel'));
-    e.target.closest('.opt').classList.add('sel');
-    const done = answers.filter(a => a !== null).length;
-    fill.style.width = (done/QUESTIONS.length*100) + '%';
-    plab.textContent = `${done} / ${QUESTIONS.length} answered`;
-    scoreBtn.disabled = done < QUESTIONS.length;
-  }
-});
-
-const TIERS = [
-  {min:8, name:"Manager of the Season", blurb:"You ran EARS like you'd been doing it for years - every signal read, mood and interest reconciled."},
-  {min:6, name:"Solid back four", blurb:"A couple of signals slipped past you, but this retro lands and the team leaves engaged."},
-  {min:4, name:"Mid-table", blurb:"You've got the shape of it - re-read the Recognise cues before match day and you'll climb."},
-  {min:0, name:"Pre-season", blurb:"Worth another lap through Chapter 13 before you pick a theme - the listening is the part to drill."}
-];
-
-scoreBtn.addEventListener('click', () => {
-  const score = answers.reduce((s,a,i)=> s + (a === QUESTIONS[i].correct ? 1 : 0), 0);
-  const tier = TIERS.find(t => score >= t.min);
-  document.getElementById('scorecard').innerHTML =
-    `<div class="num">${score}<small> / 8</small></div>
-     <div class="tier">${tier.name}</div>
-     <div class="blurb">${tier.blurb}</div>`;
-  document.getElementById('answers').innerHTML = QUESTIONS.map((item, qi) => {
-    const yours = answers[qi];
-    const right = yours === item.correct;
-    const yourRow = right
-      ? `<div class="yours right">✓ You picked ${letters[yours]} - nailed it.</div>`
-      : `<div class="yours wrong">✕ You picked ${letters[yours]}. ${item.opts[yours]}</div>`;
-    return `<div class="ans">
-      <div class="an-q">Question ${qi+1} · EARS step ${item.step}</div>
-      <div class="an-best">Best answer: ${letters[item.correct]} <span class="step">·</span></div>
-      <div class="an-txt">${item.opts[item.correct]}</div>
-      <div class="an-why">${item.why}</div>
-      ${yourRow}
-    </div>`;
-  }).join('');
-  const key = document.getElementById('key');
-  key.hidden = false;
-  key.scrollIntoView({behavior:'smooth', block:'start'});
-});
-
-// For the printed book: render a static key so the paper edition always has answers.
-(function(){
-  const key = document.getElementById('key');
-  if (!window.matchMedia) return;
-  // Populate answers statically too, so print works even without interaction.
-  if (!document.getElementById('answers').innerHTML.trim()) {
-    document.getElementById('answers').innerHTML = QUESTIONS.map((item, qi) => `
-      <div class="ans">
-        <div class="an-q">Question ${qi+1} · EARS step ${item.step}</div>
-        <div class="an-best">Best answer: ${letters[item.correct]}</div>
-        <div class="an-txt">${item.opts[item.correct]}</div>
-        <div class="an-why">${item.why}</div>
-      </div>`).join('');
-  }
-})();
-</script>
 </body>
 </html>
