@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>Fix These Action Items - Quick Drill, The Retro Playbook</title>
+<link rel="stylesheet" href="../assets/book.css">
+<style>
+  .page.drill{--accent:var(--ember); --accent-tint:var(--ember-tint);}
+  .drill .lid .kicker .chip{border-color:var(--accent);}
+
+  .item{background:var(--card); border:1px solid var(--rule); border-radius:2px;
+        padding:18px 20px 16px; margin:0 0 16px; page-break-inside:avoid; break-inside:avoid;}
+  .item .tag{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent);}
+  .item .board{font-family:var(--body); font-style:italic; font-size:1.08rem; line-height:1.4;
+               border-left:3px solid var(--rule); padding:6px 0 6px 14px; margin:8px 0 14px; color:var(--ink);}
+  .item .rw{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+  .item .line{border-bottom:1px solid var(--rule); height:22px; margin-top:8px;}
+
+  .rulebar{background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--accent);
+           border-radius:3px; padding:14px 18px; margin:24px 0; font-size:.92rem;}
+  .rulebar b{font-family:var(--display); font-weight:700;}
+
+  #key{page-break-before:always; break-before:page; margin-top:52px;}
+  .ans{border-bottom:1px solid var(--rule); padding:16px 0; page-break-inside:avoid; break-inside:avoid;}
+  .ans:last-child{border-bottom:none;}
+  .ans .an-q{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+  .ans .miss{font-size:.93rem; margin:6px 0 8px;}
+  .ans .miss b{font-family:var(--display); font-weight:700; color:var(--accent);}
+  .ans .fixed{font-family:var(--body); font-size:1rem; line-height:1.45; border-left:3px solid var(--accent);
+              padding:4px 0 4px 14px; color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="page narrow drill">
+<p><a class="back" href="../index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 10 · Quick Drill</span><span>Part III - The Format Cookbook</span></div>
+    <h1>Fix These Action Items</h1>
+    <p class="dek">Four real commitments, straight off a retro board, all heading for the graveyard. Rewrite each one so it will actually happen - then compare with the versions on the next page.</p>
+  </header>
+
+  <div class="rulebar">
+    <b>The whole system:</b> one action item, one owner, one check-in. Every rewrite below should name <b>who</b>, say what <b>"done"</b> looks like, give a <b>date</b>, and land somewhere the team already looks. A nod isn't an answer.
+  </div>
+
+  <div class="item">
+    <div class="tag">Board note 1</div>
+    <div class="board">"The team will improve our documentation."</div>
+    <div class="rw">Your rewrite</div>
+    <div class="line"></div><div class="line"></div>
+  </div>
+
+  <div class="item">
+    <div class="tag">Board note 2</div>
+    <div class="board">"We should communicate better with the platform team."</div>
+    <div class="rw">Your rewrite</div>
+    <div class="line"></div><div class="line"></div>
+  </div>
+
+  <div class="item">
+    <div class="tag">Board note 3</div>
+    <div class="board">"Everyone will write more tests."</div>
+    <div class="rw">Your rewrite</div>
+    <div class="line"></div><div class="line"></div>
+  </div>
+
+  <div class="item">
+    <div class="tag">Board note 4</div>
+    <div class="board">"Look into the flaky deploy pipeline."</div>
+    <div class="rw">Your rewrite</div>
+    <div class="line"></div><div class="line"></div>
+  </div>
+
+  <!-- ============ ANSWER KEY (its own page) ============ -->
+  <section id="key">
+    <div class="prose"><h2>One version of each that survives</h2>
+      <p>Your wording will differ - what matters is that all four boxes get ticked: an owner, a definition of done, a date, and somewhere visible.</p></div>
+
+    <div class="ans">
+      <div class="an-q">Board note 1</div>
+      <div class="miss"><b>Missing:</b> an owner, a "done", and a date - "the team" means nobody.</div>
+      <div class="fixed">"Priya drafts a README template for our services and shares it in Thursday's standup."</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Board note 2</div>
+      <div class="miss"><b>Missing:</b> what "better" actually is, and who does it - it's a wish, not a commitment.</div>
+      <div class="fixed">"Sam sets up a shared channel with the platform team and posts our next three API changes there, by end of sprint."</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Board note 3</div>
+      <div class="miss"><b>Missing:</b> "everyone" is no owner, and "more" can't be checked - make it one person and one number.</div>
+      <div class="fixed">"Ben adds a CI check that flags any payments-service PR under 60% coverage, in place by Friday."</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Board note 4</div>
+      <div class="miss"><b>Missing:</b> an owner and a "done" - and it's too big to finish before the next retro, so shrink it.</div>
+      <div class="fixed">"Dana spends two hours finding the single biggest cause of the deploy flakiness and posts what she finds in the retro channel by Wednesday."</div>
+    </div>
+  </section>
+
+  <section class="cheat">
+    <span class="eyebrow">🎯 Four-box check</span>
+    <h2>Run every action item through this</h2>
+    <ul>
+      <li><b>Owner</b> - one named person, said out loud, not "the team".</li>
+      <li><b>Done</b> - you'd both agree, looking at it, whether it happened.</li>
+      <li><b>Date</b> - before the next retro, ideally small enough to fit in the cracks.</li>
+      <li><b>Visible</b> - pinned where the team already looks, not buried in a notes doc.</li>
+      <li><b>Then check it next time</b> - open the following retro by asking whether it actually happened.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook - Chapter 10 Quick Drill</span>
+    <span>Part III - The Format Cookbook</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="10-from-talk-to-change.html">&larr; Ch. 10 - From Talk to Change</a>
+    <a class="next" href="interlude-the-retro-that-almost-wasnt.html">Interlude - The Retro That Almost Wasn't &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>
