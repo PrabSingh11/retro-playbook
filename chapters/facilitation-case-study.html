@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>The Chair Is Yours - Facilitation Case Study, The Retro Playbook</title>
+<link rel="stylesheet" href="../assets/book.css">
+<style>
+  .page.quiz{--accent:var(--check); --accent-tint:var(--check-tint);}
+  .quiz .lid .kicker .chip{border-color:var(--accent);}
+
+  /* Cast panel */
+  .cast{list-style:none; margin:22px 0 8px; padding:0; display:grid; gap:0;
+        background:var(--card); border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+  .cast li{display:grid; grid-template-columns:170px 1fr; gap:16px; padding:13px 18px; border-top:1px solid var(--rule-soft);}
+  .cast li:first-child{border-top:none;}
+  .cast .who{font-family:var(--display); font-weight:700; font-size:.98rem;}
+  .cast .who small{display:block; font-family:var(--mono); font-weight:400; font-size:10.5px;
+                   letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft); margin-top:2px;}
+  .cast .role{font-size:.93rem; color:var(--ink-soft); line-height:1.45;}
+  @media (max-width:560px){ .cast li{grid-template-columns:1fr; gap:3px;} }
+
+  /* Question blocks */
+  .q{background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--accent);
+     border-radius:2px; padding:20px 22px 16px; margin:0 0 18px; page-break-inside:avoid; break-inside:avoid;}
+  .q .qnum{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent);}
+  .q .qtext{font-family:var(--display); font-weight:700; font-size:1.1rem; line-height:1.35; margin:6px 0 14px; text-wrap:balance;}
+  .opts{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .opts li{display:flex; gap:12px; align-items:flex-start;}
+  .opts .key{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--ink-soft);
+             border:1px solid var(--rule); border-radius:3px; width:23px; height:23px; display:grid; place-items:center; flex:none;}
+  .opts .txt{font-size:.95rem; line-height:1.45;}
+
+  /* Answer key */
+  #key{page-break-before:always; break-before:page; margin-top:52px;}
+  .scoring{background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--accent);
+           border-radius:3px; padding:16px 20px; margin:0 0 26px; font-size:.94rem;}
+  .scoring b{font-family:var(--display); font-weight:700;}
+  .ans{border-bottom:1px solid var(--rule); padding:16px 0; page-break-inside:avoid; break-inside:avoid;}
+  .ans:last-child{border-bottom:none;}
+  .ans .an-q{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+  .ans .an-best{font-family:var(--display); font-weight:700; font-size:1.02rem; margin:5px 0 4px;}
+  .ans .an-best .letter{color:var(--accent);}
+  .ans .an-txt{font-size:.94rem; margin:0 0 8px;}
+  .ans .an-why{font-size:.92rem; color:var(--ink-soft); line-height:1.55;}
+  .ans .an-why b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="page quiz">
+<p><a class="back" href="../index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 03 · Case Study</span><span>Part I - Retro Basics</span></div>
+    <h1>The Chair Is Yours</h1>
+    <p class="dek">It's your first turn facilitating, and one ordinary retro is about to throw eight of the ten moments at you. Read what happens, decide what you'd actually do, then check the key at the end.</p>
+  </header>
+
+  <div class="intro">
+    <p><strong>How this works.</strong> Chapter 3 gave you the ten moments and the line to have ready for each. This is the drill: a single retro, unfolding turn by turn. For each moment, jot A, B, C or D - the move you'd make live, in the room - then turn to the answer key to see which one holds up and why. Facilitation isn't charisma; it's these specific, learnable calls.</p>
+  </div>
+
+  <section class="prose">
+    <h2>The setup</h2>
+    <p>The <strong>Beacon squad</strong> - six people building routing software for a logistics platform - just finished a rough sprint. A rushed release shipped a bug that mis-routed a batch of deliveries; an on-call rota grievance has been simmering for weeks; and two engineers have unfinished business over a caching layer that got ripped out. The team recently started rotating who runs the retro, and this fortnight it's <em>you</em>. You have thirty minutes and a room that doesn't much want to be there.</p>
+  </section>
+
+  <ul class="cast">
+    <li><div class="who">Raj <small>Principal engineer</small></div><div class="role">Brilliant and generous - and answers every question first, at length. By round two the others are just nodding along.</div></li>
+    <li><div class="who">Nadia <small>Recently joined</small></div><div class="role">Hasn't said a word in twenty minutes. Her sticky note reads "on-call rota is brutal."</div></li>
+    <li><div class="who">Ben <small>Backend</small></div><div class="role">Convinced the caching change is what caused the bad release.</div></li>
+    <li><div class="who">Chloe <small>Backend</small></div><div class="role">Made the caching call. Arms folded, feels she's being set up to take the blame.</div></li>
+    <li><div class="who">Tomas <small>Product manager</small></div><div class="role">Keeps steering toward next quarter's roadmap instead of the sprint just gone.</div></li>
+    <li><div class="who">You <small>Facilitator (first time)</small></div><div class="role">You were also on-call during the incident - and you privately think the <em>release process</em>, not the caching, was the real cause.</div></li>
+  </ul>
+
+  <section class="prose">
+    <h2>Your eight calls</h2>
+    <p>Pick the move that best fits the moment - the warm, structural one, not the one that feels satisfying in the heat of it. Write your letters as you go.</p>
+  </section>
+
+  <div class="q">
+    <div class="qnum">Question 1 · Opening the room</div>
+    <div class="qtext">The team files in - Raj already mid-thought, Chloe's arms folded, two phones face-up on the table. It's your first time in the chair. How do you open?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Jump straight into "so, what went well?" - the room's tense, best to keep it moving.</span></li>
+      <li><span class="key">B</span><span class="txt">Open calm and unhurried, greet people by name, and set the tone with the Prime Directive before any content.</span></li>
+      <li><span class="key">C</span><span class="txt">Tackle the mis-routing bug head-on first, so nobody thinks you're dodging it.</span></li>
+      <li><span class="key">D</span><span class="txt">Admit you're new at this and ask Raj to co-run it, since he knows the systems best.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 2 · The over-talker</div>
+    <div class="qtext">First question out, and Raj answers instantly and at length. By the second round the others are just nodding at whatever he says. What do you do?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Let him lead - he's the most senior and usually right anyway.</span></li>
+      <li><span class="key">B</span><span class="txt">Cut in and tell him he's dominating and needs to give other people room.</span></li>
+      <li><span class="key">C</span><span class="txt">Switch to written, simultaneous input so volume can't dominate, then warmly name a round: "let's hear from folks who haven't spoken yet."</span></li>
+      <li><span class="key">D</span><span class="txt">Ask Raj to step out for a few minutes so the others open up.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 3 · Sitting with silence</div>
+    <div class="qtext">You ask, "what slowed us down most this sprint?" Nobody answers. Four seconds pass and it is excruciating. What do you do?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Offer your own answer to get the ball rolling.</span></li>
+      <li><span class="key">B</span><span class="txt">Immediately rephrase the question, in case it landed wrong.</span></li>
+      <li><span class="key">C</span><span class="txt">Say nothing, hold eye contact around the room, and count to ten in your head.</span></li>
+      <li><span class="key">D</span><span class="txt">Call on someone by name to get things unstuck.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 4 · The silent one</div>
+    <div class="qtext">Twenty minutes in, Nadia still hasn't spoken - but her sticky note reads "on-call rota is brutal." How do you bring her in?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">"Nadia, you've been quiet - what do you make of it all so far?"</span></li>
+      <li><span class="key">B</span><span class="txt">Leave her be; if she wanted to say something, she would.</span></li>
+      <li><span class="key">C</span><span class="txt">Point at what she wrote: "Nadia, I saw your note about the on-call rota - want to say more about that?"</span></li>
+      <li><span class="key">D</span><span class="txt">Read her sticky aloud to the whole group and ask everyone to react to it.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 5 · Staying neutral</div>
+    <div class="qtext">The room is converging on Chloe's caching change as the cause. You were on-call and you privately believe the release process was the real problem. What do you do?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Steer the discussion toward the release process - you know that's the actual issue.</span></li>
+      <li><span class="key">B</span><span class="txt">Keep running the process with questions rather than a verdict; if you must weigh in, say "stepping out of facilitator mode for a second" first, then step back in.</span></li>
+      <li><span class="key">C</span><span class="txt">Defend Chloe outright - the blame is unfair and someone should say so.</span></li>
+      <li><span class="key">D</span><span class="txt">Stay completely out of it and let the room land wherever it lands; a facilitator shouldn't interfere.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 6 · Abandoning your plan</div>
+    <div class="qtext">You'd planned a Sailboat retro. Ten minutes in, it's obvious the room only wants to talk about Tuesday's incident, and the metaphor is getting in the way. What do you do?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Stick with the Sailboat - you prepared it, and switching now looks disorganised.</span></li>
+      <li><span class="key">B</span><span class="txt">Set the format aside and ask the real question directly - "it sounds like we need to talk about Tuesday; what actually happened?" - then bring structure back later.</span></li>
+      <li><span class="key">C</span><span class="txt">End the retro early and reschedule with a format that fits.</span></li>
+      <li><span class="key">D</span><span class="txt">Push through the Sailboat faster so there's time for the incident at the end.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 7 · When it turns into a fight</div>
+    <div class="qtext">Ben and Chloe start relitigating the caching decision from weeks ago. Voices rise, it's turning personal, and the rest of the room has gone quiet in the way that means they're watching, not participating. What do you do?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Let them hash it out - better aired than left to fester.</span></li>
+      <li><span class="key">B</span><span class="txt">Pick the technically correct side to settle it quickly and move on.</span></li>
+      <li><span class="key">C</span><span class="txt">Name it calmly, pause the exchange, separate the real disagreement from the personal history, and offer them a 1:1 if it needs more time.</span></li>
+      <li><span class="key">D</span><span class="txt">Move straight to the next item and act as if it isn't happening.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 8 · The conversation that won't stay on track</div>
+    <div class="qtext">Two problems at once: Tomas keeps pulling the retro toward next quarter's roadmap, and separately the group has now circled the deploy discussion twice without landing. What's the right tool for each?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Car Park both - write them down and move on.</span></li>
+      <li><span class="key">B</span><span class="txt">Car Park Tomas's off-topic roadmap point so it's deferred not dismissed; call an agreed ELMO ("Enough, Let's Move On") on the deploy discussion that's circling.</span></li>
+      <li><span class="key">C</span><span class="txt">ELMO both - cut them off and protect the clock.</span></li>
+      <li><span class="key">D</span><span class="txt">Let the roadmap tangent run since it matters, and keep going round on the deploy until it resolves itself.</span></li>
+    </ul>
+  </div>
+
+  <!-- ============ ANSWER KEY (its own page) ============ -->
+  <section id="key">
+    <div class="prose"><h2>Answer key</h2></div>
+    <div class="scoring">
+      Give yourself a point for each best answer. <b>8</b> - rotate you into the chair every time; you ran the room, not the script.
+      <b>6-7</b> - safe hands; a wobble or two, but the retro stayed on the rails. <b>4-5</b> - learning the chair; re-read the moves
+      and the next one goes smoother. <b>0-3</b> - back to the script; Chapter 3 has the exact line to have ready for each moment.
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 1 · Opening the room</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Open calm and unhurried, greet people by name, set the tone with the Prime Directive first.</div>
+      <div class="an-why">The room takes its emotional cue from you in the <b>first thirty seconds</b>, before a word of content. A calm, deliberate open plus the Prime Directive (Chapter 2) says "no-judgment space" and means it. Rushing into "what went well?" (A) transmits your own tension; opening on the bug (C) frames the retro as a trial; and handing the chair to the loudest expert (D) throws away the whole reason the team is rotating the role.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 2 · The over-talker</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">Switch to written/simultaneous input, then warmly name a round for those who haven't spoken.</div>
+      <div class="an-why">Don't shut the over-talker down - <b>redirect structurally</b>. Simultaneous, written gathering means one voice can't own the format itself, and "let's hear from folks who haven't spoken yet" is a warm redirect, not a rebuke. Deferring to seniority (A) is how the room quietly checks out; a public call-out (B) costs Raj his safety and derails into friction; exiling him from the room (D) is a humiliation nobody forgets.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 3 · Sitting with silence</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">Say nothing, hold the room, count to ten.</div>
+      <div class="an-why">This is the "wait time" finding [Rowe, 1972]: push the pause past a few seconds and the answers you get back are measurably longer and better. The silence is doing its job. Filling it with your own answer (A), instantly rephrasing (B), or spotlighting someone cold (D) all rescue the room from the exact pause that produces the honest response.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 4 · The silent one</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">Give a specific, low-pressure invite tied to what she already wrote.</div>
+      <div class="an-why">Never put someone on the spot cold. Pointing at something Nadia already wrote lets her <b>expand a thought rather than generate one live</b> - specific and low-pressure beats an open "what do you think?" (A), which is exactly the spotlight to avoid. Leaving her out (B) risks missing the sprint's real sore point; reading her note aloud for group reaction (D) exposes her instead of inviting her in.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 5 · Staying neutral</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Run the process with questions; if you contribute, step out of the facilitator role explicitly, then back in.</div>
+      <div class="an-why">The facilitator's job is to <b>run the process, not win the argument</b>. Ask more than you state, and surface evidence with questions so the room reaches the cause itself. Steering to your own release-process theory (A) or defending Chloe outright (C) both hijack the room with your conclusion - but going fully hands-off while the room scapegoats someone (D) abdicates the process too. Neutral doesn't mean absent; it means guiding without imposing your verdict.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 6 · Abandoning your plan</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Drop the format, ask the real question, return to structure once it's had air.</div>
+      <div class="an-why">The <b>format serves the room, not the other way around</b>. When you can feel the mismatch, pivot: set the metaphor aside, ask the real question directly, and bring structure back once the honest conversation has happened. Clinging to the Sailboat (A) or just speeding through it (D) makes the format actively fight the room; scrapping the whole retro (C) throws away the moment the team is finally ready to talk.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 7 · When it turns into a fight</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">Name it, don't pick a side, separate the idea from the personal - offer a 1:1 if needed.</div>
+      <div class="an-why">Lencioni's distinction is the tool [Lencioni, 2002]: conflict about the <i>idea or decision</i> is healthy; conflict that's become about the <i>person</i> isn't, and your job is to pull it back to the first kind - or park it to a 1:1 if it keeps sliding. Letting it run (A) lets it turn personal in front of everyone; refereeing the merits (B) makes you the judge and loses whoever you rule against; ignoring it (D) tells the whole room the meeting isn't safe.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 8 · The conversation that won't stay on track</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">Car Park the off-topic tangent; ELMO the on-topic conversation that's circling.</div>
+      <div class="an-why">Two problems, <b>two different tools</b>. A genuine but off-topic point (the roadmap) goes in a visible Car Park so it's deferred, not dismissed - writing it down is what makes that credible. A conversation that's on-topic but going in circles (the deploy) gets ELMO, the one-word interrupt the whole team agreed anyone may call. Car-Parking the circular one (A) never resolves it; ELMO-ing the roadmap point (C) reads as dismissing it; and letting both run (D) is how a retro overruns and loses the room.</div>
+    </div>
+  </section>
+
+  <section class="cheat">
+    <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
+    <h2>The moves behind the answers</h2>
+    <ul>
+      <li><b>Open calm</b> - the room mirrors your energy in the first thirty seconds; lead with the Prime Directive.</li>
+      <li><b>Over-talker:</b> redirect structurally with written input, don't call them out.</li>
+      <li><b>Silence:</b> count to ten before you rescue the room from it.</li>
+      <li><b>The silent one:</b> a specific, low-pressure invite beats an open "what do you think?"</li>
+      <li><b>Neutrality:</b> run the process, not the verdict; step out of "facilitator" explicitly if you must weigh in.</li>
+      <li><b>Abandon the plan</b> when the format is blocking what the room needs.</li>
+      <li><b>A fight:</b> name it, don't pick a side, pull it from personal back to the real disagreement.</li>
+      <li><b>Off-track:</b> Car Park a real tangent so it's deferred not dismissed; ELMO a conversation that's circling.</li>
+      <li><b>Two more from the chapter:</b> an anonymous ESVP check for a whole flat room, and rotating the chair so facilitation isn't hoarded by the Scrum Master.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook - Chapter 03 Case Study</span>
+    <span>Part I - Retro Basics</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="03-facilitation-101.html">&larr; Ch. 03 - Facilitation 101</a>
+    <a class="next" href="04-the-icebreaker-box.html">Ch. 04 - The Icebreaker Box &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>
