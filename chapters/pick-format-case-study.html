@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
+<title>The Right Retro for the Job - Format Case Study, The Retro Playbook</title>
+<link rel="stylesheet" href="../assets/book.css">
+<style>
+  .page.quiz{--accent:var(--ember); --accent-tint:var(--ember-tint);}
+  .quiz .lid .kicker .chip{border-color:var(--accent);}
+
+  /* Question blocks */
+  .q{background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--accent);
+     border-radius:2px; padding:20px 22px 16px; margin:0 0 18px; page-break-inside:avoid; break-inside:avoid;}
+  .q .qnum{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent);}
+  .q .qtext{font-family:var(--display); font-weight:700; font-size:1.1rem; line-height:1.35; margin:6px 0 14px; text-wrap:balance;}
+  .opts{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+  .opts li{display:flex; gap:12px; align-items:flex-start;}
+  .opts .key{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--ink-soft);
+             border:1px solid var(--rule); border-radius:3px; width:23px; height:23px; display:grid; place-items:center; flex:none;}
+  .opts .txt{font-size:.95rem; line-height:1.45;}
+
+  /* Answer key */
+  #key{page-break-before:always; break-before:page; margin-top:52px;}
+  .scoring{background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--accent);
+           border-radius:3px; padding:16px 20px; margin:0 0 26px; font-size:.94rem;}
+  .scoring b{font-family:var(--display); font-weight:700;}
+  .ans{border-bottom:1px solid var(--rule); padding:16px 0; page-break-inside:avoid; break-inside:avoid;}
+  .ans:last-child{border-bottom:none;}
+  .ans .an-q{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+  .ans .an-best{font-family:var(--display); font-weight:700; font-size:1.02rem; margin:5px 0 4px;}
+  .ans .an-best .letter{color:var(--accent);}
+  .ans .an-txt{font-size:.94rem; margin:0 0 8px;}
+  .ans .an-why{font-size:.92rem; color:var(--ink-soft); line-height:1.55;}
+  .ans .an-why b{color:var(--ink);}
+</style>
+</head>
+<body>
+<div class="page quiz">
+<p><a class="back" href="../index.html">&larr; The Retro Playbook</a></p>
+
+  <header class="lid">
+    <div class="kicker"><span class="chip">The Retro Playbook</span><span>Chapter 05 · Case Study</span><span>Part III - The Format Cookbook</span></div>
+    <h1>The Right Retro for the Job</h1>
+    <p class="dek">You're the retro coach on call this fortnight, and eight squads each ping you with their situation. One question for each: which format do you send them in with? Decide, then check the key.</p>
+  </header>
+
+  <div class="intro">
+    <p><strong>How this works.</strong> Chapter 5 is the decision guide - find your team's situation, follow the arrow. This is the drill: eight different teams, eight situations, and the same job each time - match the format to the sprint, not to habit. Jot A, B, C or D for each, then turn to the answer key. The one rule underneath all of it: "we always do Mad/Sad/Glad" is a reason to change the format, not to keep it.</p>
+  </div>
+
+  <section class="prose">
+    <h2>Eight squads, eight calls</h2>
+    <p>Each team below tells you what their fortnight looked like. Pick the format that fits the situation - the right tool, not the most familiar or the most elaborate one.</p>
+  </section>
+
+  <div class="q">
+    <div class="qnum">Question 1 · The Kestrel squad</div>
+    <div class="qtext">"We had a production incident on Thursday - a bad deploy took checkout down for an hour. Feelings are still raw." What format do you send them in with?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Mad / Sad / Glad, to let people vent the emotion of it.</span></li>
+      <li><span class="key">B</span><span class="txt">A blameless Timeline - reconstruct exactly what happened, step by step, before anyone assigns a cause.</span></li>
+      <li><span class="key">C</span><span class="txt">A Sailboat, to look at what's pushing the team forward and holding it back.</span></li>
+      <li><span class="key">D</span><span class="txt">Start / Stop / Continue - quick and familiar, just get it done.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 2 · The Vela team</div>
+    <div class="qtext">"We just shipped the launch we've been building for nine months. The whole channel is euphoric." What retro do you run?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Straight into "what went wrong" while the details are fresh - celebrate some other time.</span></li>
+      <li><span class="key">B</span><span class="txt">A Post-Release retro that celebrates the win first, then dissects - order matters.</span></li>
+      <li><span class="key">C</span><span class="txt">A Pre-Mortem on the next launch, to stay ahead of it.</span></li>
+      <li><span class="key">D</span><span class="txt">A blameless Timeline of the whole launch week.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 3 · The Orca squad</div>
+    <div class="qtext">"Our retro board has had the same three complaints on it for five sprints running." What do you reach for?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">A brand-new, exciting format to shake things up.</span></li>
+      <li><span class="key">B</span><span class="txt">Retro Bingo, to at least make it fun again.</span></li>
+      <li><span class="key">C</span><span class="txt">Not a new format at all - this is a follow-through problem; fix how actions get owned and tracked (Chapter 10).</span></li>
+      <li><span class="key">D</span><span class="txt">A Pre-Mortem, to dig into what's really going wrong.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 4 · The Lumen team</div>
+    <div class="qtext">"Honestly the team's flat - monosyllabic answers, phones on the table, going through the motions." Which format?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">A serious, deep-dive root-cause session to force some engagement.</span></li>
+      <li><span class="key">B</span><span class="txt">A creative, high-energy format - a Movie Poster Retro or Retro Bingo. Fun resets a flat room faster than more discussion.</span></li>
+      <li><span class="key">C</span><span class="txt">Cancel it - there's no point running a retro when energy is this low.</span></li>
+      <li><span class="key">D</span><span class="txt">The same classic as always, but push them harder to join in.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 5 · The Atlas squad</div>
+    <div class="qtext">"Two teams just merged into one. Half of us have never worked together." How do you open their first retro?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Dive straight into Mad / Sad / Glad to get honesty fast.</span></li>
+      <li><span class="key">B</span><span class="txt">Skip the icebreaker to save time - they'll warm up on their own.</span></li>
+      <li><span class="key">C</span><span class="txt">A trust-builder icebreaker first, then the gentle, structured Starfish format.</span></li>
+      <li><span class="key">D</span><span class="txt">A Pre-Mortem, so they bond over shared risks.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 6 · The Cirrus team</div>
+    <div class="qtext">"Everything's fine, honestly. Velocity's steady, nobody's flagging any risks, it's all pretty smooth." Which format?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">A celebratory Post-Release retro - they've earned it.</span></li>
+      <li><span class="key">B</span><span class="txt">Start / Stop / Continue - keep the good times rolling.</span></li>
+      <li><span class="key">C</span><span class="txt">A Pre-Mortem - deliberately hunt for the risk nobody's naming.</span></li>
+      <li><span class="key">D</span><span class="txt">Mad / Sad / Glad, to double-check the mood.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 7 · The Nimbus squad</div>
+    <div class="qtext">"We're fully remote across three timezones - and we had a production incident yesterday." Two situations collide and you can only optimise for one. Which edge do you solve first?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Pick a generic remote-friendly format and treat it as a normal sprint retro.</span></li>
+      <li><span class="key">B</span><span class="txt">Run the blameless incident Timeline, adapted for remote - solve the sharper edge first, because a botched incident retro does more damage than a slightly generic remote one.</span></li>
+      <li><span class="key">C</span><span class="txt">Postpone the retro until everyone can get in a room together.</span></li>
+      <li><span class="key">D</span><span class="txt">Split it into two retros - one for remote issues, one for the incident.</span></li>
+    </ul>
+  </div>
+
+  <div class="q">
+    <div class="qnum">Question 8 · The Pike team</div>
+    <div class="qtext">"Completely normal sprint - nothing dramatic shipped, nothing broke, no drama at all." You feel like you ought to run something clever. What's the right call?</div>
+    <ul class="opts">
+      <li><span class="key">A</span><span class="txt">Invent an elaborate themed retro so it doesn't feel boring.</span></li>
+      <li><span class="key">B</span><span class="txt">A classic done well - Start/Stop/Continue or 4Ls with a small twist to keep it fresh - is genuinely the right tool.</span></li>
+      <li><span class="key">C</span><span class="txt">Skip the retro - nothing happened, so there's nothing to discuss.</span></li>
+      <li><span class="key">D</span><span class="txt">A blameless Timeline, just to keep the format sharp.</span></li>
+    </ul>
+  </div>
+
+  <!-- ============ ANSWER KEY (its own page) ============ -->
+  <section id="key">
+    <div class="prose"><h2>Answer key</h2></div>
+    <div class="scoring">
+      Give yourself a point for each best answer. <b>8</b> - format whisperer; you matched the tool to every sprint.
+      <b>6-7</b> - good instincts; one or two reached for habit over fit. <b>4-5</b> - still defaulting; re-read the decision
+      guide before next sprint. <b>0-3</b> - the Mad/Sad/Glad rut; Chapter 5 is one page, keep it open. Every answer links
+      to the format's full recipe card.
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 1 · The Kestrel squad</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">A blameless <a href="07-formats-for-specific-moments.html#post-incident">Timeline</a>.</div>
+      <div class="an-why">After a real incident you <b>reconstruct what happened before anyone assigns cause</b> - a shared, blameless sequence keeps the retro from turning into a hunt for who to blame. A Sailboat here is the wrong tool no matter how well you run it (C); Mad/Sad/Glad (A) airs the feelings but never builds the timeline that finds the cause; and Start/Stop/Continue (D) is far too shallow for something this consequential.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 2 · The Vela team</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">A <a href="07-formats-for-specific-moments.html#post-release">Post-Release</a> retro - celebrate, then dissect.</div>
+      <div class="an-why"><b>Celebration before surgery, and order matters.</b> A euphoric team gets one chance to feel good about shipping; skipping straight to "what went wrong" (A) wastes it and teaches people that finishing is just the start of a blame list. Pre-Mortem (C) and a launch-week Timeline (D) both jump to problem-hunting before the win has been marked.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 3 · The Orca squad</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">Not a format problem - fix follow-through (<a href="10-from-talk-to-change.html">Chapter 10</a>).</div>
+      <div class="an-why">The same complaints for five sprints is a <b>broken follow-through habit, and no activity fixes that</b>. A new format (A), a fun one (B), or a Pre-Mortem (D) all just re-surface the same issues in nicer packaging - the fix is how actions get owned, tracked and revisited, not which game you play on the day.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 4 · The Lumen team</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">A creative, high-energy format like <a href="08-creative-high-energy-formats.html#retro-bingo">Retro Bingo</a> or a Movie Poster Retro.</div>
+      <div class="an-why">For a flat room, <b>fun resets the energy faster than more discussion does</b>. A heavier deep-dive (A) or pushing harder on the usual classic (D) drives the flatness deeper; cancelling (C) throws away the signal that something's up. Lift the room first, then you can actually talk.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 5 · The Atlas squad</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">A trust-builder icebreaker, then the gentle <a href="06-the-classics-done-well.html#starfish">Starfish</a>.</div>
+      <div class="an-why">A brand-new or just-merged team has <b>no trust banked yet</b>, so you build a little first and then use a gentle, structured format. Diving into raw candor (A) before trust exists gets you silence or performance; skipping the icebreaker to save time (B) skips the very thing that makes the rest work; a Pre-Mortem (D) is too pointed for a room still learning to talk to each other.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 6 · The Cirrus team</div>
+      <div class="an-best">Best answer: <span class="letter">C</span></div>
+      <div class="an-txt">A <a href="07-formats-for-specific-moments.html#too-comfortable">Pre-Mortem</a>.</div>
+      <div class="an-why">A team that's <i>too</i> comfortable has one real danger - <b>the risk nobody's saying out loud</b> - and a Pre-Mortem goes hunting for it on purpose. A celebratory (A) or keep-it-rolling (B) format just reinforces the blind spot, and Mad/Sad/Glad (D) checks the mood you already know is fine while missing the risk you don't.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 7 · The Nimbus squad</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">The blameless incident <a href="07-formats-for-specific-moments.html#post-incident">Timeline</a>, adapted for remote.</div>
+      <div class="an-why">When two situations collide, <b>solve the sharper edge first</b>. An incident retro run badly does far more damage than a slightly generic remote adaptation, so run the Timeline and just borrow the remote techniques from <a href="09-remote-and-async-formats.html">Chapter 9</a> to deliver it. Treating a fresh incident as a normal sprint (A) buries it; postponing (C) lets memories fade and blame harden; splitting it in two (D) fractures the one conversation the team most needs to have together.</div>
+    </div>
+
+    <div class="ans">
+      <div class="an-q">Question 8 · The Pike team</div>
+      <div class="an-best">Best answer: <span class="letter">B</span></div>
+      <div class="an-txt">A <a href="06-the-classics-done-well.html">classic done well</a>, with a small twist.</div>
+      <div class="an-why">A normal sprint doesn't need a gimmick - <b>a classic done well is genuinely the right tool</b>. Reaching for something elaborate every single time (A) is its own kind of rut; skipping the retro (C) forfeits the steady habit of reflection that keeps a good team good; and running an incident format with no incident (D) is a tool mismatched to the moment, the exact mistake this whole chapter is about.</div>
+    </div>
+  </section>
+
+  <section class="cheat">
+    <span class="eyebrow">🎯 Facilitator's Cheat Sheet</span>
+    <h2>The rule behind every answer</h2>
+    <ul>
+      <li><b>Match the format to the sprint, not to habit.</b> "We always do X" is a reason to change it.</li>
+      <li><b>Recurring issues aren't a format problem</b> - that's follow-through (Chapter 10), and no activity fixes it.</li>
+      <li><b>Celebration before surgery.</b> A post-release retro that skips the win wastes the team's one chance to enjoy shipping.</li>
+      <li><b>Incident? Reconstruct before you assign cause</b> - the blameless Timeline, every time.</li>
+      <li><b>Too comfortable is a risk, not a rest</b> - a Pre-Mortem hunts the thing nobody's naming.</li>
+      <li><b>When two situations collide, solve the sharper edge first.</b></li>
+      <li><b>Also in the chapter:</b> Quarterly Milestones Map for a milestone check-in, and the Pre-Holiday Wind-Down heading into a break.</li>
+    </ul>
+  </section>
+
+  <footer class="colophon">
+    <span>The Retro Playbook - Chapter 05 Case Study</span>
+    <span>Part III - The Format Cookbook</span>
+  </footer>
+
+  <nav class="chapter-nav">
+    <a href="05-pick-your-format.html">&larr; Ch. 05 - Pick Your Format</a>
+    <a class="next" href="06-the-classics-done-well.html">Ch. 06 - The Classics, Done Well &rarr;</a>
+  </nav>
+
+</div>
+</body>
+</html>
