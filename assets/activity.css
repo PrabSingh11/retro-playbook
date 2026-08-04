@@ -1,0 +1,65 @@
+/* Shared styles for the "Your Turn" activity pages (case studies, drills, quizzes).
+   Each page sets its Part accent on .page.activity, e.g.
+   .page.activity{--accent:var(--check); --accent-tint:var(--check-tint);} */
+
+.page.activity .lid .kicker .chip{border-color:var(--accent);}
+
+/* Question / prompt blocks */
+.q{background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--accent);
+   border-radius:2px; padding:18px 20px 14px; margin:0 0 16px; page-break-inside:avoid; break-inside:avoid;}
+.q .qnum{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent);}
+.q .qtext{font-family:var(--display); font-weight:700; font-size:1.06rem; line-height:1.35; margin:6px 0 12px; text-wrap:balance;}
+.q .scene{font-family:var(--body); font-style:italic; font-size:1.02rem; line-height:1.45;
+          border-left:3px solid var(--rule); padding:4px 0 4px 14px; margin:6px 0 12px; color:var(--ink);}
+.q .sections{font-family:var(--mono); font-size:.95rem; letter-spacing:.02em; color:var(--ink);
+             background:var(--paper-deep); border:1px solid var(--rule); border-radius:2px; padding:12px 14px; margin:6px 0 12px;}
+
+.opts{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.opts li{display:flex; gap:11px; align-items:flex-start;}
+.opts .key{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--ink-soft);
+           border:1px solid var(--rule); border-radius:3px; width:22px; height:22px; display:grid; place-items:center; flex:none;}
+.opts .txt{font-size:.94rem; line-height:1.4;}
+
+/* Fill-in line for write-in activities */
+.answerline{font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);
+            margin-top:6px; display:flex; align-items:baseline; gap:10px;}
+.answerline .blank{flex:1; border-bottom:1px solid var(--rule); height:16px;}
+
+/* Tick-choice (e.g. Safe / Risky, Myth / Truth) */
+.choice{display:flex; gap:22px; margin-top:4px; font-family:var(--mono); font-size:12px;
+        letter-spacing:.04em; text-transform:uppercase; color:var(--ink-soft);}
+.choice span{display:flex; align-items:center; gap:7px;}
+.choice .box{width:14px; height:14px; border:1.5px solid var(--ink-soft); border-radius:3px; display:inline-block;}
+
+.rulebar{background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--accent);
+         border-radius:3px; padding:14px 18px; margin:22px 0; font-size:.92rem;}
+.rulebar b{font-family:var(--display); font-weight:700;}
+
+/* Two-column match-up */
+.matchgrid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:8px 0;}
+.matchgrid h3{font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin:0 0 10px;}
+.matchlist{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.matchlist li{display:flex; gap:10px; align-items:baseline; background:var(--card); border:1px solid var(--rule-soft);
+              border-radius:2px; padding:9px 12px; font-size:.92rem; line-height:1.35;}
+.matchlist .mk{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--accent); flex:none;}
+@media (max-width:560px){ .matchgrid{grid-template-columns:1fr;} }
+
+/* A plain numbered prompt list (e.g. warm-up questions) */
+.pick{list-style:none; margin:8px 0; padding:0; display:flex; flex-direction:column; gap:9px;}
+.pick li{display:flex; gap:12px; align-items:baseline; background:var(--card); border:1px solid var(--rule-soft);
+         border-left:3px solid var(--accent); border-radius:2px; padding:11px 14px; font-size:.98rem; line-height:1.4;}
+.pick .n{font-family:var(--mono); font-weight:700; font-size:12px; color:var(--accent); flex:none;}
+
+/* Answer key - always starts on its own page */
+#key{page-break-before:always; break-before:page; margin-top:52px;}
+.scoring{background:var(--card); border:1px solid var(--rule-soft); border-left:4px solid var(--accent);
+         border-radius:3px; padding:16px 20px; margin:0 0 24px; font-size:.93rem;}
+.scoring b{font-family:var(--display); font-weight:700;}
+.ans{border-bottom:1px solid var(--rule); padding:14px 0; page-break-inside:avoid; break-inside:avoid;}
+.ans:last-child{border-bottom:none;}
+.ans .an-q{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+.ans .an-best{font-family:var(--display); font-weight:700; font-size:1rem; margin:5px 0 3px;}
+.ans .an-best .letter{color:var(--accent);}
+.ans .an-txt{font-size:.93rem; margin:0 0 7px;}
+.ans .an-why{font-size:.92rem; color:var(--ink-soft); line-height:1.5;}
+.ans .an-why b{color:var(--ink);}
