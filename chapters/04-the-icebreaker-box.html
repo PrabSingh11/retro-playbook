@@ -6,6 +6,35 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%97%82%EF%B8%8F</text></svg>">
 <title>The Icebreaker Box – Ch. 4, The Retro Playbook</title>
 <link rel="stylesheet" href="../assets/book.css">
+<style>
+  .plug{
+    position:relative; overflow:hidden; border-radius:6px; margin:46px 0 10px; padding:34px 32px;
+    color:#F6F5EC; isolation:isolate;
+    background:linear-gradient(115deg, var(--plum) 0%, var(--check) 42%, var(--ember) 100%);
+    box-shadow:0 22px 44px -24px rgba(36,53,47,.65);
+  }
+  .plug::after{content:""; position:absolute; z-index:-1; right:-70px; top:-70px; width:240px; height:240px;
+    border-radius:50%; background:rgba(246,245,236,.13);}
+  .plug::before{content:""; position:absolute; z-index:-1; left:-40px; bottom:-90px; width:200px; height:200px;
+    border-radius:50%; background:rgba(246,245,236,.10);}
+  .plug .plug-eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    opacity:.92; margin-bottom:12px; display:block;}
+  .plug h2{color:#fff; font-size:clamp(1.7rem, 4.4vw, 2.55rem); line-height:1.06; letter-spacing:-.015em;
+    margin:0 0 14px; text-wrap:balance;}
+  .plug .plug-lead{font-size:1.12rem; line-height:1.5; max-width:56ch; margin:0 0 20px; color:#F6F5EC;}
+  .plug ul.plug-benefits{list-style:none; margin:0 0 26px; padding:0; display:grid; gap:10px; max-width:62ch;}
+  .plug ul.plug-benefits li{position:relative; padding-left:30px; font-size:1.01rem; line-height:1.4; margin:0;}
+  .plug ul.plug-benefits li::before{content:"→"; position:absolute; left:0; top:0;
+    font-family:var(--display); font-weight:700; color:#fff;}
+  .plug ul.plug-benefits b{font-family:var(--display); font-weight:700; color:#fff;}
+  .plug .plug-cta{display:inline-flex; align-items:center; gap:10px; background:#F6F5EC; color:var(--ink);
+    font-family:var(--display); font-weight:700; font-size:1.08rem; text-decoration:none; padding:14px 28px;
+    border-radius:44px; box-shadow:0 10px 22px -10px rgba(0,0,0,.5); transition:transform .15s ease, box-shadow .15s ease;}
+  .plug .plug-cta:hover{transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(0,0,0,.55);}
+  .plug .plug-cta .arrow{font-size:1.2em; line-height:1;}
+  .plug .plug-foot{margin:16px 0 0; font-size:.92rem; opacity:.86;}
+  @media (prefers-reduced-motion: reduce){ .plug .plug-cta{transition:none;} }
+</style>
 </head>
 <body>
 <div class="page">
@@ -461,8 +490,23 @@ script (the words I say), time needed, and one way it could go
 wrong. Nothing that forces personal disclosure. Nothing that
 needs prep.</pre>
     <p>Also great for writing the Sprint Horoscope (card 25) – paste in three real sprint events and ask for mystic style. Thirty seconds of prep instead of five minutes.</p>
-    <p>Prefer a button to a prompt? A purpose-built generator like <a href="https://retro-generator.com" target="_blank" rel="noopener">retro-generator.com</a> does all the AI prompting, layout and design for you – no copy-paste required.</p>
+    <p>Prefer a button to a prompt? Skip the prompt entirely – there's a whole tool built to do exactly this. See below. 👇</p>
   </aside>
+
+  <!-- ============ RETRO GENERATOR PLUG ============ -->
+  <section class="plug">
+    <span class="plug-eyebrow">🎲 Skip the copy-paste</span>
+    <h2>Or let retro-generator.com run the whole retro for you</h2>
+    <p class="plug-lead">Every icebreaker, format and prompt in this book – generated, laid out and ready to run in seconds. No blank page, no wrestling an AI prompt into shape, no cobbling a board together five minutes before the call.</p>
+    <ul class="plug-benefits">
+      <li><b>Tuned to your team.</b> Tell it your size, your mood and the sprint you just had – it builds the session around <em>that</em>, not a generic template.</li>
+      <li><b>The whole session, sorted.</b> Icebreaker, main activity and check-out picked and laid out for you, using the same mood-first logic as this chapter.</li>
+      <li><b>Design done for you.</b> A clean, ready-to-run board with zero formatting and zero blank-page dread.</li>
+      <li><b>Free to try.</b> You could spin up your next retro before you finish reading this chapter.</li>
+    </ul>
+    <a class="plug-cta" href="https://retro-generator.com" target="_blank" rel="noopener">Try retro-generator.com <span class="arrow">&rarr;</span></a>
+    <p class="plug-foot">Prefer a button to a prompt? This is the button.</p>
+  </section>
 
   <!-- ============ CHEAT SHEET ============ -->
   <section class="cheat">
