@@ -204,7 +204,7 @@ bullets = [
     "The modern AI toolkit — what's worth using, what to skip",
     "Core facilitation skills for honest, blame-free conversations",
     "Ready-to-use templates",
-    "25+ icebreakers you can run cold, no prep needed",
+    "29 icebreakers you can run cold, no prep needed",
     "AI prompts for every stage of the retro",
 ]
 for i, b in enumerate(bullets):
