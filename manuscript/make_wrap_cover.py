@@ -178,27 +178,35 @@ TXX = bx0 + 0.62                 # text left
 TXR = bx1 - 0.62                 # text right
 TW  = TXR - TXX                  # text column width (inches)
 
-by = I(TOP+0.95)
+by = I(TOP+0.62)
 
 # hook headline
 by = para(d, I(TXX), by,
           "Every Scrum retrospective book you've read was written for a world "
-          "that no longer exists.", f_hook, I(TW), INK, I(0.30)); by += I(0.26)
+          "that no longer exists.", f_hook, I(TW), INK, I(0.30)); by += I(0.18)
 
 # punchy triple (emphasis)
 by = para(d, I(TXX), by,
           "Same sticky notes. Same three questions. Same disengaged team.",
-          f_emph, I(TW), INKSOFT, I(0.25)); by += I(0.28)
+          f_emph, I(TW), INKSOFT, I(0.25)); by += I(0.20)
 
 # main pitch
 by = para(d, I(TXX), by,
           "AI has changed the game — and The Retro Playbook shows you exactly how to "
           "use it to run retrospectives your team actually wants to show up for. Real "
           "prompts. Real tools. Real facilitation techniques. Not theory.",
-          f_body, I(TW), INK, I(0.20)); by += I(0.28)
+          f_body, I(TW), INK, I(0.185)); by += I(0.14)
+
+# second pitch paragraph
+by = para(d, I(TXX), by,
+          "Flip it open five minutes before your stand-up and steal a ready-to-run "
+          "format, an icebreaker that won't make anyone cringe, or a facilitation move "
+          "for the room you're actually walking into. Then let AI handle the prep, the "
+          "clustering and the follow-up while you focus on the conversation.",
+          f_body, I(TW), INK, I(0.185)); by += I(0.16)
 
 # Inside:
-d.text((I(TXX), by), "Inside:", font=f_inside, fill=INK); by += I(0.36)
+d.text((I(TXX), by), "Inside:", font=f_inside, fill=INK); by += I(0.32)
 bullets = [
     "30+ retrospective formats, ready to run",
     "The modern AI toolkit — what's worth using, what to skip",
@@ -208,26 +216,24 @@ bullets = [
     "AI prompts for every stage of the retro",
 ]
 for i, b in enumerate(bullets):
-    d.rounded_rectangle([I(TXX), by+I(0.04), I(TXX)+I(0.12), by+I(0.16)], radius=I(0.02),
+    d.rounded_rectangle([I(TXX), by+I(0.035), I(TXX)+I(0.12), by+I(0.155)], radius=I(0.02),
                         fill=ACCENTS[i % len(ACCENTS)])
     for ln in wrap_lines(d, b, f_bul, I(TW-0.28)):
-        d.text((I(TXX+0.28), by), ln, font=f_bul, fill=INK); by += I(0.25)
-    by += I(0.10)
-by += I(0.20)
+        d.text((I(TXX+0.28), by), ln, font=f_bul, fill=INK); by += I(0.23)
+    by += I(0.055)
+by += I(0.16)
 
 # closing line
 by = para(d, I(TXX), by,
           "Whether you're new to Scrum Mastery or have been running retros for years, "
           "this book gets your team's next retrospective working — starting tomorrow.",
-          f_body, I(TW), INK, I(0.20)); by += I(0.30)
+          f_body, I(TW), INK, I(0.185)); by += I(0.22)
 
-# author bio (full width, above the barcode zone)
-d.line([I(TXX), by, I(TXX)+I(0.9), by], fill=RULE, width=2*S); by += I(0.18)
-para(d, I(TXX), by,
-     "Prabhjit Mutti is an agile leader with 10 years of delivery experience and the "
-     "creator of retro-generator.com, a tool used by teams to create unique, "
-     "interesting, AI-retrospectives.", f_bio, I(TW), INKSOFT, I(0.20))
-print(f"  back-cover content ends at y={by/(DPI*S):.2f}in (barcode top ~{BOT-0.45-1.0:.2f}in)")
+# the one rule, emphasised (centered)
+tracked(d, I((bx0+bx1)/2), by, "AI handles the paperwork.", f_emph, 0, INK); by += I(0.26)
+tracked(d, I((bx0+bx1)/2), by, "Humans handle the talking.", f_emph, 0, INK); by += I(0.30)
+
+print(f"  back-cover main copy ends at y={by/(DPI*S):.2f}in")
 
 # KDP auto-places the barcode bottom-right of the back cover (~1.9 x 1.0").
 # Reserve a clean white area; delete this block before upload if you prefer.
@@ -236,6 +242,14 @@ bw_x0, bw_y0 = bw_x1-1.9, bw_y1-1.0
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], fill=(255,255,255))
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], outline=RULE, width=1*S)
 tracked(d, I((bw_x0+bw_x1)/2), I((bw_y0+bw_y1)/2), "BARCODE", f_imp, 4, INKFAINT, top=False)
+
+# author bio: bottom-left, in a column to the LEFT of the barcode, aligned to its top
+bio_w = bw_x0 - 0.30 - TXX          # stop short of the barcode's left edge
+d.line([I(TXX), I(bw_y0), I(TXX)+I(0.9), I(bw_y0)], fill=RULE, width=2*S)
+para(d, I(TXX), I(bw_y0+0.16),
+     "Prabhjit Mutti is an agile leader with 10 years of delivery experience and the "
+     "creator of retro-generator.com, a tool used by teams to create unique, "
+     "interesting, AI-retrospectives.", f_bio, I(bio_w), INKSOFT, I(0.20))
 
 # ---- downsample & save -------------------------------------------------
 fw, fh = round(WRAP_W*DPI), round(WRAP_H*DPI)
