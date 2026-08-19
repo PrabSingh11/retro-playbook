@@ -9,6 +9,8 @@ Source for the Kindle ebook (and, later, the print PDF), generated from the webs
 - `build.py` — cleans the website HTML (strips nav/chrome, remaps citation links to internal anchors, extracts inline-SVG diagrams to grayscale image files) into `body.html`.
 - `img/` — diagrams extracted from the chapters (Sailboat, Weather Map).
 - `The-Retro-Playbook.epub` — the built Kindle ebook. **Download this.**
+- `build_print.py` + `print.css` — the print (paperback) build; produces `The-Retro-Playbook-6x9-interior.pdf`.
+- `The-Retro-Playbook-6x9-interior.pdf` — the built 6×9″ print interior. **Download this for KDP paperback.**
 
 ## Rebuild the EPUB
 ```bash
@@ -23,7 +25,29 @@ pandoc combined.html --from html --to epub3 --toc --toc-depth=1 --split-level=1 
   -o The-Retro-Playbook.epub
 ```
 
+## Rebuild the print interior PDF (6×9″)
+Needs WeasyPrint + BeautifulSoup in a venv (system Python is externally-managed):
+```bash
+cd manuscript
+python3 -m venv .buildvenv
+.buildvenv/bin/pip install weasyprint beautifulsoup4
+.buildvenv/bin/python build_print.py    # -> The-Retro-Playbook-6x9-interior.pdf
+```
+`build_print.py` reuses `build.clean()`, adds a title page / copyright / dedication /
+part dividers / a page-numbered table of contents, interleaves the "Your Turn"
+exercises after their parent chapters (matching the website reading order), applies
+`book.css` + `activity.css` + `print.css` (grayscale, mirrored margins with a binding
+gutter, running heads, roman front-matter + arabic body page numbers), and renders
+with WeasyPrint. Current build: **246 pages**.
+
+### Gutter / margins note
+`print.css` sets a 0.75″ inside (gutter) margin — comfortably above KDP's minimum for
+a 151–300-page book (0.625″). If the page count crosses 300, bump the gutter to 0.75″+
+(already there) and re-check outside/top/bottom (currently 0.55″/0.7″/0.7″, all above
+the 0.25″ minimum).
+
 ## Before publishing
-- Validate with **Kindle Previewer** (or `epubcheck`).
-- Add a **cover** (Kindle wants ~1600×2560 JPEG/PNG) — not yet built.
-- The **print paperback PDF** (6×9″) is a separate build, still to do.
+- Validate the EPUB with **Kindle Previewer** (or `epubcheck`).
+- EPUB **cover** done (`cover.png/.jpg`, ~1600×2560). Print **wrap cover** (front+spine+back,
+  spine width from the 246-page count) still to build.
+- Fill in the **dedication** in `00-front-matter.md` (currently a blank placeholder page).

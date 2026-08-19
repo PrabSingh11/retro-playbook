@@ -1,0 +1,152 @@
+/* ============================================================
+   Print interior stylesheet - 6x9" paperback (KDP)
+   Loaded AFTER book.css + activity.css so these rules win.
+   Rendered with WeasyPrint. B&W interior: all accents -> grayscale.
+   ============================================================ */
+
+/* ---- grayscale the whole palette (KDP B&W interior) ---- */
+:root{
+  --paper:#ffffff; --paper-deep:#f0f0f0; --card:#f6f6f6;
+  --ink:#000000; --ink-soft:#3a3a3a; --ink-faint:#6f6f6f;
+  --rule:#9a9a9a; --rule-soft:#c7c7c7;
+  --check:#000; --check-tint:#e6e6e6;
+  --ember:#000; --ember-tint:#e6e6e6;
+  --moss:#000;  --moss-tint:#e6e6e6;
+  --plum:#000;  --plum-tint:#e6e6e6;
+  --gold:#000;  --gold-tint:#e6e6e6;
+  --accent:#000; --accent-tint:#e6e6e6;
+}
+
+/* ============================================================
+   PAGE GEOMETRY  (mirrored margins with binding gutter)
+   Recompute gutter from final page count if needed:
+   <=150pp .375in | 151-300 .5in | 301-500 .625in
+   ============================================================ */
+@page{
+  size:6in 9in;
+  margin:0.7in 0.55in 0.7in 0.75in;   /* T R B L (default = recto) */
+}
+/* recto (right-hand, odd) - gutter on the LEFT */
+@page:right{
+  margin-left:0.75in; margin-right:0.55in;
+  @top-right{ content:string(chaptitle); font-family:"URW Gothic","Century Gothic",sans-serif;
+              font-size:8pt; letter-spacing:.06em; color:#3a3a3a; text-transform:uppercase; }
+  @bottom-right{ content:counter(page); font-family:"URW Gothic",sans-serif; font-size:9pt; color:#000; }
+}
+/* verso (left-hand, even) - gutter on the RIGHT */
+@page:left{
+  margin-left:0.55in; margin-right:0.75in;
+  @top-left{ content:"The Retro Playbook"; font-family:"URW Gothic","Century Gothic",sans-serif;
+             font-size:8pt; letter-spacing:.06em; color:#3a3a3a; text-transform:uppercase; }
+  @bottom-left{ content:counter(page); font-family:"URW Gothic",sans-serif; font-size:9pt; color:#000; }
+}
+
+/* pages with no running chrome (title, copyright, part dividers) */
+@page nochrome{ @top-left{content:none} @top-right{content:none}
+                @bottom-left{content:none} @bottom-right{content:none} }
+@page nochrome:left{ @top-left{content:none} @bottom-left{content:none} }
+@page nochrome:right{ @top-right{content:none} @bottom-right{content:none} }
+
+/* front matter uses lower-roman page numbers, no top head */
+@page frontmatter:right{ @top-right{content:none} @bottom-right{content:counter(page,lower-roman)} }
+@page frontmatter:left{  @top-left{content:none}  @bottom-left{content:counter(page,lower-roman)} }
+
+/* ============================================================
+   GLOBAL PRINT RESETS
+   ============================================================ */
+html,body{ background:#fff; color:#000; font-size:10.8pt; line-height:1.44; }
+.page{ max-width:none !important; margin:0 !important; padding:0 !important; }
+.page.narrow{ max-width:none !important; }
+a{ color:#000 !important; text-decoration:none !important; }
+* { box-shadow:none !important; text-shadow:none !important; }
+.card:hover,.recipe:hover{ transform:none !important; }
+
+/* single-column everything: 6x9 is too narrow for the web card grids */
+.grid,.grid.wide{ display:block !important; }
+.grid > *, .grid.wide > *{ margin:0 0 12px !important; }
+.matchgrid{ grid-template-columns:1fr 1fr; }
+
+/* keep atomic blocks together across page breaks */
+.card,.recipe,.q,.ans,.script,.pull,.rulebar,.scoring,.intro,
+figure,table,pre,blockquote,.flow,.pinned{
+  break-inside:avoid; page-break-inside:avoid;
+}
+h1,h2,h3,h4{ break-after:avoid; page-break-after:avoid; }
+h2,h3{ orphans:3; widows:3; }
+p,li{ orphans:2; widows:2; }
+img,svg{ max-width:100% !important; height:auto; }
+
+/* ============================================================
+   CHAPTER OPENERS
+   ============================================================ */
+section.chapter{ page:main; break-before:page; }
+section.chapter:first-of-type{ counter-reset:page 1; }  /* arabic restarts at ch.1 */
+section.chapter > h1, .lid h1{
+  font-size:1.9rem; line-height:1.1; margin:0 0 6px;
+}
+section.chapter > h1{ string-set: chaptitle content(text); }
+.chapter .dek, .lid .dek{ font-size:1.02rem; margin-bottom:18px; }
+.chapter-tagline{
+  font-family:var(--mono); font-size:8pt; letter-spacing:.12em; text-transform:uppercase;
+  color:#6f6f6f; margin:0 0 20px;
+}
+
+/* colored section tabs -> clean B&W band */
+.tab{ background:#000 !important; color:#fff !important; }
+.tab h2{ color:#fff !important; }
+
+/* the dark closing "cheat sheet" -> light, bordered (saves ink, no bleed) */
+.cheat{ background:#fff !important; color:#000 !important;
+        border:2px solid #000 !important; }
+.cheat *{ color:#000 !important; }
+
+/* ============================================================
+   FRONT MATTER + TITLE PAGE
+   ============================================================ */
+section.frontmatter{ page:frontmatter; }
+section.frontmatter h1{ break-before:page; font-size:1.5rem; margin:0 0 16px; }
+section.frontmatter h1:first-child{ break-before:avoid; }
+
+.titlepage{ page:nochrome; break-after:page; text-align:center;
+            display:flex; flex-direction:column; justify-content:center; min-height:7.2in; }
+.titlepage .tp-title{ font-family:"URW Gothic","Century Gothic",sans-serif; font-weight:700;
+            font-size:3rem; line-height:1.05; letter-spacing:-.01em; margin:0 0 18px; }
+.titlepage .tp-sub{ font-style:italic; font-size:1.15rem; color:#3a3a3a; margin:0 0 40px; }
+.titlepage .tp-author{ font-family:"URW Gothic",sans-serif; font-size:1.1rem; letter-spacing:.04em; }
+.titlepage .tp-imprint{ margin-top:auto; font-family:var(--mono); font-size:9pt; color:#6f6f6f; }
+
+.copyrightpage{ page:nochrome; break-after:page; font-size:9pt; line-height:1.5; color:#3a3a3a; }
+.copyrightpage h1{ display:none; }
+.dedicationpage{ page:frontmatter; break-before:page; break-after:page;
+            display:flex; align-items:center; justify-content:center; min-height:6in;
+            text-align:center; font-style:italic; font-size:1.15rem; }
+.dedicationpage h1{ display:none; }
+
+/* ============================================================
+   PART DIVIDER PAGES
+   ============================================================ */
+.part-divider{ page:nochrome; break-before:right; break-after:page;
+            display:flex; flex-direction:column; justify-content:center; min-height:7in; text-align:center; }
+.part-divider .pd-kicker{ font-family:var(--mono); font-size:11pt; letter-spacing:.22em;
+            text-transform:uppercase; color:#000; margin:0 0 14px; }
+.part-divider .pd-title{ font-family:"URW Gothic","Century Gothic",sans-serif; font-weight:700;
+            font-size:2.2rem; line-height:1.1; margin:0 0 16px; }
+.part-divider .pd-note{ font-style:italic; color:#3a3a3a; font-size:1.05rem; max-width:34ch;
+            margin:0 auto; }
+
+/* ============================================================
+   TABLE OF CONTENTS (page numbers via target-counter)
+   ============================================================ */
+.toc{ page:frontmatter; break-before:page; }
+.toc h1{ font-size:1.6rem; margin:0 0 24px; }
+.toc .toc-part{ font-family:"URW Gothic",sans-serif; font-weight:700; font-size:1rem;
+            letter-spacing:.02em; margin:20px 0 8px; }
+.toc a{ display:flex; align-items:baseline; gap:6px; font-size:10pt; margin:0 0 5px;
+        text-decoration:none; color:#000 !important; }
+.toc a .toc-num{ font-family:var(--mono); font-size:8.5pt; color:#6f6f6f; min-width:1.6em; }
+.toc a .toc-title{ }
+.toc a .toc-dots{ flex:1; border-bottom:1px dotted #9a9a9a; transform:translateY(-3px); margin:0 4px; }
+.toc a .toc-page{ font-family:var(--mono); font-size:9pt; }
+.toc a .toc-page::after{ content:target-counter(attr(href url), page); }
+.toc a.ex .toc-title{ font-style:italic; color:#3a3a3a; }
+.toc a.ex .toc-num{ font-family:var(--body); }

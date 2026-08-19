@@ -1,3 +1,6 @@
 front.html
 body.html
 combined.html
+print.html
+.buildvenv/
+__pycache__/
