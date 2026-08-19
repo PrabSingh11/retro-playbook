@@ -25,26 +25,22 @@ MAN = Path(__file__).resolve().parent
 STRUCT = [
     ("part", "Part I",  "Retro Basics (Without the Boring Bits)", "gets you running a decent retro by chapter 3"),
     ("ch", "01-five-ways-retros-fail",   "1"),
-    ("ex", "spot-the-failure",           "✎"),
     ("ch", "02-the-five-stage-recipe",   "2"),
     ("ex", "warm-up-questions",          "✎"),
     ("ch", "03-facilitation-101",        "3"),
-    ("ex", "rapid-fire-facilitation",    "✎"),
-    ("ex", "facilitation-case-study",    "✎"),
 
     ("part", "Part II", "The Icebreaker Box", "one page per icebreaker, flip and go"),
     ("ch", "04-the-icebreaker-box",      "4"),
+    ("ex", "rapid-fire-facilitation",    "✎"),
 
     ("part", "Part III", "The Retro Format Cookbook", "30+ formats, recipe-card style"),
     ("ch", "05-pick-your-format",        "5"),
     ("ex", "pick-format-case-study",     "✎"),
     ("ch", "06-the-classics-done-well",  "6"),
-    ("ex", "name-that-format",           "✎"),
     ("ch", "07-formats-for-specific-moments", "7"),
     ("ch", "08-creative-high-energy-formats", "8"),
     ("ch", "09-remote-and-async-formats", "9"),
     ("ch", "10-from-talk-to-change",     "10"),
-    ("ex", "action-items-drill",         "✎"),
 
     ("part", "Part IV", "Your AI Co-Pilot", "AI handles the paperwork, humans handle the talking"),
     ("ex", "interlude-the-retro-that-almost-wasnt", "❧"),
@@ -54,7 +50,6 @@ STRUCT = [
     ("ex", "ears-case-study",            "✎"),
     ("ch", "14-ai-during-and-after",     "14"),
     ("ch", "15-keep-the-trust",          "15"),
-    ("ex", "real-or-risky",              "✎"),
     ("ch", "16-when-ai-is-on-the-team",  "16"),
     ("ch", "17-the-reflective-habit",    "17"),
 
@@ -62,7 +57,6 @@ STRUCT = [
     ("bm", "toolkit",       "–"),
     ("bm", "agents",        "–"),
     ("bm", "references",    "–"),
-    ("ex", "myth-or-truth", "✎"),
 ]
 
 def path_for(kind, slug):
