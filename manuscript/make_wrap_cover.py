@@ -1,0 +1,236 @@
+#!/usr/bin/env python3
+"""Render the KDP paperback WRAP cover (back + spine + front) in the book palette.
+
+Sized for 6x9", 246-page interior on WHITE paper:
+  spine  = 246 * 0.002252" = 0.554"
+  wrap   = 0.125 bleed + 6 back + 0.554 spine + 6 front + 0.125 bleed = 12.804" x 9.25"
+  output = 3841 x 2775 px @ 300 DPI  (rendered 2x, downsampled)
+
+If the page count changes, edit PAGES below and rerun.
+"""
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from pathlib import Path
+
+# ---- trim / bleed / spine geometry -------------------------------------
+PAGES        = 246
+PAGE_THICK   = 0.002252          # white paper, inches per page (KDP)
+TRIM_W, TRIM_H = 6.0, 9.0
+BLEED        = 0.125
+SPINE        = PAGES * PAGE_THICK        # 0.554"
+DPI          = 300
+S            = 2                          # supersample
+
+WRAP_W = 2 * BLEED + 2 * TRIM_W + SPINE   # 12.804"
+WRAP_H = TRIM_H + 2 * BLEED               # 9.25"
+
+def I(inch):                              # inches -> supersampled px
+    return round(inch * DPI * S)
+
+W, H = I(WRAP_W), I(WRAP_H)
+HERE = Path(__file__).resolve().parent
+
+# panel x-edges (inches from left)
+BACK_X0  = BLEED
+BACK_X1  = BLEED + TRIM_W
+SPINE_X0 = BACK_X1
+SPINE_X1 = BACK_X1 + SPINE
+FRONT_X0 = SPINE_X1
+FRONT_X1 = SPINE_X1 + TRIM_W
+TOP, BOT = BLEED, BLEED + TRIM_H
+
+# ---- palette (book.css) ------------------------------------------------
+PAPER   = (237, 236, 226)
+PAPERDP = (225, 223, 208)
+INK     = (36, 53, 47)
+INKSOFT = (91, 102, 93)
+INKFAINT= (139, 145, 136)
+RULE    = (201, 196, 172)
+ACCENTS = [(63,118,132),(193,90,52),(82,113,63),(100,81,126),(169,120,31)]  # teal ember moss plum gold
+
+FONTS = "/usr/share/fonts/opentype/urw-base35/"
+def font(name, pt):  # pt at 300dpi
+    return ImageFont.truetype(FONTS + name, int(pt * S))
+
+f_title = font("URWGothic-Demi.otf", 150)
+f_kick  = font("URWGothic-Book.otf", 33)
+f_sub   = font("NimbusRoman-Italic.otf", 60)
+f_auth  = font("URWGothic-Book.otf", 46)
+f_imp   = font("NimbusSans-Regular.otf", 26)
+f_bhead = font("URWGothic-Demi.otf", 74)
+f_body  = font("NimbusRoman-Regular.otf", 40)
+f_bul   = font("URWGothic-Book.otf", 40)
+f_bio   = font("NimbusRoman-Italic.otf", 34)
+f_spine = font("URWGothic-Demi.otf", 66)
+f_spauth= font("URWGothic-Book.otf", 40)
+
+img = Image.new("RGB", (W, H), PAPER)
+d = ImageDraw.Draw(img)
+
+# ---- helpers -----------------------------------------------------------
+def tracked(draw, cx, y, text, fnt, tracking, fill, top=True):
+    tr = tracking * S
+    widths = [draw.textlength(c, font=fnt) for c in text]
+    total = sum(widths) + tr * (len(text) - 1)
+    x = cx - total / 2
+    anchor = "la" if top else "lm"
+    for c, w in zip(text, widths):
+        draw.text((x, y), c, font=fnt, fill=fill, anchor=anchor)
+        x += w + tr
+
+def wrap_lines(draw, text, fnt, maxw):
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if draw.textlength(t, font=fnt) <= maxw: cur = t
+        else: lines.append(cur); cur = w
+    if cur: lines.append(cur)
+    return lines
+
+def para(draw, x, y, text, fnt, maxw, fill, lh):
+    for ln in wrap_lines(draw, text, fnt, maxw):
+        draw.text((x, y), ln, font=fnt, fill=fill)
+        y += lh
+    return y
+
+def keyline(x0, y0, x1, y1):
+    d.rectangle([I(x0), I(y0), I(x1), I(y1)], outline=RULE, width=3 * S)
+    o = 0.02
+    d.rectangle([I(x0+o), I(y0+o), I(x1-o), I(y1-o)], outline=RULE, width=1 * S)
+
+# ============================================================ FRONT PANEL
+fcx = I((FRONT_X0 + FRONT_X1) / 2)
+FM = 0.30                                   # keyline inset from trim
+keyline(FRONT_X0+FM, TOP+FM, FRONT_X1-FM, BOT-FM)
+
+# kicker
+d.line([fcx - I(0.55), I(TOP+0.86), fcx + I(0.55), I(TOP+0.86)], fill=INK, width=2*S)
+tracked(d, fcx, I(TOP+0.95), "A PRACTICAL, NO-JARGON FIELD GUIDE", f_kick, 6, INKSOFT)
+
+# title (two lines)
+d.text((fcx, I(TOP+1.85)), "THE RETRO", font=f_title, fill=INK, anchor="mm")
+d.text((fcx, I(TOP+2.55)), "PLAYBOOK", font=f_title, fill=INK, anchor="mm")
+d.line([fcx - I(0.33), I(TOP+3.05), fcx + I(0.33), I(TOP+3.05)], fill=ACCENTS[0], width=5*S)
+
+# subtitle
+y = I(TOP+3.35)
+for ln in wrap_lines(d, "Using AI to Run Better Agile Retrospectives", f_sub, I(3.6)):
+    d.text((fcx, y), ln, font=f_sub, fill=INK, anchor="ma")
+    y += I(0.36)
+
+# hero: five sticky notes (the five parts)
+def sticky(color, deg):
+    side, pad = I(1.15), I(0.5)
+    tile = Image.new("RGBA", (side + pad, side + pad), (0,0,0,0))
+    td = ImageDraw.Draw(tile)
+    x0 = y0 = pad // 2
+    td.rounded_rectangle([x0, y0, x0+side, y0+side], radius=I(0.04), fill=color+(255,))
+    tw, th = I(0.42), I(0.12)
+    td.rectangle([x0+side/2-tw/2, y0-th/2, x0+side/2+tw/2, y0+th/2], fill=(246,245,236,150))
+    for i in range(3):
+        ly = y0 + side*0.42 + i*I(0.17)
+        td.line([x0+I(0.17), ly, x0+side-I(0.17), ly], fill=(255,255,255,90), width=4*S)
+    return tile.rotate(deg, expand=True, resample=Image.BICUBIC)
+
+cy = I(TOP+5.75)
+step = I(0.96)
+start_x = fcx - step*2
+for i, deg in enumerate([-9,5,-3,7,-6]):
+    note = sticky(ACCENTS[i], deg)
+    nx = int(start_x + i*step - note.width/2)
+    ny = int(cy - note.height/2 + (I(0.07) if i%2 else -I(0.07)))
+    alpha = note.split()[3]
+    sh = Image.new("RGBA", note.size, (0,0,0,0))
+    sh.paste((30,40,35,120), (0,0), alpha)
+    sh = sh.filter(ImageFilter.GaussianBlur(10*S))
+    img.paste(sh, (nx+I(0.03), ny+I(0.045)), sh)
+    img.paste(note, (nx, ny), note)
+
+# author + imprint
+d.line([fcx - I(0.46), I(TOP+7.75), fcx + I(0.46), I(TOP+7.75)], fill=RULE, width=2*S)
+tracked(d, fcx, I(TOP+7.95), "PRAB MUTTI", f_auth, 10, INK)
+tracked(d, fcx, I(TOP+8.42), "RETRO-GENERATOR.COM", f_imp, 6, INKFAINT)
+
+# ============================================================ SPINE
+# light spine (matches paper field); title rotated, author at foot.
+sp_w, sp_h = I(SPINE), I(TRIM_H)
+spine_img = Image.new("RGBA", (sp_h, sp_w), (0,0,0,0))   # drawn horizontally, rotated later
+sd = ImageDraw.Draw(spine_img)
+# title runs along spine, centered
+t = "THE RETRO PLAYBOOK"
+tw = sd.textlength(t, font=f_spine)
+sd.text(((sp_h - tw)/2, sp_w*0.5), t, font=f_spine, fill=INK, anchor="lm")
+# author near the foot end (will be bottom after rotation)
+aw = sd.textlength("PRAB MUTTI", font=f_spauth)
+sd.text((sp_h - aw - I(0.35), sp_w*0.5), "PRAB MUTTI", font=f_spauth, fill=INKSOFT, anchor="lm")
+spine_rot = spine_img.rotate(90, expand=True, resample=Image.BICUBIC)
+img.paste(spine_rot, (I(SPINE_X0), I(TOP)), spine_rot)
+# hairline spine folds (guide only-ish, very light)
+d.line([I(SPINE_X0), I(TOP+0.5), I(SPINE_X0), I(BOT-0.5)], fill=RULE, width=1*S)
+d.line([I(SPINE_X1), I(TOP+0.5), I(SPINE_X1), I(BOT-0.5)], fill=RULE, width=1*S)
+
+# ============================================================ BACK PANEL
+bx0, bx1 = BACK_X0, BACK_X1
+keyline(bx0+FM, TOP+FM, bx1-FM, BOT-FM)
+TXX = bx0 + 0.62                 # text left
+TXR = bx1 - 0.62                 # text right
+TW  = TXR - TXX                  # text column width (inches)
+
+by = I(TOP+0.85)
+# hook headline
+d.text((I(TXX), by), "Better retros.", font=f_bhead, fill=INK); by += I(0.60)
+d.text((I(TXX), by), "Less faff.", font=f_bhead, fill=INK); by += I(0.80)
+
+blurb1 = ("Most retrospectives die the same handful of deaths: the complaint circle, "
+          "the silent room, the same tired Mad/Sad/Glad every single sprint. This is "
+          "the field guide that fixes them.")
+blurb2 = ("Flip it open five minutes before your meeting and steal a ready-to-run "
+          "format, an icebreaker that won't make anyone cringe, or a facilitation move "
+          "for the room you're actually walking into.")
+blurb3 = ("When you're ready, put AI to work on the paperwork - prepping themes, "
+          "clustering notes, drafting the follow-up - so you can focus on the "
+          "conversation:")
+by = para(d, I(TXX), by, blurb1, f_body, I(TW), INK, I(0.32)); by += I(0.12)
+by = para(d, I(TXX), by, blurb2, f_body, I(TW), INK, I(0.32)); by += I(0.12)
+by = para(d, I(TXX), by, blurb3, f_body, I(TW), INK, I(0.32)); by += I(0.14)
+# the one rule, emphasised
+tracked(d, I((bx0+bx1)/2), by, "AI handles the paperwork.", font(  "NimbusRoman-Italic.otf", 42), 0, INK)
+by += I(0.34)
+tracked(d, I((bx0+bx1)/2), by, "Humans handle the talking.", font("NimbusRoman-Italic.otf", 42), 0, INK)
+by += I(0.44)
+
+# bullet highlights
+bullets = [
+    "30+ retro formats, recipe-card style",
+    "29 icebreakers you can run cold",
+    "The facilitation craft nobody teaches you",
+    "An AI co-pilot for prep and follow-through",
+]
+for i, b in enumerate(bullets):
+    d.rounded_rectangle([I(TXX), by+I(0.05), I(TXX)+I(0.13), by+I(0.18)], radius=I(0.02),
+                        fill=ACCENTS[i % len(ACCENTS)])
+    d.text((I(TXX+0.28), by), b, font=f_bul, fill=INK)
+    by += I(0.40)
+
+# author bio (bottom-left, kept clear of the barcode zone on the right)
+bio = ("Prab Mutti builds practical tools for agile teams, "
+       "including the themed-retro generator at retro-generator.com.")
+para(d, I(TXX), I(BOT-1.25), bio, f_bio, I(2.55), INKSOFT, I(0.30))
+
+# KDP auto-places the barcode bottom-right of the back cover (~1.9 x 1.0").
+# Reserve a clean white area; delete this block before upload if you prefer.
+bw_x1, bw_y1 = bx1-0.45, BOT-0.45
+bw_x0, bw_y0 = bw_x1-1.9, bw_y1-1.0
+d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], fill=(255,255,255))
+d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], outline=RULE, width=1*S)
+tracked(d, I((bw_x0+bw_x1)/2), I((bw_y0+bw_y1)/2), "BARCODE", f_imp, 4, INKFAINT, top=False)
+
+# ---- downsample & save -------------------------------------------------
+fw, fh = round(WRAP_W*DPI), round(WRAP_H*DPI)
+final = img.resize((fw, fh), Image.LANCZOS)
+final.save(HERE / "wrap-cover.png")
+rgb = final.convert("RGB")
+rgb.save(HERE / "wrap-cover.jpg", quality=94, dpi=(DPI, DPI))
+# print-ready PDF at true physical size (KDP "upload your own cover")
+rgb.save(HERE / "wrap-cover.pdf", "PDF", resolution=DPI)
+print(f"wrote wrap-cover.png / .jpg / .pdf  ({fw}x{fh} px @ {DPI}dpi; "
+      f"{WRAP_W:.3f}x{WRAP_H:.3f}in; spine {SPINE:.3f}in, {PAGES}pp)")
