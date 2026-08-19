@@ -57,9 +57,12 @@ f_sub   = font("NimbusRoman-Italic.otf", 60)
 f_auth  = font("URWGothic-Book.otf", 46)
 f_imp   = font("NimbusSans-Regular.otf", 26)
 f_bhead = font("URWGothic-Demi.otf", 74)
-f_body  = font("NimbusRoman-Regular.otf", 40)
-f_bul   = font("URWGothic-Book.otf", 40)
-f_bio   = font("NimbusRoman-Italic.otf", 34)
+f_hook  = font("URWGothic-Demi.otf", 52)
+f_emph  = font("NimbusRoman-Italic.otf", 44)
+f_inside= font("URWGothic-Demi.otf", 42)
+f_body  = font("NimbusRoman-Regular.otf", 38)
+f_bul   = font("URWGothic-Book.otf", 37)
+f_bio   = font("NimbusRoman-Italic.otf", 33)
 f_spine = font("URWGothic-Demi.otf", 66)
 f_spauth= font("URWGothic-Book.otf", 40)
 
@@ -175,50 +178,60 @@ TXX = bx0 + 0.62                 # text left
 TXR = bx1 - 0.62                 # text right
 TW  = TXR - TXX                  # text column width (inches)
 
-by = I(TOP+0.85)
+by = I(TOP+0.95)
+
 # hook headline
-d.text((I(TXX), by), "Better retros.", font=f_bhead, fill=INK); by += I(0.60)
-d.text((I(TXX), by), "Less faff.", font=f_bhead, fill=INK); by += I(0.80)
+by = para(d, I(TXX), by,
+          "Every Scrum retrospective book you've read was written for a world "
+          "that no longer exists.", f_hook, I(TW), INK, I(0.30)); by += I(0.26)
 
-blurb1 = ("Most retrospectives die the same handful of deaths: the complaint circle, "
-          "the silent room, the same tired Mad/Sad/Glad every single sprint. This is "
-          "the field guide that fixes them.")
-blurb2 = ("Flip it open five minutes before your meeting and steal a ready-to-run "
-          "format, an icebreaker that won't make anyone cringe, or a facilitation move "
-          "for the room you're actually walking into.")
-blurb3 = ("When you're ready, put AI to work on the paperwork - prepping themes, "
-          "clustering notes, drafting the follow-up - so you can focus on the "
-          "conversation:")
-by = para(d, I(TXX), by, blurb1, f_body, I(TW), INK, I(0.32)); by += I(0.12)
-by = para(d, I(TXX), by, blurb2, f_body, I(TW), INK, I(0.32)); by += I(0.12)
-by = para(d, I(TXX), by, blurb3, f_body, I(TW), INK, I(0.32)); by += I(0.14)
-# the one rule, emphasised
-tracked(d, I((bx0+bx1)/2), by, "AI handles the paperwork.", font(  "NimbusRoman-Italic.otf", 42), 0, INK)
-by += I(0.34)
-tracked(d, I((bx0+bx1)/2), by, "Humans handle the talking.", font("NimbusRoman-Italic.otf", 42), 0, INK)
-by += I(0.44)
+# punchy triple (emphasis)
+by = para(d, I(TXX), by,
+          "Same sticky notes. Same three questions. Same disengaged team.",
+          f_emph, I(TW), INKSOFT, I(0.25)); by += I(0.28)
 
-# bullet highlights
+# main pitch
+by = para(d, I(TXX), by,
+          "AI has changed the game — and The Retro Playbook shows you exactly how to "
+          "use it to run retrospectives your team actually wants to show up for. Real "
+          "prompts. Real tools. Real facilitation techniques. Not theory.",
+          f_body, I(TW), INK, I(0.20)); by += I(0.28)
+
+# Inside:
+d.text((I(TXX), by), "Inside:", font=f_inside, fill=INK); by += I(0.36)
 bullets = [
-    "30+ retro formats, recipe-card style",
-    "29 icebreakers you can run cold",
-    "The facilitation craft nobody teaches you",
-    "An AI co-pilot for prep and follow-through",
+    "30+ retrospective formats, ready to run",
+    "The modern AI toolkit — what's worth using, what to skip",
+    "Core facilitation skills for honest, blame-free conversations",
+    "Ready-to-use templates",
+    "25+ icebreakers you can run cold, no prep needed",
+    "AI prompts for every stage of the retro",
 ]
 for i, b in enumerate(bullets):
-    d.rounded_rectangle([I(TXX), by+I(0.05), I(TXX)+I(0.13), by+I(0.18)], radius=I(0.02),
+    d.rounded_rectangle([I(TXX), by+I(0.04), I(TXX)+I(0.12), by+I(0.16)], radius=I(0.02),
                         fill=ACCENTS[i % len(ACCENTS)])
-    d.text((I(TXX+0.28), by), b, font=f_bul, fill=INK)
-    by += I(0.40)
+    for ln in wrap_lines(d, b, f_bul, I(TW-0.28)):
+        d.text((I(TXX+0.28), by), ln, font=f_bul, fill=INK); by += I(0.25)
+    by += I(0.10)
+by += I(0.20)
 
-# author bio (bottom-left, kept clear of the barcode zone on the right)
-bio = ("Prabhjit Mutti builds practical tools for agile teams, "
-       "including the themed-retro generator at retro-generator.com.")
-para(d, I(TXX), I(BOT-1.25), bio, f_bio, I(2.55), INKSOFT, I(0.30))
+# closing line
+by = para(d, I(TXX), by,
+          "Whether you're new to Scrum Mastery or have been running retros for years, "
+          "this book gets your team's next retrospective working — starting tomorrow.",
+          f_body, I(TW), INK, I(0.20)); by += I(0.30)
+
+# author bio (full width, above the barcode zone)
+d.line([I(TXX), by, I(TXX)+I(0.9), by], fill=RULE, width=2*S); by += I(0.18)
+para(d, I(TXX), by,
+     "Prabhjit Mutti is an agile leader with 10 years of delivery experience and the "
+     "creator of retro-generator.com, a tool used by teams to create unique, "
+     "interesting, AI-retrospectives.", f_bio, I(TW), INKSOFT, I(0.20))
+print(f"  back-cover content ends at y={by/(DPI*S):.2f}in (barcode top ~{BOT-0.45-1.0:.2f}in)")
 
 # KDP auto-places the barcode bottom-right of the back cover (~1.9 x 1.0").
 # Reserve a clean white area; delete this block before upload if you prefer.
-bw_x1, bw_y1 = bx1-0.45, BOT-0.45
+bw_x1, bw_y1 = bx1-0.45, BOT-0.35
 bw_x0, bw_y0 = bw_x1-1.9, bw_y1-1.0
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], fill=(255,255,255))
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], outline=RULE, width=1*S)

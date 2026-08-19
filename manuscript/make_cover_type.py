@@ -66,7 +66,7 @@ for i, (c, bw) in enumerate(zip(ACCENTS, widths)):
 
 # author + imprint (bottom-left, editorial)
 d.line([LX, 2320*S, LX + 120*S, 2320*S], fill=CORAL, width=3*S)
-tracked(LX, 2360*S, "PRAB MUTTI", f_auth, 6, CREAM)
+tracked(LX, 2360*S, "PRABHJIT MUTTI", f_auth, 6, CREAM)
 tracked(LX, 2460*S, "RETRO-GENERATOR.COM", f_imp, 5, MUTE)
 
 final = img.resize((1600, 2560), Image.LANCZOS)

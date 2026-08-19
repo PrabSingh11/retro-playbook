@@ -110,7 +110,7 @@ for i, note in enumerate(notes):
 
 # --- author + imprint ---
 d.line([cx - 120 * S, 2210 * S, cx + 120 * S, 2210 * S], fill=RULE, width=2 * S)
-tracked(d, cx, 2270 * S, "PRAB MUTTI", f_auth, 10, INK)
+tracked(d, cx, 2270 * S, "PRABHJIT MUTTI", f_auth, 10, INK)
 tracked(d, cx, 2380 * S, "RETRO-GENERATOR.COM", f_imp, 6, INKFAINT)
 
 # --- downsample & save ---

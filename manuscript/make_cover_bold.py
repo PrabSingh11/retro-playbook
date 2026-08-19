@@ -96,7 +96,7 @@ for i, (color, deg) in enumerate(zip(NOTES, [-9, 5, -3, 7, -6])):
 
 # author + imprint
 d.line([cx - 120 * S, 2210 * S, cx + 120 * S, 2210 * S], fill=LINE, width=2 * S)
-tracked(d, cx, 2270 * S, "PRAB MUTTI", f_auth, 10, CREAM)
+tracked(d, cx, 2270 * S, "PRABHJIT MUTTI", f_auth, 10, CREAM)
 tracked(d, cx, 2380 * S, "RETRO-GENERATOR.COM", f_imp, 6, SAGE)
 
 final = img.resize((1600, 2560), Image.LANCZOS)

@@ -172,7 +172,7 @@ for ln in wrap(base, "Using AI to Run Better Agile Retrospectives", f_sub, 1000 
 
 # author + imprint
 base.line([cx - 120 * S, 2270 * S, cx + 120 * S, 2270 * S], fill=(247,242,230), width=2 * S)
-tracked(base, cx, 2330 * S, "PRAB MUTTI", f_auth, 10, CHALK)
+tracked(base, cx, 2330 * S, "PRABHJIT MUTTI", f_auth, 10, CHALK)
 tracked(base, cx, 2440 * S, "RETRO-GENERATOR.COM", f_imp, 6, (252, 226, 200))
 
 final = img.resize((1600, 2560), Image.LANCZOS)

@@ -4,7 +4,7 @@
 
 *Using AI to Run Better Agile Retrospectives*
 
-Copyright © 2026 Prab Mutti. All rights reserved.
+Copyright © 2026 Prabhjit Mutti. All rights reserved.
 
 No part of this book may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the author, except in the case of brief quotations embodied in reviews and certain other non-commercial uses permitted by copyright law.
 
