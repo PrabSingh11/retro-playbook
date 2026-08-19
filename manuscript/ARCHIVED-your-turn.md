@@ -1,12 +1,13 @@
 # "Your Turn" exercises — archived from the print edition
 
-These exercises were **removed from the print paperback interior** (2026-08-19) to keep the
-page count tight. They are **not deleted** — the source files remain in `chapters/`, stay
-live on the website, and every version is preserved in git history. To restore any of them
-to the print book, add its `("ex", "<slug>", "✎")` line back into `STRUCT` in
-`build_print.py` at the desired position and rebuild.
+These exercises were **removed from both the print paperback interior and the website
+index** (2026-08-19) to keep the book tight. They are **not deleted** — the source files
+remain in `chapters/` (still directly reachable by URL) and every version is preserved in
+git history; they are simply no longer linked from `index.html` or built into the print
+PDF. To restore any of them: re-link it in `index.html` **and** add its
+`("ex", "<slug>", "✎")` line back into `STRUCT` in `build_print.py`, then rebuild.
 
-## Excluded from print (still live on the website)
+## Archived (unlinked from index, files retained)
 | Title | File | Was after |
 |-------|------|-----------|
 | Spot the Failure | `chapters/spot-the-failure.html` | Ch.1 |
