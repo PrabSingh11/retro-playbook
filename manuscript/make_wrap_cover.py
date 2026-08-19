@@ -147,7 +147,7 @@ for i, deg in enumerate([-9,5,-3,7,-6]):
 
 # author + imprint
 d.line([fcx - I(0.46), I(TOP+7.75), fcx + I(0.46), I(TOP+7.75)], fill=RULE, width=2*S)
-tracked(d, fcx, I(TOP+7.95), "PRAB MUTTI", f_auth, 10, INK)
+tracked(d, fcx, I(TOP+7.95), "PRABHJIT MUTTI", f_auth, 10, INK)
 tracked(d, fcx, I(TOP+8.42), "RETRO-GENERATOR.COM", f_imp, 6, INKFAINT)
 
 # ============================================================ SPINE
@@ -160,8 +160,8 @@ t = "THE RETRO PLAYBOOK"
 tw = sd.textlength(t, font=f_spine)
 sd.text(((sp_h - tw)/2, sp_w*0.5), t, font=f_spine, fill=INK, anchor="lm")
 # author near the foot end (will be bottom after rotation)
-aw = sd.textlength("PRAB MUTTI", font=f_spauth)
-sd.text((sp_h - aw - I(0.35), sp_w*0.5), "PRAB MUTTI", font=f_spauth, fill=INKSOFT, anchor="lm")
+aw = sd.textlength("PRABHJIT MUTTI", font=f_spauth)
+sd.text((sp_h - aw - I(0.35), sp_w*0.5), "PRABHJIT MUTTI", font=f_spauth, fill=INKSOFT, anchor="lm")
 spine_rot = spine_img.rotate(90, expand=True, resample=Image.BICUBIC)
 img.paste(spine_rot, (I(SPINE_X0), I(TOP)), spine_rot)
 # hairline spine folds (guide only-ish, very light)
@@ -212,7 +212,7 @@ for i, b in enumerate(bullets):
     by += I(0.40)
 
 # author bio (bottom-left, kept clear of the barcode zone on the right)
-bio = ("Prab Mutti builds practical tools for agile teams, "
+bio = ("Prabhjit Mutti builds practical tools for agile teams, "
        "including the themed-retro generator at retro-generator.com.")
 para(d, I(TXX), I(BOT-1.25), bio, f_bio, I(2.55), INKSOFT, I(0.30))
 
