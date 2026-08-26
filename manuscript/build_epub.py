@@ -25,6 +25,22 @@ def run(*cmd):
 def main():
     import build, cairosvg  # build.py writes body.html + extracts img/diagram-NN.svg
 
+    # Extract the diagrams in COLOUR for the ebook (the print build runs in its own
+    # process and keeps build.py's grayscale VARMAP). Palette = book.css :root.
+    build.VARMAP = {
+        "paper": "#EDECE2", "paper-deep": "#E1DFD0", "card": "#F6F5EC",
+        "ink": "#24352F", "ink-soft": "#5B665D", "ink-faint": "#8B9188",
+        "rule": "#C9C4AC", "rule-soft": "#DAD6C3",
+        "check": "#3F7684", "ember": "#C15A34", "moss": "#52713F",
+        "plum": "#64517E", "gold": "#A9781F",
+        "check-tint": "#DDE7E6", "ember-tint": "#F0DFD2", "moss-tint": "#DEE5D3",
+        "plum-tint": "#E2DBE9", "gold-tint": "#EBE0C4",
+        "accent": "#3F7684", "accent-tint": "#DDE7E6",
+    }
+    build.SVG_LABEL_STYLE = (
+        '<style>.dg-label{font-family:monospace;font-size:9.5px;fill:#5B665D;}'
+        '.dg-label-strong{font-family:sans-serif;font-weight:700;font-size:11px;fill:#24352F;}</style>')
+
     build.main()
 
     # rasterise the extracted diagrams and point the <img> tags at the PNGs

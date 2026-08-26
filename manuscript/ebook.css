@@ -1,4 +1,7 @@
-/* The Retro Playbook — e-reader stylesheet (grayscale, reflowable) */
+/* The Retro Playbook — e-reader stylesheet (colour, reflowable).
+   Colour is free on Kindle. Brand accents (section bands, callout borders,
+   diagrams, pips) are coloured; body text/background are left to the reader's
+   theme so it stays readable in light / sepia / dark modes. */
 body { font-family: Georgia, "Iowan Old Style", serif; line-height: 1.5; }
 h1, h2, h3, h4 { font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.2; font-weight: 700; }
 h1 { page-break-before: always; font-size: 1.6em; margin: 0 0 .2em; }
@@ -19,6 +22,7 @@ p { margin: 0 0 .8em; }
   page-break-inside: avoid;
 }
 .card { background: #f4f4f2; } /* override lined-paper gradient */
+.promptcard { border-top: 3px solid #3F7684; }  /* accent lip, like the website */
 
 /* closing cheat sheet — darker box */
 .cheat { border: 1px solid #444; background: #ececea; padding: .9em 1em; margin: 1.5em 0; border-radius: 3px; }
@@ -39,19 +43,26 @@ p { margin: 0 0 .8em; }
 .meta, .stats { margin: .4em 0; }
 .num { float: right; color: #888; font-size: .82em; font-family: Arial, sans-serif; }
 
-/* energy pips / remote dots -> grayscale */
+/* energy pips / remote dots */
 .energy i { display: inline-block; width: 5px; height: 10px; background: #ccc; margin-right: 1px; }
-.energy i.on { background: #333; }
+.energy i.on { background: #3F7684; }
 .remote-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ccc; }
-.remote-dot.on { background: #333; }
+.remote-dot.on { background: #52713F; }
 
 /* pull quote */
 .pull { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 1.15em;
-  border-top: 2px solid #333; border-bottom: 2px solid #333; padding: .5em 0; margin: 1.1em 0; }
+  border-top: 2px solid #3F7684; border-bottom: 2px solid #3F7684; padding: .5em 0; margin: 1.1em 0; }
 
-/* section tab (creative/format deck headers) */
-.tab { background: #333; color: #fff; padding: .35em .7em; border-radius: 3px; margin: 1.2em 0 .6em; }
+/* section tab (creative/format deck headers) — coloured per deck (matches website).
+   White text on a solid accent is self-contained, so it reads on any reader theme. */
+.tab { background: #3F7684; color: #fff; padding: .35em .7em; border-radius: 3px; margin: 1.2em 0 .6em; }
 .tab h2 { color: #fff; margin: 0; }
+.tab .tab-note { color: #fff; }
+.deck.temp .tab, .deck.classic .tab { background: #3F7684; }  /* teal  */
+.deck.energy .tab, .deck.moment .tab { background: #C15A34; }  /* ember */
+.deck.trust .tab                     { background: #52713F; }  /* moss  */
+.deck.remote .tab                    { background: #64517E; }  /* plum  */
+.deck.themed .tab, .deck.create .tab { background: #A9781F; }  /* gold  */
 
 /* decision flow (ch5) */
 .flow-q { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; margin: .8em 0 .2em; }
@@ -70,4 +81,4 @@ img, svg { max-width: 100%; height: auto; }
 .refs .ref-note { font-size: .88em; color: #555; font-style: italic; margin: .2em 0 0; }
 
 /* footnote-ish citation links */
-.cite { font-size: .85em; color: #333; }
+.cite { font-size: .85em; color: #3F7684; }
