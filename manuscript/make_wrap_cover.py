@@ -247,8 +247,8 @@ tracked(d, I((bw_x0+bw_x1)/2), I((bw_y0+bw_y1)/2), "BARCODE", f_imp, 4, INKFAINT
 bio_w = bw_x0 - 0.30 - TXX          # stop short of the barcode's left edge
 d.line([I(TXX), I(bw_y0), I(TXX)+I(0.9), I(bw_y0)], fill=RULE, width=2*S)
 para(d, I(TXX), I(bw_y0+0.16),
-     "Prab Mutti is an agile leader with 10 years of delivery experience and the "
-     "creator of retro-generator.com, a tool used by teams to create unique, "
+     "Prab Mutti has been working in Agile since 2016 and is the creator of "
+     "retro-generator.com, a tool used by teams to create unique, "
      "interesting, AI-retrospectives.", f_bio, I(bio_w), INKSOFT, I(0.20))
 
 # ---- downsample & save -------------------------------------------------
