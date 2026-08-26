@@ -20,8 +20,8 @@ pandoc 00-front-matter.md --to html5 -o front.html
 { echo '<!doctype html><html><head><meta charset="utf-8"><title>The Retro Playbook</title></head><body>'; cat front.html body.html; echo '</body></html>'; } > combined.html
 pandoc combined.html --from html --to epub3 --toc --toc-depth=1 --split-level=1 \
   --css ebook.css --resource-path=.:img \
-  -M title="The Retro Playbook" -M author="Prabhjit Mutti" -M lang=en-GB \
-  -M rights="© 2026 Prabhjit Mutti. All rights reserved." \
+  -M title="The Retro Playbook" -M author="Prab Mutti" -M lang=en-GB \
+  -M rights="© 2026 Prab Mutti. All rights reserved." \
   -o The-Retro-Playbook.epub
 ```
 

@@ -134,7 +134,7 @@ def main():
         '<section class="titlepage">'
         '<div class="tp-title">The Retro<br>Playbook</div>'
         '<div class="tp-sub">Using AI to Run Better Agile Retrospectives</div>'
-        '<div class="tp-author">Prabhjit Mutti</div>'
+        '<div class="tp-author">Prab Mutti</div>'
         '<div class="tp-imprint">retro-generator.com</div>'
         '</section>')
     front = frontmatter_sections()
