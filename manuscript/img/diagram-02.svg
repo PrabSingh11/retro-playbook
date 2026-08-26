@@ -1,30 +1,30 @@
-<svg aria-label="Weather map diagram: a sprint timeline with sun early, a storm midweek, fog later, and sun again by the end" role="img" viewBox="0 0 400 150"><style>.dg-label{font-family:monospace;font-size:9.5px;fill:#5B665D;}.dg-label-strong{font-family:sans-serif;font-weight:700;font-size:11px;fill:#24352F;}</style>
-<rect fill="#F6F5EC" height="150" width="400" x="0" y="0"></rect>
-<line stroke="#C9C4AC" stroke-width="2" x1="30" x2="370" y1="95" y2="95"></line>
-<circle cx="60" cy="55" fill="#A9781F" r="14"></circle>
-<g stroke="#A9781F" stroke-width="2">
+<svg aria-label="Weather map diagram: a sprint timeline with sun early, a storm midweek, fog later, and sun again by the end" role="img" viewBox="0 0 400 150"><style>.dg-label{font-family:monospace;font-size:9.5px;fill:#555;}.dg-label-strong{font-family:sans-serif;font-weight:700;font-size:11px;fill:#222;}</style>
+<rect fill="#f4f4f2" height="150" width="400" x="0" y="0"></rect>
+<line stroke="#bbbbbb" stroke-width="2" x1="30" x2="370" y1="95" y2="95"></line>
+<circle cx="60" cy="55" fill="#555555" r="14"></circle>
+<g stroke="#555555" stroke-width="2">
 <line x1="60" x2="60" y1="30" y2="22"></line><line x1="60" x2="60" y1="88" y2="80"></line>
 <line x1="35" x2="27" y1="55" y2="55"></line><line x1="93" x2="85" y1="55" y2="55"></line>
 <line x1="42" x2="36" y1="37" y2="31"></line><line x1="78" x2="84" y1="37" y2="31"></line>
 </g>
-<ellipse cx="150" cy="58" fill="#C9C4AC" rx="20" ry="13"></ellipse>
-<ellipse cx="164" cy="52" fill="#C9C4AC" rx="14" ry="11"></ellipse>
-<ellipse cx="215" cy="55" fill="#5B665D" rx="24" ry="15"></ellipse>
-<ellipse cx="232" cy="48" fill="#5B665D" rx="16" ry="12"></ellipse>
-<polygon fill="#C15A34" points="215,68 224,68 216,86 226,86 210,108 214,90 205,90"></polygon>
-<g fill="none" opacity="0.8" stroke="#8B9188" stroke-width="2">
+<ellipse cx="150" cy="58" fill="#bbbbbb" rx="20" ry="13"></ellipse>
+<ellipse cx="164" cy="52" fill="#bbbbbb" rx="14" ry="11"></ellipse>
+<ellipse cx="215" cy="55" fill="#555555" rx="24" ry="15"></ellipse>
+<ellipse cx="232" cy="48" fill="#555555" rx="16" ry="12"></ellipse>
+<polygon fill="#555555" points="215,68 224,68 216,86 226,86 210,108 214,90 205,90"></polygon>
+<g fill="none" opacity="0.8" stroke="#888888" stroke-width="2">
 <path d="M270,50 q8,-6 16,0 t16,0"></path>
 <path d="M270,60 q8,-6 16,0 t16,0"></path>
 <path d="M270,70 q8,-6 16,0 t16,0"></path>
 </g>
-<circle cx="345" cy="55" fill="#A9781F" r="14"></circle>
-<g stroke="#A9781F" stroke-width="2">
+<circle cx="345" cy="55" fill="#555555" r="14"></circle>
+<g stroke="#555555" stroke-width="2">
 <line x1="345" x2="345" y1="30" y2="22"></line><line x1="345" x2="345" y1="88" y2="80"></line>
 <line x1="320" x2="312" y1="55" y2="55"></line><line x1="378" x2="370" y1="55" y2="55"></line>
 <line x1="327" x2="321" y1="37" y2="31"></line><line x1="363" x2="369" y1="37" y2="31"></line>
 </g>
-<circle cx="60" cy="95" fill="#24352F" r="3"></circle><circle cx="157" cy="95" fill="#24352F" r="3"></circle>
-<circle cx="222" cy="95" fill="#24352F" r="3"></circle><circle cx="286" cy="95" fill="#24352F" r="3"></circle><circle cx="345" cy="95" fill="#24352F" r="3"></circle>
+<circle cx="60" cy="95" fill="#222222" r="3"></circle><circle cx="157" cy="95" fill="#222222" r="3"></circle>
+<circle cx="222" cy="95" fill="#222222" r="3"></circle><circle cx="286" cy="95" fill="#222222" r="3"></circle><circle cx="345" cy="95" fill="#222222" r="3"></circle>
 <text class="dg-label" x="46" y="118">Mon</text><text class="dg-label" x="143" y="118">Tue</text>
 <text class="dg-label" x="208" y="118">Wed</text><text class="dg-label" x="272" y="118">Thu</text>
 <text class="dg-label" x="333" y="118">Fri</text>
