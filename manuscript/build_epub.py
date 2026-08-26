@@ -59,6 +59,11 @@ def main():
         '<title>The Retro Playbook</title></head><body>'
         + (MAN / "front.html").read_text(encoding="utf-8")
         + body + "</body></html>")
+    # Strip the decorative label emoji (🎯 🧰 👥 🏠 …). Kindle's fonts don't cover
+    # them, so they render as tofu squares; the labels read fine as plain text.
+    # (Print strips the same range; ✎/❧ TOC markers are outside it and kept.)
+    combined = re.sub(
+        "[\U0001F000-\U0001FAFF\U00002600-\U000026FF\U0000FE0F\U0000200D]", "", combined)
     (MAN / "combined.html").write_text(combined, encoding="utf-8")
 
     run("pandoc", "combined.html", "--from", "html", "--to", "epub3",
