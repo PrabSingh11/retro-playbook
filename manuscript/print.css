@@ -76,6 +76,14 @@ a{ color:#000 !important; text-decoration:none !important; }
 figure,table,pre,blockquote,.flow,.pinned{
   break-inside:avoid; page-break-inside:avoid;
 }
+/* Prompt cards are a flex column on the web; WeasyPrint can't fragment a flex
+   column across a page, so a card landing near a page bottom overflows and its
+   own lines overlap (seen on the EARS / tailored-questions prompts). Use block
+   flow in print so it paginates, keep short cards whole, and re-create the
+   flex `gap:12px` as inter-child spacing. */
+.promptcard{ display:block; break-inside:avoid; page-break-inside:avoid; }
+.promptcard > * + *{ margin-top:12px; }
+
 h1,h2,h3,h4{ break-after:avoid; page-break-after:avoid; }
 h2,h3{ orphans:3; widows:3; }
 p,li{ orphans:2; widows:2; }

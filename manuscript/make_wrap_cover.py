@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from pathlib import Path
 
 # ---- trim / bleed / spine geometry -------------------------------------
-PAGES        = 218
+PAGES        = 224
 PAGE_THICK   = 0.002252          # white paper, inches per page (KDP)
 TRIM_W, TRIM_H = 6.0, 9.0
 BLEED        = 0.125
@@ -247,9 +247,9 @@ tracked(d, I((bw_x0+bw_x1)/2), I((bw_y0+bw_y1)/2), "BARCODE", f_imp, 4, INKFAINT
 bio_w = bw_x0 - 0.30 - TXX          # stop short of the barcode's left edge
 d.line([I(TXX), I(bw_y0), I(TXX)+I(0.9), I(bw_y0)], fill=RULE, width=2*S)
 para(d, I(TXX), I(bw_y0+0.16),
-     "Prab Mutti has been working in Agile since 2016 and is the creator of "
-     "retro-generator.com, a tool used by teams to create unique, "
-     "interesting, AI-retrospectives.", f_bio, I(bio_w), INKSOFT, I(0.20))
+     "Prab Mutti is a seasoned Scrum Master with experience in agile delivery "
+     "since 2017, and the creator of retro-generator.com — a tool used by teams "
+     "to run unique, AI-powered retrospectives.", f_bio, I(bio_w), INKSOFT, I(0.20))
 
 # ---- downsample & save -------------------------------------------------
 fw, fh = round(WRAP_W*DPI), round(WRAP_H*DPI)
