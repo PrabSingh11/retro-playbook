@@ -67,6 +67,10 @@ a{ color:#000 !important; text-decoration:none !important; }
 .card:hover,.recipe:hover{ transform:none !important; }
 
 /* single-column everything: 6x9 is too narrow for the web card grids */
+.deck{ display:block !important; }   /* else WeasyPrint gives the deck a grid/flex
+                                        context and stretches the .tab band to full
+                                        page height, overflowing the bottom margin
+                                        (KDP "object outside the margins", p42) */
 .grid,.grid.wide{ display:block !important; }
 .grid > *, .grid.wide > *{ margin:0 0 12px !important; }
 .matchgrid{ grid-template-columns:1fr 1fr; }
@@ -104,9 +108,12 @@ section.chapter > h1{ string-set: chaptitle content(text); }
   color:#6f6f6f; margin:0 0 20px;
 }
 
-/* colored section tabs -> clean B&W band */
-.tab{ background:#000 !important; color:#fff !important; }
-.tab h2{ color:#fff !important; }
+/* colored section tabs -> clean B&W band. Block flow + keep the band with its
+   first card, so it can't be stretched or stranded at a page bottom. */
+.tab{ background:#000 !important; color:#fff !important;
+      display:block !important; break-after:avoid; page-break-after:avoid; }
+.tab h2{ color:#fff !important; display:inline; }
+.tab .tab-note{ display:block; margin-top:4px; }
 
 /* the dark closing "cheat sheet" -> light, bordered (saves ink, no bleed) */
 .cheat{ background:#fff !important; color:#000 !important;
