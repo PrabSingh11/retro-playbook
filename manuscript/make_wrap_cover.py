@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from pathlib import Path
 
 # ---- trim / bleed / spine geometry -------------------------------------
-PAGES        = 226
+PAGES        = 224
 PAGE_THICK   = 0.002252          # white paper, inches per page (KDP)
 TRIM_W, TRIM_H = 6.0, 9.0
 BLEED        = 0.125
