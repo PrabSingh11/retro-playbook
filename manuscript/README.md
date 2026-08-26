@@ -13,17 +13,17 @@ Source for the Kindle ebook (and, later, the print PDF), generated from the webs
 - `The-Retro-Playbook-6x9-interior.pdf` — the built 6×9″ print interior. **Download this for KDP paperback.**
 
 ## Rebuild the EPUB
+Use `build_epub.py` — it does the pandoc build **and** the Kindle-safety steps
+(rasterises the SVG diagrams to PNG and rewrites the SVG cover page to a plain
+`<img>`). Kindle's converter fails on SVG/SVGZ with "couldn't convert your HTML
+file to Kindle format", so never ship the raw pandoc EPUB.
 ```bash
 cd manuscript
-python3 build.py
-pandoc 00-front-matter.md --to html5 -o front.html
-{ echo '<!doctype html><html><head><meta charset="utf-8"><title>The Retro Playbook</title></head><body>'; cat front.html body.html; echo '</body></html>'; } > combined.html
-pandoc combined.html --from html --to epub3 --toc --toc-depth=1 --split-level=1 \
-  --css ebook.css --resource-path=.:img \
-  -M title="The Retro Playbook" -M author="Prab Mutti" -M lang=en-GB \
-  -M rights="© 2026 Prab Mutti. All rights reserved." \
-  -o The-Retro-Playbook.epub
+.buildvenv/bin/pip install cairosvg lxml   # one-time, alongside weasyprint/bs4
+.buildvenv/bin/python build_epub.py        # -> The-Retro-Playbook.epub (no SVG)
 ```
+Verify before upload: `unzip -l The-Retro-Playbook.epub` should show only `.png`
+media (no `.svgz`), and Kindle Previewer should open it cleanly.
 
 ## Rebuild the print interior PDF (6×9″)
 Needs WeasyPrint + BeautifulSoup in a venv (system Python is externally-managed):
