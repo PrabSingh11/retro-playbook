@@ -2,7 +2,7 @@
 """Build the print-ready 6x9" paperback interior PDF (KDP) from the website chapters.
 
 Reuses build.clean() to strip web chrome and extract SVG diagrams, then adds
-title page / copyright / dedication / part dividers / a page-numbered TOC, applies
+title page / copyright / part dividers / a page-numbered TOC, applies
 book.css + activity.css + print.css (grayscale, mirrored margins), and renders with
 WeasyPrint.
 
@@ -162,6 +162,14 @@ def main():
     doc = (f'<!doctype html><html lang="en-GB"><head><meta charset="utf-8">'
            f'<title>The Retro Playbook</title><style>{css}</style></head><body>'
            f'{title_page}{front}{toc}{"".join(bodies)}</body></html>')
+
+    # Grayscale print has no colour-emoji font: the decorative pictographs used as
+    # box labels (🎯 🏠 🗣️ …) render as blank tofu, which is invisible on their own
+    # line but leaves ugly gaps when used inline (see the "Start Here" preface).
+    # Strip them for print only — the EPUB keeps them (e-readers render colour emoji).
+    # Range excludes the ✎/❧ TOC markers (U+270E/U+2767), which DejaVu renders fine.
+    doc = re.sub(
+        "[\U0001F000-\U0001FAFF\U00002600-\U000026FF\U0000FE0F\U0000200D]", "", doc)
 
     out_html = MAN / "print.html"
     out_html.write_text(doc, encoding="utf-8")

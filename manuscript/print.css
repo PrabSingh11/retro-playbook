@@ -47,6 +47,11 @@
 @page nochrome:left{ @top-left{content:none} @bottom-left{content:none} }
 @page nochrome:right{ @top-right{content:none} @bottom-right{content:none} }
 
+/* blank pages auto-inserted before a recto part divider (break-before:right):
+   leave them truly blank — no running head, no folio */
+@page :blank{ @top-left{content:none} @top-right{content:none}
+              @bottom-left{content:none} @bottom-right{content:none} }
+
 /* front matter uses lower-roman page numbers, no top head */
 @page frontmatter:right{ @top-right{content:none} @bottom-right{content:counter(page,lower-roman)} }
 @page frontmatter:left{  @top-left{content:none}  @bottom-left{content:counter(page,lower-roman)} }
