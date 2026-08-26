@@ -180,5 +180,22 @@ def main():
     HTML(string=doc, base_url=str(MAN)).write_pdf(str(pdf))
     print(f"wrote {pdf} ({pdf.stat().st_size//1024} KB)")
 
+    # Strip link annotations (the TOC and citation hyperlinks WeasyPrint embeds).
+    # They're non-printable, so KDP reports "non-printable markup removed" for the
+    # pages that carry them. Removing them ourselves keeps the upload flag-free;
+    # the visible page is identical. Skipped gracefully if pikepdf isn't present.
+    try:
+        import pikepdf
+        with pikepdf.open(pdf, allow_overwriting_input=True) as pk:
+            n = 0
+            for page in pk.pages:
+                if "/Annots" in page:
+                    n += len(page.Annots)
+                    del page["/Annots"]
+            pk.save(pdf)
+        print(f"stripped {n} non-printable link annotations (KDP)")
+    except ImportError:
+        print("pikepdf not installed - skipping annotation strip")
+
 if __name__ == "__main__":
     main()
