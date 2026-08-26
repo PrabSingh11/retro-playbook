@@ -16,10 +16,6 @@ Companion tools and generators: **retro-generator.com**
 
 First edition, 2026.
 
-# Dedication {.unnumbered}
-
-*<!-- TODO: your dedication here, or tell me to delete this page. e.g. "For everyone who ever got voluntold to run the retro." -->*
-
 # Start Here {.unnumbered}
 
 This is a field guide, not a textbook. It's built to be flipped through five minutes before a meeting as much as read cover to cover.
