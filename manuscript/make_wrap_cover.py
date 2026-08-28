@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from pathlib import Path
 
 # ---- trim / bleed / spine geometry -------------------------------------
-PAGES        = 224
+PAGES        = 218
 PAGE_THICK   = 0.002252          # white paper, inches per page (KDP)
 TRIM_W, TRIM_H = 6.0, 9.0
 BLEED        = 0.125
@@ -235,13 +235,15 @@ tracked(d, I((bx0+bx1)/2), by, "Humans handle the talking.", f_emph, 0, INK); by
 
 print(f"  back-cover main copy ends at y={by/(DPI*S):.2f}in")
 
-# KDP auto-places the barcode bottom-right of the back cover (~1.9 x 1.0").
-# Reserve a clean white area; delete this block before upload if you prefer.
-bw_x1, bw_y1 = bx1-0.45, BOT-0.35
-bw_x0, bw_y0 = bw_x1-1.9, bw_y1-1.0
+# KDP fixed barcode clear-zone: exactly 2.0 x 1.2", 0.25" from back-cover right
+# trim edge and 0.5" from bottom trim edge. Pure white, NO border, NO label.
+# Coords below are given from the bottom-left of the wrap (0,0); PIL's I() is
+# top-left, so vertical values are flipped via WRAP_H - <dist-from-bottom>.
+BC_LEFT, BC_RIGHT   = 3.875, 5.875               # from left edge
+BC_BOTTOM, BC_TOP   = 0.625, 1.825               # from bottom edge
+bw_x0, bw_x1 = BC_LEFT, BC_RIGHT
+bw_y0, bw_y1 = WRAP_H - BC_TOP, WRAP_H - BC_BOTTOM   # top-left y (0.625->8.625 etc.)
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], fill=(255,255,255))
-d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], outline=RULE, width=1*S)
-tracked(d, I((bw_x0+bw_x1)/2), I((bw_y0+bw_y1)/2), "BARCODE", f_imp, 4, INKFAINT, top=False)
 
 # author bio: bottom-left, in a column to the LEFT of the barcode, aligned to its top
 bio_w = bw_x0 - 0.30 - TXX          # stop short of the barcode's left edge
