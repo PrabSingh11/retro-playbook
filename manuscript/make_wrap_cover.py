@@ -247,7 +247,9 @@ print(f"  back-cover main copy ends at y={by/(DPI*S):.2f}in")
 # Coords given from the bottom-left of the wrap (0,0); PIL's I() is top-left, so
 # vertical values are flipped via WRAP_H - <dist-from-bottom>.
 BC_LEFT, BC_RIGHT   = 3.70, 6.00                 # from left edge (right = 0.125" off trim)
-BC_BOTTOM, BC_TOP   = 0.30, 1.95                 # from bottom edge
+BC_BOTTOM, BC_TOP   = 0.25, 1.60                 # from bottom edge — snug around KDP's
+                                                 # real barcode footprint (~0.32-1.48"),
+                                                 # anchored low; no empty white void above
 bw_x0, bw_x1 = BC_LEFT, BC_RIGHT
 bw_y0, bw_y1 = WRAP_H - BC_TOP, WRAP_H - BC_BOTTOM
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], fill=(255,255,255))
