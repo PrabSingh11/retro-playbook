@@ -238,14 +238,18 @@ tracked(d, I((bx0+bx1)/2), by, "Humans handle the talking.", f_emph, 0, INK); by
 
 print(f"  back-cover main copy ends at y={by/(DPI*S):.2f}in")
 
-# KDP fixed barcode clear-zone: exactly 2.0 x 1.2", 0.25" from back-cover right
-# trim edge and 0.5" from bottom trim edge. Pure white, NO border, NO label.
-# Coords below are given from the bottom-left of the wrap (0,0); PIL's I() is
-# top-left, so vertical values are flipped via WRAP_H - <dist-from-bottom>.
-BC_LEFT, BC_RIGHT   = 3.875, 5.875               # from left edge
-BC_BOTTOM, BC_TOP   = 0.625, 1.825               # from bottom edge
+# KDP barcode clear-zone. KDP prints its own barcode in the bottom-right of the
+# back cover, and its ACTUAL placement sits lower than the nominal 0.5"-from-trim
+# guide (verified against a KDP previewer screenshot). So reserve a GENEROUS pure-
+# white block over the whole bottom-right corner: it fully contains the required
+# 2.0 x 1.2" clear area AND covers KDP's lower/wider real placement with margin,
+# guaranteeing the printed barcode always lands on clean white. No border, no label.
+# Coords given from the bottom-left of the wrap (0,0); PIL's I() is top-left, so
+# vertical values are flipped via WRAP_H - <dist-from-bottom>.
+BC_LEFT, BC_RIGHT   = 3.70, 6.00                 # from left edge (right = 0.125" off trim)
+BC_BOTTOM, BC_TOP   = 0.30, 1.95                 # from bottom edge
 bw_x0, bw_x1 = BC_LEFT, BC_RIGHT
-bw_y0, bw_y1 = WRAP_H - BC_TOP, WRAP_H - BC_BOTTOM   # top-left y (0.625->8.625 etc.)
+bw_y0, bw_y1 = WRAP_H - BC_TOP, WRAP_H - BC_BOTTOM
 d.rectangle([I(bw_x0), I(bw_y0), I(bw_x1), I(bw_y1)], fill=(255,255,255))
 
 # author bio: bottom-left, in a column to the LEFT of the barcode, aligned to its top
