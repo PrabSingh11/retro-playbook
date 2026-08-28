@@ -173,7 +173,10 @@ d.line([I(SPINE_X1), I(TOP+0.5), I(SPINE_X1), I(BOT-0.5)], fill=RULE, width=1*S)
 
 # ============================================================ BACK PANEL
 bx0, bx1 = BACK_X0, BACK_X1
-keyline(bx0+FM, TOP+FM, bx1-FM, BOT-FM)
+# Frame stops above the bottom band so it never intrudes on the barcode
+# clear-zone (top at 7.425") or the author bio that share that band.
+BACK_FRAME_BOT = 7.20
+keyline(bx0+FM, TOP+FM, bx1-FM, BACK_FRAME_BOT)
 TXX = bx0 + 0.62                 # text left
 TXR = bx1 - 0.62                 # text right
 TW  = TXR - TXX                  # text column width (inches)
